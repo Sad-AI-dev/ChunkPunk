@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(context);
     }
 
-    private void Movement(InputAction.CallbackContext context)
+    public void Movement(InputAction.CallbackContext context)
     {
         human.AddForce(0, 0, 2);
     }

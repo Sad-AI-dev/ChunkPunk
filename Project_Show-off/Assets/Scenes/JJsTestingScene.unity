@@ -375,7 +375,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 1190957834}
+  m_LookAt: {fileID: 1650029363}
   m_Follow: {fileID: 1650029363}
   m_Lens:
     FieldOfView: 60
@@ -409,7 +409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018797559}
-  m_LocalRotation: {x: 0.18768363, y: -0.054434475, z: 0.010417893, w: 0.9806647}
+  m_LocalRotation: {x: 0.2346389, y: -0.034748644, z: 0.008393219, w: 0.9714251}
   m_LocalPosition: {x: 7.1471252, y: 8.405931, z: -17.784458}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -584,12 +584,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8891ef1643d797348abfc6751ec79773, type: 3}
---- !u!4 &1190957834 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7548509074647951086, guid: 8891ef1643d797348abfc6751ec79773,
-    type: 3}
-  m_PrefabInstance: {fileID: 1190210014}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1214990759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -737,7 +731,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1335825835}
-  m_LocalRotation: {x: 0.18768363, y: -0.054434475, z: 0.010417893, w: 0.9806647}
+  m_LocalRotation: {x: 0.2346389, y: -0.034748644, z: 0.008393219, w: 0.9714251}
   m_LocalPosition: {x: 7.1471252, y: 8.405931, z: -17.784458}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -916,6 +910,8 @@ GameObject:
   - component: {fileID: 1650029361}
   - component: {fileID: 1650029360}
   - component: {fileID: 1650029364}
+  - component: {fileID: 1650029365}
+  - component: {fileID: 1650029366}
   m_Layer: 0
   m_Name: HUman
   m_TagString: Untagged
@@ -1016,7 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 250df94e4a804c647aefc6621329e76d,
     type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -1032,8 +1028,52 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b3152bcd-ddc0-4add-8dbc-919a4811a381
     m_ActionName: PlayerMove/New action[/DualSenseGamepadHID/leftStick/up,/SwitchProControllerHID/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1650029365}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Movement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 79d35594-c23c-4eeb-9767-e55608ea0b91
+    m_ActionName: PlayerMove/Forward[/DualSenseGamepadHID/leftStick/up,/SwitchProControllerHID/leftStick/up]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMove
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1650029365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650029359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cd587d2d67660418db90acf6168816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &1650029366
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1650029359}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
