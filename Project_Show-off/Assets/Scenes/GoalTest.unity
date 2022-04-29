@@ -266,6 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625176544}
   - component: {fileID: 625176545}
+  - component: {fileID: 625176546}
   m_Layer: 0
   m_Name: GoalManager
   m_TagString: Untagged
@@ -304,6 +305,65 @@ MonoBehaviour:
   goalPrefab: {fileID: 7321520134481573285, guid: 5f63ecfaa66cbb14aaa3ed830d1e9d45,
     type: 3}
   minimumDistance: 5
+--- !u!114 &625176546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625176543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7ab8d4a96f3e6754fb5a98e1a3694198,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0c324f8a-8ee0-49d2-bf6a-7655217784bb
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f53d90e-ae8b-4865-88bb-f822d3057916
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ded5293f-3107-4973-bbd7-59925b57fb4f
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 625176545}
+        m_TargetAssemblyTypeName: GoalManager, Assembly-CSharp
+        m_MethodName: SpawnGoalAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 36ef55ef-3c18-4236-99f2-68dd3e883333
+    m_ActionName: Player/ButtonTest[/Keyboard/space]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &958373727
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GoalManager : MonoBehaviour
 {
@@ -28,20 +29,29 @@ public class GoalManager : MonoBehaviour
 
     private void Start()
     {
+        //store all goal points
         foreach (Transform child in goalPointHolder) {
             goalPositions.Add(child.position);
         }
-
-        //TEST
-        GameObject g = Instantiate(goalPrefab);
-        g.transform.position = GetBestSpawnPos();
-        Debug.Log(g.transform.position);
     }
 
     public Vector3 GetBestSpawnPos()
     {
         goalPositions.Sort(SortByBestPosition);
         return goalPositions[0];
+    }
+
+    //-----------------------goal creation-------------------
+    public void SpawnGoalAction(InputAction.CallbackContext context)
+    {
+        if (context.started) {
+            SpawnGoal();
+        }
+    }
+    void SpawnGoal()
+    {
+        GameObject g = Instantiate(goalPrefab);
+        g.transform.position = GetBestSpawnPos();
     }
 
     //----------------------custom sort------------------------
@@ -55,15 +65,15 @@ public class GoalManager : MonoBehaviour
         }
         //find comparitive distance
         return GetComparitiveDistance(a).CompareTo(GetComparitiveDistance(b));
-    }
-    //-1 means good, +1 means bad (consider it a shift in index)
+    } //-1 means good, +1 means bad (consider it a shift in index)
 
     float GetComparitiveDistance(Vector3 point)
     {
-        List<float> distances = new();
-        foreach (Transform t in players) {
-            distances.Add(Vector3.Distance(point, t.position)); //find distances to players
+        float[] distances = new float[players.Count];
+        for (int i = 0; i < distances.Length; i++) {
+            distances[i] = Vector3.Distance(point, players[i].position);
         }
-        return Mathf.Abs((distances[0] / (distances[0] + distances[1])) - 0.5f);
+        float partion = distances[0] / (distances[0] + distances[1]); //number between 0 and 1
+        return Mathf.Abs(partion - 0.5f); //lower is better!
     }
 }
