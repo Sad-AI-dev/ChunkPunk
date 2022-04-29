@@ -664,6 +664,21 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
+        type: 3}
+      propertyPath: constantSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
+        type: 3}
+      propertyPath: m_EulerAngleVelocity.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
+        type: 3}
+      propertyPath: m_EulerAngleVelocity.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2871078253383518560, guid: 493df8d9d8b620846b32c62871f37597,
         type: 3}
       propertyPath: m_Mass
@@ -1176,7 +1191,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1566319463}
   - component: {fileID: 1566319462}
-  - component: {fileID: 1566319461}
   - component: {fileID: 1566319460}
   - component: {fileID: 1566319459}
   m_Layer: 6
@@ -1344,14 +1358,6 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
---- !u!81 &1566319461
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566319458}
-  m_Enabled: 1
 --- !u!20 &1566319462
 Camera:
   m_ObjectHideFlags: 0
@@ -2098,6 +2104,21 @@ PrefabInstance:
         type: 3}
       propertyPath: moveSpeed
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
+        type: 3}
+      propertyPath: constantSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
+        type: 3}
+      propertyPath: m_EulerAngleVelocity.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
+        type: 3}
+      propertyPath: m_EulerAngleVelocity.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2805911888941962588, guid: 493df8d9d8b620846b32c62871f37597,
         type: 3}
