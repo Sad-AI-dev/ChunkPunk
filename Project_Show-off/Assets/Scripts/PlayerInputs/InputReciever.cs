@@ -21,10 +21,7 @@ public class InputReciever : MonoBehaviour
     public void SouthButton(InputAction.CallbackContext context)
     {
         if (context.started) {
-            Debug.Log("Pressed button");
-        }
-        else if (context.canceled) {
-            Debug.Log("Released button!");
+            target.Shoot();
         }
     }
 }

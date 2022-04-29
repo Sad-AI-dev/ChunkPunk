@@ -6,6 +6,7 @@ TagManager:
   tags:
   - P1Cam
   - P2Cam
+  - Projectile
   layers:
   - Default
   - TransparentFX

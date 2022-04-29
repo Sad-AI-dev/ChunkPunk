@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     Vector2 toMove;
     [SerializeField] float moveSpeed = 5f;
 
+    [Header("technical settings")]
+    [SerializeField] Emitter emitter;
+
     private void Start()
     {
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
@@ -15,6 +18,16 @@ public class Player : MonoBehaviour
     public void SetMoveDir(Vector2 newToMove)
     {
         toMove = newToMove;
+    }
+
+    public void Shoot()
+    {
+        List<GameObject> objs = emitter.Emit();
+        foreach (GameObject obj in objs) {
+            if (obj.TryGetComponent(out Projectile proj)) {
+                proj.owner = this; //set owner of projectiles
+            }
+        }
     }
 
     private void FixedUpdate()
