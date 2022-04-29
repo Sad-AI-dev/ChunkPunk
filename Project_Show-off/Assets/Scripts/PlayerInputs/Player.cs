@@ -5,11 +5,13 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Vector2 toMove;
+    Rigidbody playerBody;
     [SerializeField] float moveSpeed = 5f;
 
     private void Start()
     {
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
+        playerBody = GetComponent<Rigidbody>();
     }
 
     public void SetMoveDir(Vector2 newToMove)
@@ -19,6 +21,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += new Vector3(toMove.x, 0, toMove.y) * (moveSpeed * Time.deltaTime);
+        //transform.position += new Vector3(toMove.x, 0, toMove.y) * (moveSpeed * Time.deltaTime);
+
+        playerBody.AddForce(new Vector3(toMove.x, 0, toMove.y) * (moveSpeed * Time.deltaTime));
     }
 }
