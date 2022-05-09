@@ -21,10 +21,12 @@ public class InputReciever : MonoBehaviour
     public void SouthButton(InputAction.CallbackContext context)
     {
         if (context.started) {
-            Debug.Log("Pressed button");
+            target.DecreaseSpeed();
+            Debug.Log("startedSlowing");
         }
         else if (context.canceled) {
-            Debug.Log("Released button!");
+            target.IncreaseSpeed();
+            Debug.Log("stoppedSlowing");
         }
     }
 }
