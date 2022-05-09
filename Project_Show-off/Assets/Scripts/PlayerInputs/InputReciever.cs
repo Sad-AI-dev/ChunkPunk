@@ -15,13 +15,13 @@ public class InputReciever : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        target.SetMoveDir(context.ReadValue<Vector2>());
+        target?.SetMoveDir(context.ReadValue<Vector2>());
     }
 
     public void SouthButton(InputAction.CallbackContext context)
     {
         if (context.started) {
-            target.Shoot();
+            target?.Shoot();
         }
     }
 }
