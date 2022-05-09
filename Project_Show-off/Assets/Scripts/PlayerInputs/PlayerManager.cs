@@ -23,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     public void AddPlayer(Player player)
     {
         players.Add(player);
+        GoalManager.instance.players.Add(player.transform);
+        GameplayManager.instance.scores.Add(player, 0);
     }
 
     public Player GetUnlinkedPlayer()
