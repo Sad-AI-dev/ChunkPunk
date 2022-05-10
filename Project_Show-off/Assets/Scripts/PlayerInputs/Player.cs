@@ -70,22 +70,17 @@ public class Player : MonoBehaviour
     {
 
 
-        Debug.Log(isSlowing);
 
         while (isSlowing && moveSpeed > minimumSpeed)
         {
             moveSpeed--;
-            Debug.Log("Slowing");
         }
         while(!isSlowing && moveSpeed < normalSpeed)
         {
             moveSpeed++;
-            Debug.Log("StoppedSlowing");
         }
 
         transform.position += transform.forward * (moveSpeed * Time.deltaTime);
-        Debug.Log("speed is " + moveSpeed);
-        Debug.Log(isSlowing);
          //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
         
     }
