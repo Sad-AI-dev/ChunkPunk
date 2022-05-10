@@ -5,12 +5,12 @@ using UnityEngine.Events;
 
 public class Goal : MonoBehaviour
 {
-    public UnityEvent onReachGoal;
+    public UnityEvent<Player> onReachGoal;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")) {
-            onReachGoal?.Invoke();
+            onReachGoal?.Invoke(other.GetComponent<Player>());
             Destroy(gameObject);
         }
     }

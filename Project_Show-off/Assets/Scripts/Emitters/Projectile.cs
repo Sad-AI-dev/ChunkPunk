@@ -28,7 +28,9 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        StartCoroutine(DieCo());
+        if (collision.transform != owner.transform) {
+            StartCoroutine(DieCo());
+        }
     }
     IEnumerator DieCo()
     {

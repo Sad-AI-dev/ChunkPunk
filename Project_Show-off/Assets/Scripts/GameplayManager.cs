@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using TMPro;
 
 public class GameplayManager : MonoBehaviour
@@ -27,19 +29,42 @@ public class GameplayManager : MonoBehaviour
     [HideInInspector] public State activeState;
 
     //----score management------
-    public Dictionary<Player, int> scores;
+    public Dictionary<Player, int> scores = new();
     [Tooltip("Minimum amount of times a player needs to 'win' to end the game")]
     [SerializeField] int winScore = 2;
+    [SerializeField] float setupTime = 5f;
+    float timer = 0;
 
     //-----------UI----------
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
+    TMP_Text[] scoreLabels = new TMP_Text[2];
+    [SerializeField] GameObject gameplayUI, gameFinishedUI;
+
 
     private void Start()
     {
-        //initialize score dictionary
-        foreach (Player p in PlayerManager.instance.players) {
-            scores.Add(p, 0);
+        SetupUI();
+        OnStateChanged();
+    }
+    void SetupUI()
+    {
+        gameplayUI.SetActive(true);
+        gameFinishedUI.SetActive(false);
+        //load score labels
+        for (int i = 0; i < scoreLabels.Length; i++) {
+            Transform scoreLabel = PlayerManager.instance.playerUI[i].transform.Find("Score"); //it's string based and I hate it, might change this later
+            scoreLabels[i] = scoreLabel.GetComponent<TMP_Text>();
+        }
+    }
+
+    private void Update()
+    {
+        switch (activeState) {
+            case State.setup:
+                timer -= Time.deltaTime;
+                UpdateSetupTimer();
+                break;
         }
     }
 
@@ -52,16 +77,44 @@ public class GameplayManager : MonoBehaviour
 
     void OnStateChanged()
     {
+        //state specific
         switch (activeState) {
             case State.setup:
+                StartTimer();
                 break;
 
             case State.race:
+                Goal g = GoalManager.instance.SpawnGoal();
+                g.onReachGoal.AddListener((Player p) => GainScore(p));
                 break;
 
             case State.done:
+                FinishGame();
                 break;
         }
+    }
+
+    //------setup state
+    void StartTimer()
+    {
+        timerLabel.gameObject.SetActive(true);
+        timer = setupTime;
+        StartCoroutine(SetupTimerCo());
+    }
+
+    IEnumerator SetupTimerCo()
+    {
+        yield return new WaitForSeconds(setupTime);
+        //start race state
+        timerLabel.gameObject.SetActive(false);
+        SetGameState(State.race);
+    }
+
+    //------done state
+    void FinishGame()
+    {
+        gameplayUI.SetActive(false);
+        gameFinishedUI.SetActive(true);
     }
 
     //-------------------score management-----------------
@@ -69,26 +122,36 @@ public class GameplayManager : MonoBehaviour
     {
         if (scores.ContainsKey(reciever)) {
             scores[reciever] += amount;
+            UpdateScoreLabel(reciever);
+
+            //detect if game is over
+            if (HasPlayerWonCheck(reciever)) {
+                SetGameState(State.done); //player won, end game
+            }
+            else {
+                SetGameState(State.setup); //player hasn't won, repeat cycle
+            }
         }
     }
 
-    public bool HasPlayerWonCheck()
-    {
-        foreach (int score in scores.Values) {
-            if (score >= winScore) return true;
-        }
-        return false;
-    }
-    public bool HasPlayerWonCheck(Player p)
+    bool HasPlayerWonCheck(Player p)
     {
         return scores[p] >= winScore;
     }
 
-    public Player GetWinningPlayer()
+    //-------------------------UI----------------------------
+    void UpdateSetupTimer()
     {
-        foreach (Player p in scores.Keys) {
-            if (scores[p] >= winScore) return p;
-        }
-        return null;
+        timerLabel.text = FormatTimer();
+    }
+
+    string FormatTimer()
+    {
+        return Mathf.Ceil(timer).ToString();
+    }
+
+    void UpdateScoreLabel(Player p)
+    {
+        scoreLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Score: {scores[p]}";
     }
 }

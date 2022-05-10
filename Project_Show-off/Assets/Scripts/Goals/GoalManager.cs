@@ -42,16 +42,11 @@ public class GoalManager : MonoBehaviour
     }
 
     //-----------------------goal creation-------------------
-    public void SpawnGoalAction(InputAction.CallbackContext context)
-    {
-        if (context.started) {
-            SpawnGoal();
-        }
-    }
-    void SpawnGoal()
+    public Goal SpawnGoal()
     {
         GameObject g = Instantiate(goalPrefab);
         g.transform.position = GetBestSpawnPos();
+        return g.GetComponent<Goal>();
     }
 
     //----------------------custom sort------------------------
