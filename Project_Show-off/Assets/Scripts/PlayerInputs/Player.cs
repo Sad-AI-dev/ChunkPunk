@@ -7,15 +7,16 @@ public class Player : MonoBehaviour
     Vector2 toMove;
     [SerializeField] float moveSpeed = 7f;
     private bool isSlowing;
-    private float maximumSpeed;
+    private float maximumSpeed = 10;
     private float minimumSpeed = 3f;
+    private float normalSpeed;
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
 
     private void Start()
     {
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
-        maximumSpeed = moveSpeed;
+        normalSpeed = moveSpeed;
     }
 
     public void Slowing(bool isSlowed)
@@ -27,6 +28,18 @@ public class Player : MonoBehaviour
         } else
         {
             isSlowing = false;
+        }
+    }
+
+    public void Accelerating(bool isAccelerating)
+    {
+        while(isAccelerating && moveSpeed < maximumSpeed)
+        {
+            moveSpeed++;
+        }
+        while(!isAccelerating && moveSpeed > normalSpeed)
+        {
+            moveSpeed--;
         }
     }
 
@@ -49,7 +62,7 @@ public class Player : MonoBehaviour
     {
         //Vector3 lookVec = new Vector3(0, newLook.x, 0);
         transform.Rotate(0, newLook.x, 0);
-        Debug.Log("Looking");
+        //Debug.Log("Looking");
     }
 
     private void FixedUpdate()
@@ -62,13 +75,13 @@ public class Player : MonoBehaviour
         {
             moveSpeed--;
         }
-        while(!isSlowing && moveSpeed < maximumSpeed)
+        while(!isSlowing && moveSpeed < normalSpeed)
         {
             moveSpeed++;
         }
 
-        
-         transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
+        Debug.Log("speed is " + moveSpeed);
+         //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
         
     }
 }
