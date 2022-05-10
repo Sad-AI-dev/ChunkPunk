@@ -21,12 +21,8 @@ public class ObstacleSpawner : MonoBehaviour, IObstacle
 
     public void Execute()
     {
-        if (executed) {
-            End();
-        }
-        else {
-            SpawnObjects();
-        }
+        if (executed) { End(); }
+        else { SpawnObjects(); }
         executed = !executed;
     }
 
