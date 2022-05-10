@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     public void AddPlayer(Player player)
     {
         players.Add(player);
+        players.Sort((Player a, Player b) => a.id.CompareTo(b.id));
         //add player to external
         GoalManager.instance.players.Add(player.transform);
         GameplayManager.instance.scores.Add(player, 0);

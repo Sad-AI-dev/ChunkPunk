@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private float normalSpeed;
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
+    public int id = 0;
 
     private void Start()
     {
