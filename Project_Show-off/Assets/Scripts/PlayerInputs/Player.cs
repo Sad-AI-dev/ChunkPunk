@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     private bool isSlowing;
     private float maximumSpeed = 10;
     private float minimumSpeed = 3f;
-    private float normalSpeed;
+    private float normalSpeed = 7;
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
     public int id = 0;
@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
-        normalSpeed = moveSpeed;
     }
 
     public void Slowing(bool isSlowed)
@@ -41,6 +40,7 @@ public class Player : MonoBehaviour
         while(!isAccelerating && moveSpeed > normalSpeed)
         {
             moveSpeed--;
+            Debug.Log("notaccelerating");
         }
     }
 
@@ -68,20 +68,24 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += transform.forward * (moveSpeed * Time.deltaTime);
 
 
-        
-        while(isSlowing && moveSpeed > minimumSpeed)
+        Debug.Log(isSlowing);
+
+        while (isSlowing && moveSpeed > minimumSpeed)
         {
             moveSpeed--;
+            Debug.Log("Slowing");
         }
         while(!isSlowing && moveSpeed < normalSpeed)
         {
             moveSpeed++;
+            Debug.Log("StoppedSlowing");
         }
 
+        transform.position += transform.forward * (moveSpeed * Time.deltaTime);
         Debug.Log("speed is " + moveSpeed);
+        Debug.Log(isSlowing);
          //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
         
     }

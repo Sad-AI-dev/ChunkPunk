@@ -21,7 +21,7 @@ public class InputReciever : MonoBehaviour
     public void Accelerate(InputAction.CallbackContext context)
     {
         Vector3 playerSpeed = context.ReadValue<Vector2>();
-        if (playerSpeed.y > 0)
+        if (playerSpeed.y > 0.2)
         {
             target.Accelerating(true);
 
@@ -35,7 +35,7 @@ public class InputReciever : MonoBehaviour
     public void Slow(InputAction.CallbackContext context)
     {
         Vector3 playerSpeed = context.ReadValue<Vector2>();
-        if(playerSpeed.y < 0)
+        if(playerSpeed.y < -0.2)
         {
             target.Slowing(true);
 
