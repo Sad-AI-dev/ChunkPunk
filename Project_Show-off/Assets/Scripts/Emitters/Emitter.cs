@@ -12,7 +12,7 @@ public class Emitter : MonoBehaviour
         List<GameObject> objs = new();
         foreach (Transform t in emitLocations) {
             GameObject emitted = Instantiate(emitPrefab);
-            emitted.transform.position = t.position;
+            emitted.transform.SetPositionAndRotation(t.position, t.rotation);
             //add to list
             objs.Add(emitted);
         }

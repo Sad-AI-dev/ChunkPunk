@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     //---------------movement----------------
     private void FixedUpdate()
     {
-        transform.Translate(0, 0, moveSpeed * Time.deltaTime);
+        transform.position += transform.forward * (moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
