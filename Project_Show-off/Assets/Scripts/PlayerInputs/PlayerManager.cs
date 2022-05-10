@@ -30,6 +30,7 @@ public class PlayerManager : MonoBehaviour
         //add player to external
         GoalManager.instance.players.Add(player.transform);
         GameplayManager.instance.scores.Add(player, 0);
+        CoinManager.instance.money.Add(player, 0);
     }
 
     public Player GetUnlinkedPlayer()
