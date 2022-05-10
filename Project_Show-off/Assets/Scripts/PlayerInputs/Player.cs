@@ -5,14 +5,29 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Vector2 toMove;
-    [SerializeField] float moveSpeed = 5f;
-
+    [SerializeField] float moveSpeed = 7f;
+    private bool isSlowing;
+    private float maximumSpeed;
+    private float minimumSpeed = 3f;
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
 
     private void Start()
     {
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
+        maximumSpeed = moveSpeed;
+    }
+
+    public void Slowing(bool isSlowed)
+    {
+        if (isSlowed)
+        {
+            isSlowing = true;
+            Debug.Log("Slowing");
+        } else
+        {
+            isSlowing = false;
+        }
     }
 
     public void SetMoveDir(Vector2 newToMove)
@@ -30,8 +45,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Look(Vector2 newLook)
+    {
+        //Vector3 lookVec = new Vector3(0, newLook.x, 0);
+        transform.Rotate(0, newLook.x, 0);
+        Debug.Log("Looking");
+    }
+
     private void FixedUpdate()
     {
-        transform.position += new Vector3(toMove.x, 0, toMove.y) * (moveSpeed * Time.deltaTime);
+        transform.position += transform.forward * (moveSpeed * Time.deltaTime);
+
+
+        
+        while(isSlowing && moveSpeed > minimumSpeed)
+        {
+            moveSpeed--;
+        }
+        while(!isSlowing && moveSpeed < maximumSpeed)
+        {
+            moveSpeed++;
+        }
+
+        
+         transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
+        
     }
 }

@@ -18,6 +18,28 @@ public class InputReciever : MonoBehaviour
         target?.SetMoveDir(context.ReadValue<Vector2>());
     }
 
+    public void Slow(InputAction.CallbackContext context)
+    {
+        Vector3 playerSpeed = context.ReadValue<Vector2>();
+        if(playerSpeed.y < 0)
+        {
+            target.Slowing(true);
+
+        } else
+        {
+            target.Slowing(false);
+        }
+    }
+
+    public void Looking(InputAction.CallbackContext context)
+    {
+        Debug.Log("looked");
+        Vector2 playerLook = context.ReadValue<Vector2>();
+        Debug.Log("lookX is "  +playerLook.x);
+        Debug.Log("lookY is " + playerLook.y);
+        target.Look(playerLook);
+    }
+    
     public void SouthButton(InputAction.CallbackContext context)
     {
         if (context.started) {
