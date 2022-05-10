@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject != owner.gameObject) {
+        if (collision.transform != owner.transform) {
             StartCoroutine(DieCo());
         }
     }

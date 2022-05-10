@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager instance;
 
     //-----------player management-----------
-    public readonly List<Player> players;
+    public readonly List<Player> players = new();
     int linkedPlayerCount = 0; //keeps track of how many of the players have been linked
 
     [Header("UI Settings")]
