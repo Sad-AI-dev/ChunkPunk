@@ -38,12 +38,24 @@ public class GameplayManager : MonoBehaviour
     //-----------UI----------
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
-    [SerializeField] List<TMP_Text> scoreLabels = new();
+    TMP_Text[] scoreLabels = new TMP_Text[2];
+    [SerializeField] GameObject gameplayUI, gameFinishedUI;
 
 
     private void Start()
     {
+        SetupUI();
         OnStateChanged();
+    }
+    void SetupUI()
+    {
+        gameplayUI.SetActive(true);
+        gameFinishedUI.SetActive(false);
+        //load score labels
+        for (int i = 0; i < scoreLabels.Length; i++) {
+            Transform scoreLabel = PlayerManager.instance.playerUI[i].transform.Find("Score"); //it's string based and I hate it, might change this later
+            scoreLabels[i] = scoreLabel.GetComponent<TMP_Text>();
+        }
     }
 
     private void Update()
@@ -77,6 +89,7 @@ public class GameplayManager : MonoBehaviour
                 break;
 
             case State.done:
+                FinishGame();
                 break;
         }
     }
@@ -98,12 +111,18 @@ public class GameplayManager : MonoBehaviour
     }
 
     //------done state
+    void FinishGame()
+    {
+        gameplayUI.SetActive(false);
+        gameFinishedUI.SetActive(true);
+    }
 
     //-------------------score management-----------------
     public void GainScore(Player reciever, int amount = 1)
     {
         if (scores.ContainsKey(reciever)) {
             scores[reciever] += amount;
+            UpdateScoreLabel(reciever);
 
             //detect if game is over
             if (HasPlayerWonCheck(reciever)) {
@@ -129,5 +148,10 @@ public class GameplayManager : MonoBehaviour
     string FormatTimer()
     {
         return Mathf.Ceil(timer).ToString();
+    }
+
+    void UpdateScoreLabel(Player p)
+    {
+        scoreLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Score: {scores[p]}";
     }
 }
