@@ -44,6 +44,7 @@ public class ObstacleMover : MonoBehaviour, IObstacle
         moveTarget += goingForward ? 1 : -1;
         if (moveTarget >= path.Count) {
             goingForward = false;
+            moveTarget = path.Count - 1; //set target to be 
         }
     }
 
