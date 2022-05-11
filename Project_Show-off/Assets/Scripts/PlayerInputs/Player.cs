@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    bool isSlippy;
     Vector2 toMove;
     [SerializeField] float moveSpeed = 7f;
     private bool isSlowing;
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     private float normalSpeed = 7;
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
+    [SerializeField] int Slippyness;
+    [SerializeField] float turnSpeed;
     public int id = 0;
 
     private void Start()
@@ -62,7 +65,7 @@ public class Player : MonoBehaviour
     public void Look(Vector2 newLook)
     {
         //Vector3 lookVec = new Vector3(0, newLook.x, 0);
-        transform.Rotate(0, newLook.x, 0);
+        transform.Rotate(new Vector3(0f, newLook.x, 0f) * (turnSpeed));
         //Debug.Log("Looking");
     }
     public void Died()
@@ -74,9 +77,30 @@ public class Player : MonoBehaviour
         Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
         Debug.Log(transform.position);
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Slippery" && isSlippy == false)
+        {
+            Debug.Log("Puddle!");
+            moveSpeed = (normalSpeed * Slippyness);
+            isSlippy = true;
+            turnSpeed *= 3;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+     if(isSlippy == true)
+        {
+            moveSpeed = normalSpeed;
+            turnSpeed = 1;
+            isSlippy = false;
+        }   
+    }
     private void FixedUpdate()
     {
-
 
 
         while (isSlowing && moveSpeed > minimumSpeed)
