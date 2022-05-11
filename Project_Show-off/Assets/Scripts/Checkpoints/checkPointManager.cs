@@ -23,7 +23,7 @@ public class checkPointManager : MonoBehaviour
     {
         foreach (KeyValuePair<int, Transform> kvp in allPlayerCheckPoints)
         {
-            Debug.LogFormat("Item: {0} - {1}g", kvp.Key, kvp.Value);
+            //Debug.LogFormat("Item: {0} - {1}g", kvp.Key, kvp.Value);
         }
 
         

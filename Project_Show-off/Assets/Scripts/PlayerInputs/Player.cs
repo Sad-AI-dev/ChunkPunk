@@ -65,7 +65,15 @@ public class Player : MonoBehaviour
         transform.Rotate(0, newLook.x, 0);
         //Debug.Log("Looking");
     }
-
+    public void Died()
+    {
+        Debug.Log("Died");
+        int ID = this.id;
+        Debug.Log(ID);
+        transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
+        Debug.Log(transform.position);
+    }
     private void FixedUpdate()
     {
 
