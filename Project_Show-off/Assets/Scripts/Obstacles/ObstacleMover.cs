@@ -13,8 +13,8 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     bool executed = false;
 
     [Header("Techinical Settings")]
-    [SerializeField] GameObject moveablePrefab;
-    List<Moveable> moveables = new();
+    [SerializeField] Transform moveable;
+    int moveTarget = 0;
     [SerializeField] Transform pathHolder;
     List<Transform> path = new();
 
@@ -28,7 +28,22 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     void Update()
     {
         if (executed) {
-            //MOVE
+            Move();
+        }
+    }
+
+    void Move()
+    {
+        moveable.position = Vector3.MoveTowards(moveable.position, path[moveTarget].position, moveSpeed * Time.deltaTime);
+        if (Vector3.Distance(moveable.position, path[moveTarget].position) < 0.2f) {
+            OnReachTarget();
+        }
+    }
+    void OnReachTarget()
+    {
+        moveTarget += goingForward ? 1 : -1;
+        if (moveTarget >= path.Count) {
+            goingForward = false;
         }
     }
 
@@ -48,12 +63,5 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     public void End()
     {
 
-    }
-
-    //-------------------data--------------
-    private struct Moveable
-    {
-        public Transform t;
-        public int target;
     }
 }
