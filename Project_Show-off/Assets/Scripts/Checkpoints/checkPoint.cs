@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class checkPoint : MonoBehaviour
 {
-    private bool isTriggered;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && isTriggered == false)
+        if(other.gameObject.tag == "Player")
         {
-            checkPointManager.instance.lastCheckPoint = other.transform;
             Debug.Log("New checkpoint is " + other.transform);
-            isTriggered = true;
+            Player currentPlayer = other.GetComponent<Player>();
+            checkPointManager.instance.allPlayerCheckPoints[currentPlayer.id] = other.transform;
+            Debug.Log(checkPointManager.instance.allPlayerCheckPoints); 
         }
     }
 }
