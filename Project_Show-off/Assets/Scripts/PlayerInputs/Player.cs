@@ -6,11 +6,13 @@ public class Player : MonoBehaviour
 {
     bool isSlippy;
     Vector2 toMove;
-    [SerializeField] float moveSpeed = 7f;
+    [SerializeField] float moveSpeed;
     private bool isSlowing;
-    private float maximumSpeed = 10;
-    private float minimumSpeed = 3f;
-    private float normalSpeed = 7;
+    [SerializeField] private float maximumSpeed;
+    [SerializeField] private float minimumSpeed;
+    [SerializeField] private float normalSpeed;
+    Rigidbody rb;
+
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
     [SerializeField] int Slippyness;
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
     }
 
@@ -84,9 +87,9 @@ public class Player : MonoBehaviour
         if(other.gameObject.tag == "Slippery" && isSlippy == false)
         {
             Debug.Log("Puddle!");
-            moveSpeed = (normalSpeed * Slippyness);
-            isSlippy = true;
-            turnSpeed *= 3;
+            //moveSpeed = (normalSpeed * Slippyness);
+            //isSlippy = true;
+            //turnSpeed *= 3;
         }
     }
 
@@ -111,9 +114,10 @@ public class Player : MonoBehaviour
         {
             moveSpeed++;
         }
-
-        transform.position += transform.forward * (moveSpeed * Time.deltaTime);
-         //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
-        
+        Vector3 direction = transform.forward * (moveSpeed );
+        //transform.position += ;
+        //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
+        Debug.Log(moveSpeed);
+        rb.AddForce(direction);
     }
 }
