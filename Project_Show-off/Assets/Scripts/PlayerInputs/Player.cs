@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
     [SerializeField] int Slippyness;
-    [SerializeField] float turnSpeed;
+    [SerializeField] float turnSpeed = 1f;
     public int id = 0;
 
     private void Start()
