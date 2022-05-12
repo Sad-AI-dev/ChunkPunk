@@ -22,19 +22,6 @@ public class ObstacleStream : MonoBehaviour, IObstacle
             path.Add(child);
         }
     }
-    void Update()
-    {
-        if (IsMoving()) {
-            Move();
-        }
-    }
-
-    IEnumerator SpawnCo()
-    {
-        GetAvailableMover().moving = true;
-        yield return new WaitForSeconds(spawnDelay);
-        if (executing) { StartCoroutine(SpawnCo()); }
-    }
 
     public void Execute()
     {
@@ -51,6 +38,21 @@ public class ObstacleStream : MonoBehaviour, IObstacle
     public void End()
     {
 
+    }
+
+    //---------------------main loops-----------------
+    void Update()
+    {
+        if (IsMoving()) {
+            Move();
+        }
+    }
+
+    IEnumerator SpawnCo()
+    {
+        InitializeMover(GetAvailableMover());
+        yield return new WaitForSeconds(spawnDelay);
+        if (executing) { StartCoroutine(SpawnCo()); }
     }
 
     //--------------move objects-----------
@@ -76,13 +78,24 @@ public class ObstacleStream : MonoBehaviour, IObstacle
         toMove.target++;
         if (toMove.target >= path.Count) {
             //reset object
-            toMove.target = 0;
-            toMove.moving = false;
-            toMove.body.position = path[0].position;
-            toMove.body.gameObject.SetActive(false);
+            ResetObject(toMove);
         }
     }
 
+    //-------------------reset objects
+    void InitializeMover(Moveable toMove)
+    {
+        toMove.moving = true;
+        toMove.body.gameObject.SetActive(true);
+    }
+
+    void ResetObject(Moveable toMove)
+    {
+        toMove.target = 0;
+        toMove.moving = false;
+        toMove.body.position = path[0].position;
+        toMove.body.gameObject.SetActive(false);
+    }
     //-------------data----------
     private class Moveable
     {
@@ -108,7 +121,6 @@ public class ObstacleStream : MonoBehaviour, IObstacle
         }
         //create new object and add to pool
         objPool.Add(CreateNewMover());
-        objPool[^1].body.gameObject.SetActive(true);
         return objPool[^1];
     }
 
