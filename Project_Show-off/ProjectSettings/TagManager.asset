@@ -7,6 +7,7 @@ TagManager:
   - P1Cam
   - P2Cam
   - Projectile
+  - Ramp
   layers:
   - Default
   - TransparentFX
