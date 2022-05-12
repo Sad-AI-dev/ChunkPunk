@@ -5,12 +5,17 @@ using UnityEngine;
 public class ObstacleMover : MonoBehaviour, IObstacle
 {
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] float startInterval = 1f;
 
     //modes
-    [SerializeField] bool isLooping;
-    bool goingForward = true;
-    bool executed = false;
+    [System.Serializable] enum Mode {
+        single,
+        looping
+    }
+    [SerializeField] Mode mode;
+
+    bool executing = false;
+    bool moving = false;
+    bool movingForward = true;
 
     [Header("Techinical Settings")]
     [SerializeField] Transform moveable;
@@ -23,11 +28,12 @@ public class ObstacleMover : MonoBehaviour, IObstacle
         foreach (Transform child in pathHolder) {
             path.Add(child);
         }
+        moveable.position = path[0].position; //set moveable to start pos;
     }
 
     void Update()
     {
-        if (executed) {
+        if (moving) {
             Move();
         }
     }
@@ -39,30 +45,47 @@ public class ObstacleMover : MonoBehaviour, IObstacle
             OnReachTarget();
         }
     }
+
     void OnReachTarget()
     {
-        moveTarget += goingForward ? 1 : -1;
-        if (moveTarget >= path.Count) {
-            goingForward = false;
-            moveTarget = path.Count - 1; //set target to be 
+        moveTarget += movingForward ? 1 : -1;
+        if (moveTarget >= path.Count) { OnReachEnd(); }
+        else if (moveTarget < 0) { OnReachStart(); }
+    }
+
+    void OnReachEnd()
+    {
+        movingForward = false;
+        moveTarget = path.Count - 1;
+        if (mode == Mode.single) {
+            moving = false;
         }
+    }
+    void OnReachStart()
+    {
+        movingForward = true;
+        moveTarget = 0;
+        moving = executing; //stop if ended. otherwise, continue
     }
 
     //-------------------start / end----------------------
     public void Execute()
     {
-        if (executed) { End(); }
+        if (executing) { End(); }
         else { StartMove(); }
-        executed = !executed;
+        executing = !executing;
     }
 
     void StartMove()
     {
-
+        moving = true;
     }
 
     public void End()
     {
-
+        movingForward = false;
+        if (mode == Mode.single) {
+            moving = true;
+        }
     }
 }
