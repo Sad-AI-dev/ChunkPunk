@@ -14,7 +14,7 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     [SerializeField] Mode mode;
 
     bool executing = false;
-    bool moveing = false;
+    bool moving = false;
     bool movingForward = true;
 
     [Header("Techinical Settings")]
@@ -33,7 +33,7 @@ public class ObstacleMover : MonoBehaviour, IObstacle
 
     void Update()
     {
-        if (moveing) {
+        if (moving) {
             Move();
         }
     }
@@ -58,14 +58,14 @@ public class ObstacleMover : MonoBehaviour, IObstacle
         movingForward = false;
         moveTarget = path.Count - 1;
         if (mode == Mode.single) {
-            moveing = false;
+            moving = false;
         }
     }
     void OnReachStart()
     {
         movingForward = true;
         moveTarget = 0;
-        moveing = executing; //stop if ended. otherwise, continue
+        moving = executing; //stop if ended. otherwise, continue
     }
 
     //-------------------start / end----------------------
@@ -78,14 +78,14 @@ public class ObstacleMover : MonoBehaviour, IObstacle
 
     void StartMove()
     {
-        moveing = true;
+        moving = true;
     }
 
     public void End()
     {
         movingForward = false;
         if (mode == Mode.single) {
-            moveing = true;
+            moving = true;
         }
     }
 }

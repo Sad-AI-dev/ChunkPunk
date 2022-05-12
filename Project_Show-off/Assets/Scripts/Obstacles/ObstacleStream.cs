@@ -6,12 +6,13 @@ public class ObstacleStream : MonoBehaviour, IObstacle
 {
     [Tooltip("amount of seconds between each object being spawned")]
     [SerializeField] float spawnDelay;
+    [SerializeField] float moveSpeed;
 
     [Header("Technical settings")]
     [SerializeField] GameObject prefab;
-    List<Transform> objPool = new();
+    List<Moveable> objPool = new();
     [SerializeField] Transform pathHolder;
-    List<Transform> path = new();
+    protected readonly List<Transform> path = new();
 
     bool executing = false;
 
@@ -23,7 +24,16 @@ public class ObstacleStream : MonoBehaviour, IObstacle
     }
     void Update()
     {
+        if (IsMoving()) {
+            Move();
+        }
+    }
 
+    IEnumerator SpawnCo()
+    {
+        GetAvailableMover().moving = true;
+        yield return new WaitForSeconds(spawnDelay);
+        if (executing) { StartCoroutine(SpawnCo()); }
     }
 
     public void Execute()
@@ -35,7 +45,7 @@ public class ObstacleStream : MonoBehaviour, IObstacle
 
     void StartMove()
     {
-
+        StartCoroutine(SpawnCo());
     }
 
     public void End()
@@ -44,17 +54,69 @@ public class ObstacleStream : MonoBehaviour, IObstacle
     }
 
     //--------------move objects-----------
+    void Move()
+    {
+        foreach (Moveable toMove in objPool) {
+            if (toMove.moving) {
+                MoveObject(toMove);
+            }
+        }
+    }
+
+    void MoveObject(Moveable toMove)
+    {
+        toMove.body.position = Vector3.MoveTowards(toMove.body.position, path[toMove.target].position, moveSpeed * Time.deltaTime);
+        if (Vector3.Distance(toMove.body.position, path[toMove.target].position) < 0.2f) {
+            OnReachTarget(toMove);
+        }
+    }
+
+    void OnReachTarget(Moveable toMove)
+    {
+        toMove.target++;
+        if (toMove.target >= path.Count) {
+            //reset object
+            toMove.target = 0;
+            toMove.moving = false;
+            toMove.body.position = path[0].position;
+            toMove.body.gameObject.SetActive(false);
+        }
+    }
 
     //-------------data----------
     private class Moveable
     {
         public Transform body;
-        int target = 0;
+        public int target = 0;
 
-        public void Move()
-        {
-
-        }
+        public bool moving = false;
     }
 
+    bool IsMoving()
+    {
+        foreach (Moveable mover in objPool) {
+            if (mover.moving) return true;
+        }
+        return false;
+    }
+
+    Moveable GetAvailableMover()
+    {
+        foreach (Moveable mover in objPool) {
+            //try grab existing object from pool
+            if (!mover.moving) { return mover; }
+        }
+        //create new object and add to pool
+        objPool.Add(CreateNewMover());
+        objPool[^1].body.gameObject.SetActive(true);
+        return objPool[^1];
+    }
+
+    Moveable CreateNewMover()
+    {
+        Transform t = Instantiate(prefab).transform;
+        Moveable newMover = new Moveable { body = t };
+        newMover.body.position = path[0].position; //set start position
+        return newMover;
+    }
 }
