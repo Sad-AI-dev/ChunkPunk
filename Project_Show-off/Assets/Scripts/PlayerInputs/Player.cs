@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     bool isSlippy;
+    bool isInteracting;
     Vector2 toMove;
     [SerializeField] float moveSpeed;
     private bool isSlowing;
@@ -12,13 +13,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float minimumSpeed;
     [SerializeField] private float normalSpeed;
     Rigidbody rb;
-
+    Vector3 rampDirect;
     [Header("technical settings")]
     [SerializeField] Emitter emitter;
     [SerializeField] int Slippyness;
     [SerializeField] float turnSpeed = 1f;
     public int id = 0;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -39,11 +39,11 @@ public class Player : MonoBehaviour
 
     public void Accelerating(bool isAccelerating)
     {
-        while(isAccelerating && moveSpeed < maximumSpeed)
+        while(isAccelerating && moveSpeed < maximumSpeed && !isInteracting)
         {
             moveSpeed++;
         }
-        while(!isAccelerating && moveSpeed > normalSpeed)
+        while(!isAccelerating && moveSpeed > normalSpeed && !isInteracting)
         {
             moveSpeed--;
             Debug.Log("notaccelerating");
@@ -91,6 +91,12 @@ public class Player : MonoBehaviour
             //isSlippy = true;
             //turnSpeed *= 3;
         }
+
+        if(other.gameObject.tag == "Ramp")
+        {
+            Ramp ramp = other.GetComponent<Ramp>();
+            rampDirect = ramp.rampDirection;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -100,7 +106,11 @@ public class Player : MonoBehaviour
             moveSpeed = normalSpeed;
             turnSpeed = 1;
             isSlippy = false;
-        }   
+        }  
+     if(other.gameObject.tag == "Ramp")
+        {
+            rampDirect = new Vector3(0, 0, 0);
+        }
     }
     private void FixedUpdate()
     {
@@ -114,10 +124,10 @@ public class Player : MonoBehaviour
         {
             moveSpeed++;
         }
-        Vector3 direction = transform.forward * (moveSpeed );
+        Vector3 direction = transform.forward * (moveSpeed) + rampDirect;
         //transform.position += ;
         //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
-        Debug.Log(moveSpeed);
+        //Debug.Log(moveSpeed);
         rb.AddForce(direction);
     }
 }
