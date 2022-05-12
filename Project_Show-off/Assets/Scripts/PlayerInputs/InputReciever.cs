@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputReciever : MonoBehaviour
 {
     Player target;
+    Respawn respawn;
 
     private void Start()
     {
@@ -45,6 +46,14 @@ public class InputReciever : MonoBehaviour
         }
     }
 
+
+    public void Die(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            target?.Died();
+        }
+    }
     public void Looking(InputAction.CallbackContext context)
     {
         //Debug.Log("looked");
