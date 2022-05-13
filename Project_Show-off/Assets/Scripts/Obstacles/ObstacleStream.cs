@@ -68,7 +68,7 @@ public class ObstacleStream : MonoBehaviour, IObstacle
     void MoveObject(Moveable toMove)
     {
         toMove.body.position = Vector3.MoveTowards(toMove.body.position, path[toMove.target].position, moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(toMove.body.position, path[toMove.target].position) < 0.2f) {
+        if (Vector3.Distance(toMove.body.position, path[toMove.target].position) < 0.01f) {
             OnReachTarget(toMove);
         }
     }

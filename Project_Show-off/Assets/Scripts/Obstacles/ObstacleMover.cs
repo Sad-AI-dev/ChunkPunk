@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObstacleMover : MonoBehaviour, IObstacle
 {
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] float onReachEndDelay = 0;
 
     //modes
     [System.Serializable] enum Mode {
@@ -41,7 +42,7 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     void Move()
     {
         moveable.position = Vector3.MoveTowards(moveable.position, path[moveTarget].position, moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(moveable.position, path[moveTarget].position) < 0.2f) {
+        if (Vector3.Distance(moveable.position, path[moveTarget].position) < 0.01f) {
             OnReachTarget();
         }
     }
@@ -57,9 +58,14 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     {
         movingForward = false;
         moveTarget = path.Count - 1;
-        if (mode == Mode.single) {
+        if (mode == Mode.single)
+        {
             moving = false;
         }
+        //moving = false;
+        //if (mode == Mode.looping) {
+
+        //}
     }
     void OnReachStart()
     {
