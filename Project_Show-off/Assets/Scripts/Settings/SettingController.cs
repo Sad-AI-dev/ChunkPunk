@@ -35,5 +35,8 @@ public class SettingController : MonoBehaviour
     public void Save()
     {
         PlayerPrefs.SetInt("HasSaved", 1);
+        foreach (ISetting setting in settings) {
+            setting.Save();
+        }
     }
 }
