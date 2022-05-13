@@ -887,41 +887,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318044027}
     m_Modifications:
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: id
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: turnSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: normalSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: maximumSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: minimumSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2871078253383518560, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5345803922315551534, guid: 493df8d9d8b620846b32c62871f37597,
         type: 3}
       propertyPath: m_RootOrder
@@ -981,16 +946,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869211739948743302, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869211739948743302, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 493df8d9d8b620846b32c62871f37597, type: 3}
@@ -2488,46 +2443,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1318044027}
     m_Modifications:
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: id
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: moveSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: turnSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: normalSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: maximumSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359333193094229239, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: minimumSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2805911888941962588, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: ed587688b76bd6b43a2527708788d712, type: 2}
-    - target: {fileID: 2871078253383518560, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5345803922315551534, guid: 493df8d9d8b620846b32c62871f37597,
         type: 3}
       propertyPath: m_RootOrder
@@ -2587,16 +2502,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869211739948743302, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5869211739948743302, guid: 493df8d9d8b620846b32c62871f37597,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 493df8d9d8b620846b32c62871f37597, type: 3}
