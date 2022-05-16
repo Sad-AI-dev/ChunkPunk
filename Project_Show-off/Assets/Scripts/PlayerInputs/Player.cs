@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] public GameObject player1Cam;
+    [SerializeField] private GameObject player2Cam;
+    [SerializeField] private GameObject player1AimCam;
+    [SerializeField] private GameObject player2AimCam;
     bool isSlippy;
     bool isInteracting;
     Vector2 toMove;
@@ -129,5 +133,23 @@ public class Player : MonoBehaviour
         //transform.position += new Vector3(toMove.x, 0, toMove.y) * (Time.deltaTime);
         //Debug.Log(moveSpeed);
         rb.AddForce(direction);
+    }
+    public void Aim(bool isAimed)
+    {
+        if (id == 1)
+        {
+
+            Debug.Log("aiming");
+            player1AimCam.SetActive(isAimed);
+            player1Cam.SetActive(!isAimed);
+
+        }
+        else if (id == 2)
+        {
+
+            player2AimCam.SetActive(isAimed);
+            player2Cam.SetActive(!isAimed);
+
+        }
     }
 }

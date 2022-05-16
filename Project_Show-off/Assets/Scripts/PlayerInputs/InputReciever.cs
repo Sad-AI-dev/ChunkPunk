@@ -69,4 +69,15 @@ public class InputReciever : MonoBehaviour
             target?.Shoot();
         }
     }
+
+    public void Aim(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            target?.Aim(true);
+        } else if (context.canceled)
+        {
+            target?.Aim(false);
+        }
+    }
 }
