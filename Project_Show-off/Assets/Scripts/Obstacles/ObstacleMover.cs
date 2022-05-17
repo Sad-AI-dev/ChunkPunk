@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleMover : MonoBehaviour, IObstacle
 {
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] float onReachEndDelay = 0;
+    [SerializeField] float onReachEndDelay = 0f;
 
     //modes
     [System.Serializable] enum Mode {
@@ -50,48 +50,39 @@ public class ObstacleMover : MonoBehaviour, IObstacle
     void OnReachTarget()
     {
         moveTarget += movingForward ? 1 : -1;
-        if (moveTarget >= path.Count) { OnReachEnd(); }
-        else if (moveTarget < 0) { OnReachStart(); }
-    }
-
-    void OnReachEnd()
-    {
-        movingForward = false;
-        moveTarget = path.Count - 1;
-        if (mode == Mode.single)
-        {
-            moving = false;
+        if (moveTarget >= path.Count || moveTarget < 0) {
+            OnReachPathEdge();
         }
-        //moving = false;
-        //if (mode == Mode.looping) {
-
-        //}
     }
-    void OnReachStart()
+
+    void OnReachPathEdge()
     {
-        movingForward = true;
-        moveTarget = 0;
-        moving = executing; //stop if ended. otherwise, continue
+        movingForward = !movingForward; //turn around
+        moving = false; //stop moving
+        moveTarget = moveTarget < 0 ? 0 : path.Count - 1; //set target
+        //on reach end delay
+        if (executing && mode == Mode.looping) {
+            StartCoroutine(ReachPathEdgeCo());
+        }
+    }
+
+    IEnumerator ReachPathEdgeCo()
+    {
+        yield return new WaitForSeconds(onReachEndDelay);
+        moving = true;
     }
 
     //-------------------start / end----------------------
     public void Execute()
     {
         if (executing) { End(); }
-        else { StartMove(); }
         executing = !executing;
-    }
-
-    void StartMove()
-    {
         moving = true;
     }
 
     public void End()
     {
+        //move back to start
         movingForward = false;
-        if (mode == Mode.single) {
-            moving = true;
-        }
     }
 }
