@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject player2Cam;
     [SerializeField] private GameObject player1AimCam;
     [SerializeField] private GameObject player2AimCam;
+    private int turnDirection;
     bool isSlippy;
     bool isInteracting;
     Vector2 toMove;
@@ -69,11 +70,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Look(Vector2 newLook)
+    public void Look(int newDirection)
     {
-        //Vector3 lookVec = new Vector3(0, newLook.x, 0);
-        transform.Rotate(new Vector3(0f, newLook.x, 0f) * (turnSpeed));
-        //Debug.Log("Looking");
+        turnDirection = newDirection;
     }
     public void Died()
     {
@@ -119,7 +118,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-
+        transform.Rotate(new Vector3(0, turnDirection, 0) * turnSpeed * Time.deltaTime);
         while (isSlowing && moveSpeed > minimumSpeed)
         {
             moveSpeed--;
