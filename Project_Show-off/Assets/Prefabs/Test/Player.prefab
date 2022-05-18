@@ -176,11 +176,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85ab082d3c39764cb5ad8b3facbd313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1Cam: {fileID: 0}
+  player2Cam: {fileID: 0}
+  player1AimCam: {fileID: 0}
+  player2AimCam: {fileID: 0}
   moveSpeed: 15
   maximumSpeed: 20
   minimumSpeed: 10
   normalSpeed: 15
   emitter: {fileID: 1881511789898068887}
   Slippyness: 0
-  turnSpeed: 1
+  turnSpeed: 100
   id: 2
