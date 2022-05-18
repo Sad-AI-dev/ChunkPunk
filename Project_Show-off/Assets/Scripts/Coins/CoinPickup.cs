@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class CoinPickup : MonoBehaviour
 {
-    public int value = 1;
+    [SerializeField] int value = 1;
+    [SerializeField] float minRespawnTime = 5f;
+    [SerializeField] float maxRespawnTime = 15f;
+
+    [Header("Technical settings")]
+    [SerializeField] GameObject visuals;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) {
+        if (other.CompareTag("Player") && visuals.activeSelf) {
             CoinManager.instance.GainMoney(other.GetComponent<Player>(), value);
-            Destroy(gameObject);
+            StartCoroutine(RespawnCo());
         }
+    }
+
+    IEnumerator RespawnCo()
+    {
+        visuals.SetActive(false);
+        yield return new WaitForSeconds(Random.Range(minRespawnTime, maxRespawnTime));
+        visuals.SetActive(true);
     }
 }

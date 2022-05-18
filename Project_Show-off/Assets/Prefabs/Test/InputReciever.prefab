@@ -163,6 +163,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f274628f-60a7-4071-a389-433b7e910527
     m_ActionName: Player/Test[/Keyboard/a]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2722814710032209075}
+        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
+        m_MethodName: Aim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 0082a9e9-9d1b-4185-b8ec-b0fc316a7639
+    m_ActionName: Player/Aim[/DualSenseGamepadHID/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

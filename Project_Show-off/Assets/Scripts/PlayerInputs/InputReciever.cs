@@ -56,17 +56,38 @@ public class InputReciever : MonoBehaviour
     }
     public void Looking(InputAction.CallbackContext context)
     {
-        //Debug.Log("looked");
-        Vector2 playerLook = context.ReadValue<Vector2>();
-        //Debug.Log("lookX is "  +playerLook.x);
-       // Debug.Log("lookY is " + playerLook.y);
-        target.Look(playerLook);
+        Vector2 direction = context.ReadValue<Vector2>();
+        Debug.Log("at all");
+        if(direction.x < -0.2)
+        {
+            target?.Look(-1);
+            Debug.Log("Here");
+        } else if(direction.x > 0.2)
+        {
+            target?.Look(1);
+        }
+
+        if (context.canceled)
+        {
+            target?.Look(0);
+        }
     }
     
     public void SouthButton(InputAction.CallbackContext context)
     {
         if (context.started) {
             target?.Shoot();
+        }
+    }
+
+    public void Aim(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            target?.Aim(true);
+        } else if (context.canceled)
+        {
+            target?.Aim(false);
         }
     }
 }

@@ -31,6 +31,15 @@ public class CoinManager : MonoBehaviour
     }
 
     //--------------money management---------------
+    public bool TryBuy(Player p, int amount)
+    {
+        if (CanPlayerAfford(p, amount)) {
+            ChargeMoney(p, amount);
+            return true;
+        }
+        return false;
+    }
+    
     public bool CanPlayerAfford(Player p, int amount)
     {
         return money[p] >= amount;
