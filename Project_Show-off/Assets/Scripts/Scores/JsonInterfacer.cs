@@ -17,15 +17,21 @@ public class JsonInterfacer : MonoBehaviour
     public struct NamedScore
     {
         public string name;
-        public int score;
+        public float score;
     }
 
-    public void AddScore(string name, int score)
+    public static void AddScore(string name, int score)
     {
         List<NamedScore> namedScores = LoadScores().namedScores; //load scores
         namedScores.Add(new NamedScore { name = name, score = score }); //add new score
         namedScores.Sort((NamedScore a, NamedScore b) => -a.score.CompareTo(b.score)); //sort scores
         SaveScores(new Scores { namedScores = namedScores }); //save scores
+    }
+    public static List<NamedScore> GetSortedScores()
+    {
+        Scores scores = LoadScores();
+        scores.namedScores.Sort((NamedScore a, NamedScore b) => -a.score.CompareTo(b.score));
+        return scores.namedScores;
     }
 
     public static Scores LoadScores()

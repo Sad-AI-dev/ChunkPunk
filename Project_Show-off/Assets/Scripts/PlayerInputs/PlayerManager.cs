@@ -33,8 +33,9 @@ public class PlayerManager : MonoBehaviour
         SetupPlayer(player);
         players.Sort((Player a, Player b) => a.id.CompareTo(b.id));
         if (GoalManager.instance != null) { //add player to external
-            GoalManager.instance.players.Add(player.transform);
             GameplayManager.instance.scores.Add(player, 0);
+            ScoreManager.instance.playerScores.Add(player, 0);
+            GoalManager.instance.players.Add(player.transform);
             CoinManager.instance.money.Add(player, 0);
         }
     }

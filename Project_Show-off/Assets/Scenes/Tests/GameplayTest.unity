@@ -193,6 +193,18 @@ Transform:
   m_Father: {fileID: 1184110036}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &121760919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1137638013145433541, guid: dedc3c49e1fc80047bf1669713508075,
+    type: 3}
+  m_PrefabInstance: {fileID: 2889879112332743946}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28d0e924935d8544958348b2b59fcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &137382920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1701,6 +1713,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2889879112128088250, guid: dedc3c49e1fc80047bf1669713508075,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2889879112199729488, guid: dedc3c49e1fc80047bf1669713508075,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1810,6 +1827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2889879112533765664, guid: dedc3c49e1fc80047bf1669713508075,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dedc3c49e1fc80047bf1669713508075, type: 3}
@@ -2272,6 +2294,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 4025758943982952700, guid: b44cede0d2032df44bf70b927ed42cd9,
+        type: 3}
+      propertyPath: board
+      value: 
+      objectReference: {fileID: 121760919}
     - target: {fileID: 4025758943982952700, guid: b44cede0d2032df44bf70b927ed42cd9,
         type: 3}
       propertyPath: gameplayUI
