@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7548509074647951086}
   - component: {fileID: 7548509074647951085}
+  - component: {fileID: 7548509073941143895}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -66,7 +67,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 9059055237372876886, guid: 4ff869cc252e2134eab7e3c728eda1be,
+  m_PlayerPrefab: {fileID: 2722814710032209077, guid: 15d14008ace1fa24ca87f02cd23daea1,
     type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
@@ -77,3 +78,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &7548509073941143895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548509074647951084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a445089fe77bd4d4290802b72481deee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  neutralVCams: []
+  AimVCams: []
+  playerUI: []
