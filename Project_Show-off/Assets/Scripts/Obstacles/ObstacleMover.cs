@@ -13,6 +13,7 @@ public class ObstacleMover : MonoBehaviour, IObstacle
         looping
     }
     [SerializeField] Mode mode;
+    [SerializeField] bool rotate = true;
 
     bool executing = false;
     bool moving = false;
@@ -53,6 +54,7 @@ public class ObstacleMover : MonoBehaviour, IObstacle
         if (moveTarget >= path.Count || moveTarget < 0) {
             OnReachPathEdge();
         }
+        if (rotate) moveable.LookAt(path[moveTarget]); //update rotation
     }
 
     void OnReachPathEdge()
