@@ -18,12 +18,6 @@ public class InputReciever : MonoBehaviour
         if (target) { target.SetMoveDir(context.ReadValue<Vector2>()); }
     }
 
-    public void Die(InputAction.CallbackContext context)
-    {
-        if (context.started) {
-            if (target) { target.Died(); }
-        }
-    }
     public void Looking(InputAction.CallbackContext context)
     {
         if (target) {

@@ -36,7 +36,7 @@ public class GameplayManager : MonoBehaviour
     float timer = 0;
 
     float raceTime = 0;
-    Player winner;
+    [HideInInspector] public Player winner;
 
     //-----------UI----------
     [Header("UI Settings")]

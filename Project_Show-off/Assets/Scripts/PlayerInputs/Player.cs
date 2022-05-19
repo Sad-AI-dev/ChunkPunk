@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private int turnDirection;
+    private Vector2 turnDirection;
     bool isSlippy;
     private bool isSlowing;
     [SerializeField] float moveSpeed;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maximumSpeed;
     [SerializeField] private float minimumSpeed;
     [SerializeField] private float normalSpeed;
-
+    [SerializeField] private float yAxisResistance;
     Rigidbody rb;
     Vector3 rampDirect;
 
@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     //cam points
     [HideInInspector] public GameObject neutralVCam;
     [HideInInspector] public GameObject aimVCam;
+    [SerializeField] public GameObject LookAt;
+
 
     private void Start()
     {
@@ -59,9 +61,8 @@ public class Player : MonoBehaviour
 
     public void Look(Vector2 lookDir)
     {
-        if(lookDir.x < -0.2) { turnDirection = -1; }
-        else if(lookDir.x > 0.2) { turnDirection = 1; }
-        else { turnDirection = 0; }
+        if(lookDir.x < -0.3 || lookDir.x > 0.3 || lookDir.y < -0.3 || lookDir.y > 0.3) { turnDirection = lookDir.normalized; }
+        else { turnDirection = Vector2.zero; }
     }
 
     public void Died()
@@ -107,8 +108,22 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0, turnDirection, 0) * (turnSpeed * Time.deltaTime));
+        transform.Rotate(new Vector3(0, turnDirection.x, 0) * (turnSpeed * Time.deltaTime));
         //slowing speed
+        if(LookAt.transform.localPosition.y < 7 && LookAt.transform.localPosition.y > 1)
+        {
+            LookAt.transform.position += new Vector3(0, turnDirection.y / yAxisResistance, 0);
+        } 
+        if (LookAt.transform.localPosition.y > 7)
+        {
+            LookAt.transform.localPosition = new Vector3(LookAt.transform.localPosition.x,  6.8f, LookAt.transform.localPosition.z);
+        }
+        
+        if (LookAt.transform.localPosition.y < 1)
+        {
+            LookAt.transform.localPosition += new Vector3(LookAt.transform.localPosition.x, 1.2f, LookAt.transform.localPosition.z);
+        }
+
         if (isSlowing) { moveSpeed = minimumSpeed; }
         else if (moveSpeed < normalSpeed) { moveSpeed = normalSpeed; }
         //add final force

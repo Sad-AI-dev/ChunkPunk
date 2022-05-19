@@ -81,7 +81,7 @@ public class ObstacleStream : MonoBehaviour, IObstacle
             //reset object
             ResetObject(toMove);
         }
-        toMove.body.LookAt(path[toMove.target]);
+        if (rotate) toMove.body.LookAt(path[toMove.target]);
     }
 
     //-------------------reset objects
