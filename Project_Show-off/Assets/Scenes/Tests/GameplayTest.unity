@@ -1753,6 +1753,7 @@ MonoBehaviour:
   moveSpeed: 2
   onReachEndDelay: 0
   mode: 1
+  rotate: 0
   moveable: {fileID: 1851723360}
   pathHolder: {fileID: 1184110036}
 --- !u!23 &3698775083344245574
@@ -1842,6 +1843,7 @@ MonoBehaviour:
   moveSpeed: 2
   onReachEndDelay: 0
   mode: 1
+  rotate: 0
   moveable: {fileID: 859751195}
   pathHolder: {fileID: 17930399}
 --- !u!1001 &5052337667518890457
@@ -2154,6 +2156,31 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1174279934}
+    - target: {fileID: 543450652241637634, guid: 1fa00ba48101ff34fb37d4e1850e6341,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450652241637634, guid: 1fa00ba48101ff34fb37d4e1850e6341,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450652241637634, guid: 1fa00ba48101ff34fb37d4e1850e6341,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450652241637634, guid: 1fa00ba48101ff34fb37d4e1850e6341,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 543450652241637634, guid: 1fa00ba48101ff34fb37d4e1850e6341,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 8591441069447156974, guid: 1fa00ba48101ff34fb37d4e1850e6341,
         type: 3}
       propertyPath: m_Name
@@ -2214,10 +2241,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8591441070933690457, guid: 1fa00ba48101ff34fb37d4e1850e6341,
+        type: 3}
+      propertyPath: rotate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8591441070933690458, guid: 1fa00ba48101ff34fb37d4e1850e6341,
         type: 3}
       propertyPath: price
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa00ba48101ff34fb37d4e1850e6341, type: 3}
