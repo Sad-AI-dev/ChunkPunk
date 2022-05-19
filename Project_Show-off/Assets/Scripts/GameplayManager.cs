@@ -36,6 +36,7 @@ public class GameplayManager : MonoBehaviour
     float timer = 0;
 
     float raceTime = 0;
+    [HideInInspector] public Player winner;
 
     //-----------UI----------
     [Header("UI Settings")]
@@ -47,6 +48,7 @@ public class GameplayManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         SetupUI();
         OnStateChanged();
     }
@@ -123,6 +125,10 @@ public class GameplayManager : MonoBehaviour
         gameplayUI.SetActive(false);
         gameFinishedUI.SetActive(true);
         board.BuildBoard();
+        //save score
+        JsonInterfacer.AddScore(winner.name, ScoreManager.instance.playerScores[winner]);
+        //pause game
+        Time.timeScale = 0f;
     }
 
     //-------------------score management-----------------
@@ -135,6 +141,7 @@ public class GameplayManager : MonoBehaviour
 
             //detect if game is over
             if (HasPlayerWonCheck(reciever)) {
+                winner = reciever;
                 SetGameState(State.done); //player won, end game
             }
             else {

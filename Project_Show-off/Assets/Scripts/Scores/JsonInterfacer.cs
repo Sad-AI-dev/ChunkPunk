@@ -20,7 +20,7 @@ public class JsonInterfacer : MonoBehaviour
         public float score;
     }
 
-    public static void AddScore(string name, int score)
+    public static void AddScore(string name, float score)
     {
         List<NamedScore> namedScores = LoadScores().namedScores; //load scores
         namedScores.Add(new NamedScore { name = name, score = score }); //add new score
@@ -30,7 +30,7 @@ public class JsonInterfacer : MonoBehaviour
     public static List<NamedScore> GetSortedScores()
     {
         Scores scores = LoadScores();
-        scores.namedScores.Sort((NamedScore a, NamedScore b) => -a.score.CompareTo(b.score));
+        scores.namedScores.Sort((NamedScore a, NamedScore b) => a.score.CompareTo(b.score));
         return scores.namedScores;
     }
 

@@ -7,6 +7,7 @@ public class ObstacleStream : MonoBehaviour, IObstacle
     [Tooltip("amount of seconds between each object being spawned")]
     [SerializeField] float spawnDelay;
     [SerializeField] float moveSpeed;
+    [SerializeField] bool rotate = true;
 
     [Header("Technical settings")]
     [SerializeField] GameObject prefab;
@@ -80,6 +81,7 @@ public class ObstacleStream : MonoBehaviour, IObstacle
             //reset object
             ResetObject(toMove);
         }
+        if (rotate) toMove.body.LookAt(path[toMove.target]);
     }
 
     //-------------------reset objects
