@@ -35,11 +35,14 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] float setupTime = 5f;
     float timer = 0;
 
+    float raceTime = 0;
+
     //-----------UI----------
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
     TMP_Text[] scoreLabels = new TMP_Text[2];
     [SerializeField] GameObject gameplayUI, gameFinishedUI;
+    [SerializeField] ScoreBoard board;
 
 
     private void Start()
@@ -65,6 +68,9 @@ public class GameplayManager : MonoBehaviour
                 timer -= Time.deltaTime;
                 UpdateSetupTimer();
                 break;
+            case State.race:
+                raceTime += Time.deltaTime;
+                break;
         }
     }
 
@@ -86,6 +92,7 @@ public class GameplayManager : MonoBehaviour
             case State.race:
                 Goal g = GoalManager.instance.SpawnGoal();
                 g.onReachGoal.AddListener((Player p) => GainScore(p));
+                raceTime = 0f;
                 break;
 
             case State.done:
@@ -115,12 +122,14 @@ public class GameplayManager : MonoBehaviour
     {
         gameplayUI.SetActive(false);
         gameFinishedUI.SetActive(true);
+        board.BuildBoard();
     }
 
     //-------------------score management-----------------
     public void GainScore(Player reciever, int amount = 1)
     {
         if (scores.ContainsKey(reciever)) {
+            ScoreManager.instance.AddScore(reciever, raceTime);
             scores[reciever] += amount;
             UpdateScoreLabel(reciever);
 
