@@ -118,17 +118,17 @@ PrefabInstance:
     - target: {fileID: 5182968161586883813, guid: c2772c4ce76b39f43a3caad24406e262,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -167.08806
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5182968161586883813, guid: c2772c4ce76b39f43a3caad24406e262,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 80.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5182968161586883813, guid: c2772c4ce76b39f43a3caad24406e262,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.304874
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5182968161586883813, guid: c2772c4ce76b39f43a3caad24406e262,
         type: 3}
@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 5523184153647642207, guid: c2772c4ce76b39f43a3caad24406e262,
         type: 3}
       propertyPath: m_Name
-      value: Gate_single
+      value: DoubleGate_WithCollider
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2772c4ce76b39f43a3caad24406e262, type: 3}
