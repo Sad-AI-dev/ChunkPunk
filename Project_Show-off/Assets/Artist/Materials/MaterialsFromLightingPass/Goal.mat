@@ -106,11 +106,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OffsettingTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c957598c2d091b042878faf19c313702, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_22ccaf6f078b453f8dfe6383b988709c_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 8c4a916e93a439b4c8becf84d7a10869, type: 3}
+        m_Texture: {fileID: 2800000, guid: c957598c2d091b042878faf19c313702, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -226,6 +226,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
+    - _Rotation: 0
     - _Smoothness: 0.5
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
@@ -271,11 +272,12 @@ Material:
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
+    - _Direction: {r: 0, g: 1, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiveColor: {r: 255.36697, g: 5386.46, b: 0, a: 5386.46}
     - _EmissiveColorLDR: {r: 0.24116111, g: 1, b: 0, a: 1}
-    - _GoalColor: {r: 32.125492, g: 766.9961, b: 0, a: 1}
+    - _GoalColor: {r: 42.890015, g: 1024, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
