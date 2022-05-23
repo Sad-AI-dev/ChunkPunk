@@ -2,29 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
-    private Vector2 turnDirection;
-    bool isSlippy;
-    private bool isSlowing;
-    [SerializeField] float moveSpeed;
-    [SerializeField] int Slippyness;
-    [SerializeField] float turnSpeed = 1f;
-    [SerializeField] private float maximumSpeed;
-    [SerializeField] private float minimumSpeed;
-    [SerializeField] private float normalSpeed;
-    [SerializeField] private float yAxisResistance;
-    Rigidbody rb;
-    Vector3 rampDirect;
+    [Header("Movement settings")]
+    [SerializeField] float moveSpeedX = 1f;
+    [SerializeField] float forwardForce = 4;
+    [SerializeField] float minSpeed = 3f;
+    [SerializeField] float maxSpeed = 5f;
+    //result vectors
+    Vector2 toMove;
+    [HideInInspector] public Vector3 externalToMove = Vector3.zero;
 
-    [Header("technical settings")]
+    [Header("Camera Rotation settings")]
+    [SerializeField] Vector2 rotateSpeed;
+    [SerializeField] float maxAimHeight = 2f;
+    [SerializeField] float minAimHeight = -2f;
+    Vector2 turnDirection;
+
+    [Header("Technical settings")]
     [SerializeField] Emitter emitter;
     public int id = 0;
     //cam points
     [HideInInspector] public GameObject neutralVCam;
     [HideInInspector] public GameObject aimVCam;
-    [SerializeField] public GameObject LookAt;
+    public Transform LookAt;
 
+    Rigidbody rb;
 
     private void Start()
     {
@@ -32,21 +36,15 @@ public class Player : MonoBehaviour
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
     }
 
-    public void Slowing(bool isSlowed)
-    {
-        isSlowing = isSlowed;
-    }
-
-    public void Accelerating(bool isAccelerating)
-    {
-        if (isAccelerating) { moveSpeed = maximumSpeed; }
-        else { moveSpeed = normalSpeed; }
-    }
-
     public void SetMoveDir(Vector2 newToMove)
     {
-        Accelerating(newToMove.y > 0.2f);
-        Slowing(newToMove.y < -0.2f);
+        toMove = newToMove;
+    }
+
+    public void Look(Vector2 lookDir)
+    {
+        if (lookDir.magnitude > 1f) { lookDir.Normalize(); }
+        turnDirection = lookDir;
     }
 
     public void Shoot()
@@ -59,81 +57,57 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Look(Vector2 lookDir)
-    {
-        if(lookDir.x < -0.3 || lookDir.x > 0.3 || lookDir.y < -0.3 || lookDir.y > 0.3) { turnDirection = lookDir.normalized; }
-        else { turnDirection = Vector2.zero; }
-    }
-
     public void Died()
     {
-        Debug.Log("Died");
-        int ID = this.id;
-        Debug.Log(ID);
-        transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
-        Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
-        Debug.Log(transform.position);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Slippery" && isSlippy == false)
-        {
-            Debug.Log("Puddle!");
-            //moveSpeed = (normalSpeed * Slippyness);
-            //isSlippy = true;
-            //turnSpeed *= 3;
-        }
-
-        if(other.gameObject.tag == "Ramp")
-        {
-            Ramp ramp = other.GetComponent<Ramp>();
-            rampDirect = ramp.rampDirection;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if(isSlippy == true)
-        {
-            moveSpeed = normalSpeed;
-            turnSpeed = 1;
-            isSlippy = false;
-        }  
-        if(other.gameObject.tag == "Ramp")
-        {
-            rampDirect = new Vector3(0, 0, 0);
-        }
+        //Debug.Log("Died");
+        //int ID = this.id;
+        //Debug.Log(ID);
+        //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        //Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
+        //Debug.Log(transform.position);
     }
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0, turnDirection.x, 0) * (turnSpeed * Time.deltaTime));
-        //slowing speed
-        if(LookAt.transform.localPosition.y < 7 && LookAt.transform.localPosition.y > 1)
-        {
-            LookAt.transform.position += new Vector3(0, turnDirection.y / yAxisResistance, 0);
-        } 
-        if (LookAt.transform.localPosition.y > 7)
-        {
-            LookAt.transform.localPosition = new Vector3(LookAt.transform.localPosition.x,  6.8f, LookAt.transform.localPosition.z);
-        }
-        
-        if (LookAt.transform.localPosition.y < 1)
-        {
-            LookAt.transform.localPosition += new Vector3(LookAt.transform.localPosition.x, 1.2f, LookAt.transform.localPosition.z);
-        }
-
-        if (isSlowing) { moveSpeed = minimumSpeed; }
-        else if (moveSpeed < normalSpeed) { moveSpeed = normalSpeed; }
-        //add final force
-        Vector3 direction = transform.forward * (moveSpeed * 100 * Time.deltaTime) + rampDirect;
-        rb.AddForce(direction);
+        Rotate();
+        Move();
     }
 
+    //------------------------rotation----------------------------
+    void Rotate()
+    {
+        //x rotation
+        transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
+
+        //y rotation (only seen when aiming)
+        LookAt.position += new Vector3(0, turnDirection.y, 0) * (rotateSpeed.y * Time.deltaTime);
+        float clampedPos = Mathf.Clamp(LookAt.position.y, minAimHeight, maxAimHeight); //clamp rotation
+        LookAt.position = new Vector3(LookAt.position.x, clampedPos, LookAt.position.z);
+    }
+
+    //---------------aiming------------------
     public void Aim(bool isAimed)
     {
         aimVCam.SetActive(isAimed);
         neutralVCam.SetActive(!isAimed);
+    }
+
+    //--------------------------movement----------------------------------
+    void Move()
+    {
+        Vector2 input = GetInputVelocity();
+        Vector3 velocity = (transform.right * input.x) + (transform.forward * input.y) + (externalToMove * (100 * Time.deltaTime));
+        rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+    }
+
+    Vector2 GetInputVelocity()
+    {
+        Vector2 input = new(toMove.x * moveSpeedX, GetYInput());
+        return input * (100 * Time.deltaTime);
+    }
+    float GetYInput()
+    {
+        float yInput = toMove.y * (toMove.y > 0 ? maxSpeed : minSpeed);
+        return yInput + forwardForce;
     }
 }

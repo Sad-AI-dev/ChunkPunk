@@ -1,15 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float lifeTime = 5f;
+    [SerializeField] UnityEvent onHit = new();
 
     [HideInInspector] public Player owner;
 
-    private void Update()
+    void Start()
     {
         StartCoroutine(LifeTimeCo());
     }
@@ -29,6 +30,7 @@ public class Projectile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform != owner.transform) {
+            onHit?.Invoke();
             StartCoroutine(DieCo());
         }
     }

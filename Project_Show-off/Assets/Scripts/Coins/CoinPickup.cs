@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CoinPickup : MonoBehaviour
 {
@@ -10,11 +10,13 @@ public class CoinPickup : MonoBehaviour
 
     [Header("Technical settings")]
     [SerializeField] GameObject visuals;
+    [SerializeField] UnityEvent onPickup = new();
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && visuals.activeSelf) {
             CoinManager.instance.GainMoney(other.GetComponent<Player>(), value);
+            onPickup?.Invoke();
             StartCoroutine(RespawnCo());
         }
     }

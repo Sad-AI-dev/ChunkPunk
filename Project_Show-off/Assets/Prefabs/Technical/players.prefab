@@ -29,8 +29,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6737659714207086079}
-  - {fileID: 9183214118127803899}
   - {fileID: 9183214116773935296}
+  - {fileID: 9183214118127803899}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -164,7 +164,7 @@ Transform:
   m_Children:
   - {fileID: 3917566555051273579}
   m_Father: {fileID: 3837428407013732530}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7925040052479136008
 MeshFilter:
@@ -263,10 +263,12 @@ MonoBehaviour:
   maximumSpeed: 20
   minimumSpeed: 10
   normalSpeed: 15
+  yAxisResistance: 0
   emitter: {fileID: 3412938847539882105}
   id: 1
   neutralVCam: {fileID: 0}
   aimVCam: {fileID: 0}
+  LookAt: {fileID: 0}
 --- !u!1 &7220088474960675923
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +304,7 @@ Transform:
   m_Children:
   - {fileID: 3917566556367587408}
   m_Father: {fileID: 3837428407013732530}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7925040051144537139
 MeshFilter:
@@ -401,10 +403,12 @@ MonoBehaviour:
   maximumSpeed: 20
   minimumSpeed: 10
   normalSpeed: 15
+  yAxisResistance: 0
   emitter: {fileID: 3412938848857705794}
   id: 2
   neutralVCam: {fileID: 0}
   aimVCam: {fileID: 0}
+  LookAt: {fileID: 0}
 --- !u!1 &8844216203042550267
 GameObject:
   m_ObjectHideFlags: 0

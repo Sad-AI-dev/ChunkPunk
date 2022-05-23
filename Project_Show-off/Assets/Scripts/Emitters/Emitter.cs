@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Emitter : MonoBehaviour
 {
     [SerializeField] GameObject emitPrefab;
     [SerializeField] List<Transform> emitLocations;
+
+    [Header("Events")]
+    [SerializeField] UnityEvent onEmit = new();
 
     public List<GameObject> Emit()
     {
@@ -16,6 +20,7 @@ public class Emitter : MonoBehaviour
             //add to list
             objs.Add(emitted);
         }
+        onEmit?.Invoke();
         return objs;
     }
 }
