@@ -35,12 +35,13 @@ public class InputReciever : MonoBehaviour
 
     public void Aim(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            target?.Aim(true);
-        } else if (context.canceled)
-        {
-            target?.Aim(false);
+        if (target) {
+            if (context.started) {
+                target.Aim(true);
+            }
+            else if (context.canceled) {
+                target.Aim(false);
+            }
         }
     }
 }
