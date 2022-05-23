@@ -8,16 +8,15 @@ public class checkPoint : MonoBehaviour
     int indexer = 0;    
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && isInside == false)
+        if(other.CompareTag("Player"))
         {
             indexer++;
-            Debug.Log(indexer);
+            Debug.Log("playerentered");
             //Debug.Log("New checkpoint is " + other.transform);
             Player currentPlayer = other.GetComponent<Player>();
             
-            checkPointManager.instance.allPlayerCheckPoints[currentPlayer.id] = transform;
-            //Debug.Log(checkPointManager.instance.allPlayerCheckPoints[currentPlayer.id].position);
-            isInside = true;
+            checkPointManager.instance.allPlayerCheckPoints[currentPlayer] = transform;
+            Debug.Log(checkPointManager.instance.allPlayerCheckPoints[currentPlayer].position);
             //Debug.Log(isInside);
         }
         

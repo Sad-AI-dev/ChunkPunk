@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class checkPointManager : MonoBehaviour
 {
-    public Transform lastCheckPoint;
-    public Dictionary<int, Transform> allPlayerCheckPoints = new Dictionary<int, Transform>();
+    [SerializeField] public Dictionary<Player, Transform> allPlayerCheckPoints = new Dictionary<Player, Transform>();
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -21,7 +20,7 @@ public class checkPointManager : MonoBehaviour
 
     private void Update()
     {
-        foreach (KeyValuePair<int, Transform> kvp in allPlayerCheckPoints)
+        foreach (KeyValuePair<Player, Transform> kvp in allPlayerCheckPoints)
         {
             //Debug.LogFormat("Item: {0} - {1}g", kvp.Key, kvp.Value);
         }

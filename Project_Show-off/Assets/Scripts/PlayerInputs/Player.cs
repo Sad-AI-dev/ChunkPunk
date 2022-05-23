@@ -61,10 +61,14 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Died");
         //int ID = this.id;
+        Debug.Log("ateast ehre");
         //Debug.Log(ID);
-        //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        this.transform.position = checkPointManager.instance.allPlayerCheckPoints[this].position;
+        Debug.Log("transfor is " + transform.position);
         //Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
         //Debug.Log(transform.position);
+        //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        //transform.position = checkPointManager.instance.allPlayerCheckPoints[this];
     }
 
     private void FixedUpdate()
