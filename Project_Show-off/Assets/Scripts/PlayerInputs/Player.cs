@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public GameObject neutralVCam;
     [HideInInspector] public GameObject aimVCam;
     public Transform LookAt;
-
+    public bool isStunned = false;
     Rigidbody rb;
 
     private void Start()
@@ -73,8 +73,13 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Rotate();
-        Move();
+
+        if (!isStunned)
+        {
+            Rotate();
+            Move();
+        }
+        
     }
 
     //------------------------rotation----------------------------
