@@ -125,8 +125,6 @@ public class GameplayManager : MonoBehaviour
         gameplayUI.SetActive(false);
         gameFinishedUI.SetActive(true);
         board.BuildBoard();
-        //save score
-        JsonInterfacer.AddScore(winner.name, ScoreManager.instance.playerScores[winner]);
         //pause game
         Time.timeScale = 0f;
     }
