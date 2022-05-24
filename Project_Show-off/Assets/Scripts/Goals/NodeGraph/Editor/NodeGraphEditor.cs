@@ -13,8 +13,10 @@ public class NodeGraphEditor : Editor
 
         List<Node> linkedNodes = new();
         foreach (Node node in graph.nodes) {
-            linkedNodes.Add(node);
             Vector3 nodePos = node.transform.position;
+            DrawDisc(nodePos);
+            //draw lines between nodes
+            linkedNodes.Add(node);
             foreach (Node neighbour in node.GetNeighbours()) {
                 if (!linkedNodes.Contains(neighbour)) {
                     Handles.DrawLine(nodePos, neighbour.transform.position);
@@ -31,5 +33,12 @@ public class NodeGraphEditor : Editor
                 graph.nodes.Add(node);
             }
         }
+    }
+
+    void DrawDisc(Vector3 pos)
+    {
+        Handles.color = Color.green;
+        Handles.DrawSolidDisc(pos, Vector3.up, 0.5f);
+        Handles.color = Color.white;
     }
 }
