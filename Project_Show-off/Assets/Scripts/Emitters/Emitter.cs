@@ -7,6 +7,7 @@ public class Emitter : MonoBehaviour
 {
     [SerializeField] GameObject emitPrefab;
     [SerializeField] List<Transform> emitLocations;
+    [SerializeField] public Transform lookAt;
 
     [Header("Events")]
     [SerializeField] UnityEvent onEmit = new();
@@ -22,5 +23,10 @@ public class Emitter : MonoBehaviour
         }
         onEmit?.Invoke();
         return objs;
+    }
+
+    private void FixedUpdate()
+    {
+        transform.LookAt(lookAt);
     }
 }
