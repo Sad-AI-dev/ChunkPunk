@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     [Header("Technical settings")]
     [SerializeField] Emitter emitter;
+    private Vector3 lookAtStarter;
     public int id = 0;
     //cam points
     [HideInInspector] public GameObject neutralVCam;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
+        lookAtStarter = LookAt.position;
     }
 
     public void SetMoveDir(Vector2 newToMove)
@@ -79,10 +81,17 @@ public class Player : MonoBehaviour
         //x rotation
         transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
 
-        //y rotation (only seen when aiming)
-        LookAt.localPosition += new Vector3(0, turnDirection.y, 0) * (rotateSpeed.y * Time.deltaTime);
-        float clampedPos = Mathf.Clamp(LookAt.localPosition.y, minAimHeight, maxAimHeight); //clamp rotation
-        LookAt.localPosition = new Vector3(LookAt.localPosition.x, clampedPos, LookAt.localPosition.z);
+        if (aimVCam.activeInHierarchy)
+        {
+            //y rotation (only seen when aiming)
+            LookAt.localPosition += new Vector3(0, turnDirection.y, 0) * (rotateSpeed.y * Time.deltaTime);
+            float clampedPos = Mathf.Clamp(LookAt.localPosition.y, minAimHeight, maxAimHeight); //clamp rotation
+            LookAt.localPosition = new Vector3(LookAt.localPosition.x, clampedPos, LookAt.localPosition.z);
+        } else
+        {
+            LookAt.localPosition = lookAtStarter;
+        }
+        
     }
 
     //---------------aiming------------------

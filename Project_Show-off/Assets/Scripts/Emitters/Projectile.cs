@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
     //---------------movement----------------
     private void FixedUpdate()
     {
-        transform.position += transform.forward * (moveSpeed * Time.deltaTime);
+        transform.localPosition += transform.forward * (moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
