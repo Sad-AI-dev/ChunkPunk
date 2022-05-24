@@ -80,9 +80,9 @@ public class Player : MonoBehaviour
         transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
 
         //y rotation (only seen when aiming)
-        LookAt.position += new Vector3(0, turnDirection.y, 0) * (rotateSpeed.y * Time.deltaTime);
-        float clampedPos = Mathf.Clamp(LookAt.position.y, minAimHeight, maxAimHeight); //clamp rotation
-        LookAt.position = new Vector3(LookAt.position.x, clampedPos, LookAt.position.z);
+        LookAt.localPosition += new Vector3(0, turnDirection.y, 0) * (rotateSpeed.y * Time.deltaTime);
+        float clampedPos = Mathf.Clamp(LookAt.localPosition.y, minAimHeight, maxAimHeight); //clamp rotation
+        LookAt.localPosition = new Vector3(LookAt.localPosition.x, clampedPos, LookAt.localPosition.z);
     }
 
     //---------------aiming------------------
