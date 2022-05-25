@@ -79,7 +79,8 @@ public class Player : MonoBehaviour
     void Rotate()
     {
         //x rotation
-        transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
+        //transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
+        rb.rotation = Quaternion.Euler(new Vector3(0, 20000, 0) * Time.deltaTime);
 
         if (aimVCam.activeInHierarchy)
         {
@@ -92,6 +93,12 @@ public class Player : MonoBehaviour
             LookAt.localPosition = lookAtStarter;
         }
         
+    }
+
+    public void Banana(Vector3 direction)
+    {
+        Debug.Log("banaan");
+        //rb.AddForceAtPosition(direction * 100000, transform.position);
     }
 
     //---------------aiming------------------
