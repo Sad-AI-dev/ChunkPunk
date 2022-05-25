@@ -28,14 +28,14 @@ public class Player : MonoBehaviour
     [HideInInspector] public GameObject neutralVCam;
     [HideInInspector] public GameObject aimVCam;
     public Transform LookAt;
-
+    public bool isStunned = false;
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
-        lookAtStarter = LookAt.position;
+        lookAtStarter = LookAt.localPosition;
     }
 
     public void SetMoveDir(Vector2 newToMove)
@@ -63,16 +63,25 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Died");
         //int ID = this.id;
+        Debug.Log("ateast ehre");
         //Debug.Log(ID);
-        //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        this.transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        Debug.Log("transfor is " + transform.position);
         //Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
         //Debug.Log(transform.position);
+        //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
+        //transform.position = checkPointManager.instance.allPlayerCheckPoints[this];
     }
 
     private void FixedUpdate()
     {
-        Rotate();
-        Move();
+
+        if (!isStunned)
+        {
+            Rotate();
+            Move();
+        }
+        
     }
 
     //------------------------rotation----------------------------
@@ -80,6 +89,7 @@ public class Player : MonoBehaviour
     {
         //x rotation
         transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
+        //rb.rotation = Quaternion.Euler(new Vector3(0, 20000, 0) * Time.deltaTime);
 
         if (aimVCam.activeInHierarchy)
         {
@@ -92,6 +102,12 @@ public class Player : MonoBehaviour
             LookAt.localPosition = lookAtStarter;
         }
         
+    }
+
+    public void Banana(Vector3 direction)
+    {
+        Debug.Log("banaan");
+        //rb.AddForceAtPosition(direction * 100000, transform.position);
     }
 
     //---------------aiming------------------
