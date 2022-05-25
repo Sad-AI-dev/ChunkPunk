@@ -79,8 +79,8 @@ public class Player : MonoBehaviour
     void Rotate()
     {
         //x rotation
-        //transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
-        rb.rotation = Quaternion.Euler(new Vector3(0, 20000, 0) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, turnDirection.x, 0) * (rotateSpeed.x * Time.deltaTime));
+        //rb.rotation = Quaternion.Euler(new Vector3(0, 20000, 0) * Time.deltaTime);
 
         if (aimVCam.activeInHierarchy)
         {
