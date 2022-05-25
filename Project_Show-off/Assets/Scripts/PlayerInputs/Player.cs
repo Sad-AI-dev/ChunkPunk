@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
         //int ID = this.id;
         Debug.Log("ateast ehre");
         //Debug.Log(ID);
-        this.transform.position = checkPointManager.instance.allPlayerCheckPoints[this].position;
+        this.transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
         Debug.Log("transfor is " + transform.position);
         //Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
         //Debug.Log(transform.position);
