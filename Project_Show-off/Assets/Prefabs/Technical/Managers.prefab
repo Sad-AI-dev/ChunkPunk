@@ -126,9 +126,11 @@ MonoBehaviour:
   activeState: 0
   winScore: 2
   setupTime: 5
+  winner: {fileID: 0}
   timerLabel: {fileID: 0}
   gameplayUI: {fileID: 0}
   gameFinishedUI: {fileID: 0}
+  board: {fileID: 0}
 --- !u!1 &4025758944585968947
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f531a05306eedc48b2a1d04cb96e226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalPointHolder: {fileID: 0}
+  graph: {fileID: 0}
   goalPrefab: {fileID: 7321520134481573285, guid: 5f63ecfaa66cbb14aaa3ed830d1e9d45,
     type: 3}
-  minimumDistance: 5
+  minimumDistance: 4
