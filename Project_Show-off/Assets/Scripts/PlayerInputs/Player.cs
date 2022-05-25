@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
-        lookAtStarter = LookAt.position;
+        lookAtStarter = LookAt.localPosition;
     }
 
     public void SetMoveDir(Vector2 newToMove)
