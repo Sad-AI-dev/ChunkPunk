@@ -15,7 +15,7 @@ public class NodeEditor : Editor
 
         Handles.color = Color.white;
         foreach (Node n in node.GetNeighbours()) {
-            Handles.DrawLine(n.transform.position, node.transform.position);
+            if (n) Handles.DrawLine(n.transform.position, node.transform.position);
         }
     }
 }

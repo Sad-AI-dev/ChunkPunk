@@ -25,13 +25,13 @@ public class GoalManager : MonoBehaviour
 
     [Header("Technical settings")]
     [SerializeField] GameObject goalPrefab;
-    [SerializeField] float minimumDistance;
+    [SerializeField] int minimumDistance;
 
     //-----------------------goal creation-------------------
     public Goal SpawnGoal()
     {
         GameObject g = Instantiate(goalPrefab);
-        g.transform.position = graph.GetBestGoalPos();
+        g.transform.position = graph.GetBestGoalPos(minimumDistance);
         return g.GetComponent<Goal>();
     }
 }
