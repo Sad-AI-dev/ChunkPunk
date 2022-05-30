@@ -123,28 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &333056777 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1688325032795035247, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 595847327}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &333056779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333056777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4aae8093d267b4b953e74ea4bca56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X_ZAxisForce: 4
-  bulletForce: 1000
-  stunTime: 4
-  yKnockback: 2
 --- !u!1001 &595847327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,6 +130,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 333056779, guid: df6c8b5271acdcc4f909cd3e0b5259a7, type: 3}
+      propertyPath: invicibilityTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2091570861, guid: df6c8b5271acdcc4f909cd3e0b5259a7, type: 3}
+      propertyPath: invicibilityTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 483035182955583180, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -390,12 +376,12 @@ PrefabInstance:
     - target: {fileID: 6629856473914728318, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: shootWait
-      value: 3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6629856474702510661, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: shootWait
-      value: 3
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7395908251915216165, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -908,7 +894,7 @@ PrefabInstance:
     - target: {fileID: 8765740516813338230, guid: d0baaf4c4878b5b418fccda2d39fe980,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.6023
+      value: 39.278847
       objectReference: {fileID: 0}
     - target: {fileID: 8765740516813338230, guid: d0baaf4c4878b5b418fccda2d39fe980,
         type: 3}
@@ -1122,28 +1108,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dedc3c49e1fc80047bf1669713508075, type: 3}
---- !u!1 &2091570859 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1688325034131616596, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
-    type: 3}
-  m_PrefabInstance: {fileID: 595847327}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2091570861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2091570859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d4aae8093d267b4b953e74ea4bca56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  X_ZAxisForce: 4
-  bulletForce: 1000
-  stunTime: 4
-  yKnockback: 2
 --- !u!1001 &2142563065
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1175,7 +1139,7 @@ PrefabInstance:
     - target: {fileID: 8765740516813338230, guid: d0baaf4c4878b5b418fccda2d39fe980,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.6023
+      value: 49.500034
       objectReference: {fileID: 0}
     - target: {fileID: 8765740516813338230, guid: d0baaf4c4878b5b418fccda2d39fe980,
         type: 3}
