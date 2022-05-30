@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         {
             isStunned = true;
             //characterModel.rotation = Quaternion.Euler((new Vector3(0, 10, 0)) * Time.deltaTime);
-            characterModel.Rotate((new Vector3(0, 10, 0)) * 100 * Time.deltaTime);
+            characterModel.Rotate((new Vector3(0, 10, 0)) * bananaSpinSpeed * Time.deltaTime);
             yield return null;
         }
     }
