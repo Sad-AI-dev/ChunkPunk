@@ -10,6 +10,8 @@ public class GetHit : MonoBehaviour
     [SerializeField] int bulletForce;
     [SerializeField] private int stunTime;
     [SerializeField] private float yKnockback;
+    [SerializeField] private float invicibilityTime;
+    private bool alreadyHit;
     Player thisPlayer;
 
 
@@ -20,13 +22,16 @@ public class GetHit : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Projectile"))
+        if (collision.transform.CompareTag("Projectile") && !alreadyHit)
         {
             GameObject projectile = collision.gameObject;
             Vector3 direction = projectile.transform.forward * X_ZAxisForce;
             direction.y = yKnockback;
             playerHit(direction.normalized);
+            alreadyHit = true;
             StartCoroutine(stunned());
+            StartCoroutine(cantHit());
+            Debug.Log("hit");
         }
     }
 
@@ -45,5 +50,11 @@ public class GetHit : MonoBehaviour
         thisPlayer.isStunned = true;
         yield return new WaitForSeconds(stunTime);
         thisPlayer.isStunned = false;
+    }
+
+    private IEnumerator cantHit()
+    {
+        yield return new WaitForSeconds(invicibilityTime);
+        alreadyHit = false;
     }
 }

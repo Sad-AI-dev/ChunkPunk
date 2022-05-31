@@ -3,9 +3,9 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public void LoadNextScene()
+    public void LoadRelativeScene(int offset)
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + offset);
     }
 
     //------------load specific scene---------------
