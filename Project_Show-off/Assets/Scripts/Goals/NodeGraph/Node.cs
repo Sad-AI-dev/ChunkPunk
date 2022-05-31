@@ -27,24 +27,28 @@ public class Node : MonoBehaviour
         int valueA = GetCompareValue(a, minDistance);
         int valueB = GetCompareValue(b, minDistance);
         //return result
-        if (valueA < 0 || valueB < 0) { //no input or inside of minDistance
-            return -valueA.CompareTo(valueB);
-        }
-        else {
-            return valueA.CompareTo(valueB);
-        }
+        //if (valueA < 0 || valueB < 0) { //no input or inside of minDistance
+        //    return -valueA.CompareTo(valueB);
+        //}
+        //else {
+        //    return valueA.CompareTo(valueB);
+        //}
+        return -valueA.CompareTo(valueB);
     }
 
     public int GetCompareValue(Node node, int minDistance)
     {
+        //List<int> input = new List<int>(node.steps.Values);
+        //if (input.Count > 1) {
+        //    foreach (int i in input) {//min distance check
+        //        if (i <= minDistance) return -1;
+        //    }
+        //    return GetLargestDeviator(input, GetAverage(input));
+        //}
+        //return -1; //no inputs
+
         List<int> input = new List<int>(node.steps.Values);
-        if (input.Count > 1) {
-            foreach (int i in input) {//min distance check
-                if (i <= minDistance) return -1;
-            }
-            return GetLargestDeviator(input, GetAverage(input));
-        }
-        return -1;
+        return GetLargestDeviator(input, GetAverage(input));
     }
 
     int GetAverage(List<int> list)
