@@ -5,9 +5,16 @@ using UnityEngine.InputSystem;
 
 public class InputReciever : MonoBehaviour
 {
+    [SerializeField] bool linkOnStart = true;
+    [HideInInspector] public int id = 0;
     Player target;
 
     private void Start()
+    {
+        if (linkOnStart) Link();
+    }
+
+    public void Link()
     {
         target = PlayerManager.instance.GetUnlinkedPlayer();
         if (!target) { Destroy(gameObject); } //make sure an unlinked player exists

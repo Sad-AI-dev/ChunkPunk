@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2722814710032209075}
   - component: {fileID: 2722814710032209076}
   m_Layer: 0
-  m_Name: InputReciever
+  m_Name: InputRecieverNoLink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e83755db05468409637d7724fa6040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkOnStart: 1
+  linkOnStart: 0
 --- !u!114 &2722814710032209076
 MonoBehaviour:
   m_ObjectHideFlags: 0
