@@ -14,6 +14,9 @@ public class GetHit : MonoBehaviour
     private bool alreadyHit;
     Player thisPlayer;
 
+    //events
+    [SerializeField] UnityEvent onGetHit;
+
 
     private void Awake()
     {
@@ -32,6 +35,7 @@ public class GetHit : MonoBehaviour
             StartCoroutine(stunned());
             StartCoroutine(cantHit());
             Debug.Log("hit");
+            onGetHit?.Invoke();
         }
     }
 
