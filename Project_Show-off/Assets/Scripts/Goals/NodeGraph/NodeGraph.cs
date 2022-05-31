@@ -10,7 +10,7 @@ public class NodeGraph : MonoBehaviour
     //TEST
     private void Start()
     {
-        GetBestGoalPos(1);
+        //GetBestGoalPos(1);
     }
 
     public Node GetClosestNode(Vector3 pos)
@@ -28,13 +28,13 @@ public class NodeGraph : MonoBehaviour
         return closest;
     }
 
-    public Vector3 GetBestGoalPos(int minDistance = 0)
+    public Vector3 GetBestGoalPos()
     {
         foreach (Player p in PlayerManager.instance.players) {
             StartBreadthSearch(p, GetClosestNode(p.transform.position));
         }
         //find best positions
-        nodes.Sort((Node a, Node b) => a.ComparativeSort(a, b, minDistance));
+        nodes.Sort((Node a, Node b) => a.compareDistance.CompareTo(b.compareDistance));
         return nodes[0].transform.position;
     }
 

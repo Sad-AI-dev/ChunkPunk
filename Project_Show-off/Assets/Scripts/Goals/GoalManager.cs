@@ -25,7 +25,7 @@ public class GoalManager : MonoBehaviour
 
     [Header("Technical settings")]
     [SerializeField] GameObject goalPrefab;
-    [SerializeField] int minimumDistance;
+    public int minimumDistance;
 
     //-----------------------goal creation-------------------
     public Goal SpawnGoal()
