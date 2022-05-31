@@ -44,4 +44,35 @@ public class InputReciever : MonoBehaviour
             }
         }
     }
+
+    public void Accelerate(InputAction.CallbackContext context)
+    {
+        if (target)
+        {
+            if (context.started)
+            {
+                Debug.Log("Acelerating");
+                target.Accelerate(true);
+            }
+            else if (context.canceled)
+            {
+                target.Accelerate(false);
+            }
+        }
+    }
+    public void Deccelerate(InputAction.CallbackContext context)
+    {
+        if (target)
+        {
+            if (context.started)
+            {
+                Debug.Log("Decelerating");
+                target.Decelerate(true);
+            }
+            else if (context.canceled)
+            {
+                target.Decelerate(false);
+            }
+        }
+    }
 }

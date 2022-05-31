@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 rotateSpeed;
     [SerializeField] float maxAimHeight = 2f;
     [SerializeField] float minAimHeight = -2f;
+    [SerializeField] float accelerateMax;
+    [SerializeField] float accelerateMin;
     Vector2 turnDirection;
 
     [Header("Technical settings")]
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
     public Transform LookAt;
     public bool isStunned = false;
     private Transform characterModel;
+    private float accelerate = 1;
 
     Rigidbody rb;
 
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
     {
         toMove = newToMove;
     }
-
+    
     public void Look(Vector2 lookDir)
     {
         if (lookDir.magnitude > 1f) { lookDir.Normalize(); }
@@ -78,6 +81,28 @@ public class Player : MonoBehaviour
         //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
         //transform.position = checkPointManager.instance.allPlayerCheckPoints[this];
     }
+
+
+    public void Accelerate(bool isAccelerating)
+    {
+        if (isAccelerating && accelerate < accelerateMax)
+        {
+            accelerate += 1;
+        }
+         else if (!isAccelerating && accelerate > accelerateMin)
+            accelerate -= 1;
+    }
+    public void Decelerate(bool isDecelerating)
+    {
+        if (isDecelerating && accelerate > accelerateMin)
+        {
+            accelerate -= 0.1f;
+        }
+        else if (!isDecelerating && accelerate < accelerateMin)
+            accelerate += 0.2f;
+    }
+
+
 
     private void FixedUpdate()
     {
@@ -127,7 +152,7 @@ public class Player : MonoBehaviour
         {
             isStunned = true;
             //characterModel.rotation = Quaternion.Euler((new Vector3(0, 10, 0)) * Time.deltaTime);
-            characterModel.Rotate((new Vector3(0, 10, 0)) * bananaSpinSpeed * Time.deltaTime);
+            characterModel.Rotate((new Vector3(0, 10, 0)) * bananaSpinSpeed * Time.deltaTime * accelerate);
             yield return null;
         }
     }
@@ -150,8 +175,8 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector2 input = GetInputVelocity();
-        Vector3 velocity = (transform.right * input.x) + (transform.forward * input.y) + (externalToMove * (100 * Time.deltaTime));
-        rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+        Vector3 velocity = (transform.right * input.x) + (transform.forward * input.y * accelerate ) + (externalToMove * (100 * Time.deltaTime));
+        rb.velocity = new Vector3(velocity.x, rb.velocity.y , velocity.z );
     }
 
     Vector2 GetInputVelocity()
