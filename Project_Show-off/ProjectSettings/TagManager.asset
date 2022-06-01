@@ -8,6 +8,7 @@ TagManager:
   - P2Cam
   - Projectile
   - Ramp
+  - Blind
   layers:
   - Default
   - TransparentFX
