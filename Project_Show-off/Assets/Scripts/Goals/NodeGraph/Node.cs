@@ -27,7 +27,7 @@ public class Node : MonoBehaviour
         return neighbours;
     }
 
-    //-------------------------custom sort----------------------------------
+    //-------------------------comparive distance----------------------------------
     int GetCompareValue()
     {
         List<int> input = new List<int>(steps.Values);
