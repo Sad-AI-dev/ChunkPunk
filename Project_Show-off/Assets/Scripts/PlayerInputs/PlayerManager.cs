@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -26,6 +27,24 @@ public class PlayerManager : MonoBehaviour
 
     [Header("UI Settings")]
     public List<GameObject> playerUI = new();
+
+    private void Start()
+    {
+        TryLinkPlayers();
+    }
+    void TryLinkPlayers()
+    {
+        List<InputReciever> inputRecievers = new List<InputReciever>(FindObjectsOfType<InputReciever>());
+        if (inputRecievers.Count > 0) {
+            //disable input manager
+            GetComponent<PlayerInputManager>().DisableJoining();
+            //link sorted players
+            inputRecievers.Sort((InputReciever a, InputReciever b) => a.id.CompareTo(b.id));
+            foreach (InputReciever inputRec in inputRecievers) {
+                inputRec.Link();
+            }
+        }
+    }
 
     public void AddPlayer(Player player)
     {

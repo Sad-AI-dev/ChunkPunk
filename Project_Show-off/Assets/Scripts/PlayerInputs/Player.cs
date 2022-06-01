@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] float forwardForce = 4;
     [SerializeField] float minSpeed = 3f;
     [SerializeField] float maxSpeed = 5f;
+    [SerializeField] float bananaTime;
+    [SerializeField] float bananaSpinSpeed;
+    private bool isBananed;
     //result vectors
     Vector2 toMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
@@ -18,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 rotateSpeed;
     [SerializeField] float maxAimHeight = 2f;
     [SerializeField] float minAimHeight = -2f;
+    [SerializeField] float accelerateMax;
+    [SerializeField] float accelerateMin;
     Vector2 turnDirection;
 
     [Header("Technical settings")]
@@ -29,6 +34,9 @@ public class Player : MonoBehaviour
     [HideInInspector] public GameObject aimVCam;
     public Transform LookAt;
     public bool isStunned = false;
+    private Transform characterModel;
+    private float accelerate = 1;
+
     Rigidbody rb;
 
     private void Start()
@@ -36,13 +44,14 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
         lookAtStarter = LookAt.localPosition;
+        characterModel = transform.GetChild(0);
     }
 
     public void SetMoveDir(Vector2 newToMove)
     {
         toMove = newToMove;
     }
-
+    
     public void Look(Vector2 lookDir)
     {
         if (lookDir.magnitude > 1f) { lookDir.Normalize(); }
@@ -72,6 +81,28 @@ public class Player : MonoBehaviour
         //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
         //transform.position = checkPointManager.instance.allPlayerCheckPoints[this];
     }
+
+
+    public void Accelerate(bool isAccelerating)
+    {
+        if (isAccelerating && accelerate < accelerateMax)
+        {
+            accelerate += 1;
+        }
+         else if (!isAccelerating && accelerate > accelerateMin)
+            accelerate -= 1;
+    }
+    public void Decelerate(bool isDecelerating)
+    {
+        if (isDecelerating && accelerate > accelerateMin)
+        {
+            accelerate -= 0.1f;
+        }
+        else if (!isDecelerating && accelerate < accelerateMin)
+            accelerate += 0.2f;
+    }
+
+
 
     private void FixedUpdate()
     {
@@ -107,9 +138,32 @@ public class Player : MonoBehaviour
     public void Banana(Vector3 direction)
     {
         Debug.Log("banaan");
+        isBananed = true;
+        StartCoroutine(bananaSpin());
+        StartCoroutine(bananaTimer());
         //rb.AddForceAtPosition(direction * 100000, transform.position);
     }
 
+    
+    private IEnumerator bananaSpin()
+    {
+        Debug.Log(isBananed);
+        while (isBananed)
+        {
+            isStunned = true;
+            //characterModel.rotation = Quaternion.Euler((new Vector3(0, 10, 0)) * Time.deltaTime);
+            characterModel.Rotate((new Vector3(0, 10, 0)) * bananaSpinSpeed * Time.deltaTime * accelerate);
+            yield return null;
+        }
+    }
+    
+    private IEnumerator bananaTimer()
+    {
+        yield return new WaitForSeconds(bananaTime);
+        isBananed = false;
+        isStunned = false;
+        characterModel.localRotation = Quaternion.Euler(new Vector3(0, 75, 0));
+    }
     //---------------aiming------------------
     public void Aim(bool isAimed)
     {
@@ -121,8 +175,8 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector2 input = GetInputVelocity();
-        Vector3 velocity = (transform.right * input.x) + (transform.forward * input.y) + (externalToMove * (100 * Time.deltaTime));
-        rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
+        Vector3 velocity = (transform.right * input.x) + (transform.forward * input.y * accelerate ) + (externalToMove * (100 * Time.deltaTime));
+        rb.velocity = new Vector3(velocity.x, rb.velocity.y , velocity.z );
     }
 
     Vector2 GetInputVelocity()

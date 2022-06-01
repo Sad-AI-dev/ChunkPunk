@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919d33cb89f162943a603f649615018a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 1
+  price: 4
   priceLabel: {fileID: 4464223480934950238}
   onHit:
     m_PersistentCalls:
