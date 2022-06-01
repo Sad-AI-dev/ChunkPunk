@@ -7,6 +7,7 @@ public class Node : MonoBehaviour
     [SerializeField] List<Node> neighbours = new();
 
     public Dictionary<Player, int> steps = new();
+    [HideInInspector] public int compareDistance = 0;
 
     public void SetSteps(Player p, int stepCount)
     {
@@ -14,6 +15,11 @@ public class Node : MonoBehaviour
             steps[p] = stepCount;
         }
         else { steps.Add(p, stepCount); }
+
+        //record compare distance
+        if (steps.Keys.Count > 1) {
+            compareDistance = GetCompareValue();
+        }
     }
 
     public List<Node> GetNeighbours()
@@ -21,50 +27,30 @@ public class Node : MonoBehaviour
         return neighbours;
     }
 
-    //-------------------------custom sort----------------------------------
-    public int ComparativeSort(Node a, Node b, int minDistance)
+    //-------------------------comparive distance----------------------------------
+    int GetCompareValue()
     {
-        int valueA = GetCompareValue(a, minDistance);
-        int valueB = GetCompareValue(b, minDistance);
-        //return result
-        //if (valueA < 0 || valueB < 0) { //no input or inside of minDistance
-        //    return -valueA.CompareTo(valueB);
-        //}
-        //else {
-        //    return valueA.CompareTo(valueB);
-        //}
-        return -valueA.CompareTo(valueB);
-    }
-
-    public int GetCompareValue(Node node, int minDistance)
-    {
-        //List<int> input = new List<int>(node.steps.Values);
-        //if (input.Count > 1) {
-        //    foreach (int i in input) {//min distance check
-        //        if (i <= minDistance) return -1;
-        //    }
-        //    return GetLargestDeviator(input, GetAverage(input));
-        //}
-        //return -1; //no inputs
-
-        List<int> input = new List<int>(node.steps.Values);
-        return GetLargestDeviator(input, GetAverage(input));
-    }
-
-    int GetAverage(List<int> list)
-    {
-        int output = 0;
-        foreach (int i in list) {
-            output += i;
+        List<int> input = new List<int>(steps.Values);
+        foreach (int i in input) { //min distance check
+            if (i <= GoalManager.instance.minimumDistance) return 100;
         }
-        return output / list.Count;
+        return GetLargestDeviator(input, GetLowest(input));
     }
 
-    int GetLargestDeviator(List<int> list, int average)
+    int GetLowest(List<int> list)
+    {
+        int lowest = list[0];
+        for (int i = 1; i < list.Count; i++) {
+            if (list[i] < lowest) { lowest = list[i]; }
+        }
+        return lowest;
+    }
+
+    int GetLargestDeviator(List<int> list, int normal)
     {
         int largest = 0;
         foreach (int i in list) {
-            int deviator = Mathf.Abs(average - i);
+            int deviator = Mathf.Abs(normal - i);
             if (deviator > largest) largest = deviator;
         }
         return largest;

@@ -19,19 +19,16 @@ public class GoalManager : MonoBehaviour
 
     //-------------------vars------------------------
     [SerializeField] NodeGraph graph;
-    readonly List<Vector3> goalPositions = new();
-
-    public readonly List<Transform> players = new();
 
     [Header("Technical settings")]
     [SerializeField] GameObject goalPrefab;
-    [SerializeField] int minimumDistance;
+    public int minimumDistance;
 
     //-----------------------goal creation-------------------
     public Goal SpawnGoal()
     {
         GameObject g = Instantiate(goalPrefab);
-        g.transform.position = graph.GetBestGoalPos(minimumDistance);
+        g.transform.position = graph.GetBestGoalPos();
         return g.GetComponent<Goal>();
     }
 }
