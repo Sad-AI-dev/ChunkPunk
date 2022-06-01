@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e7f77dbb5c84f746b39062883738cc0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - blindUI: {fileID: 4692352883204189592, guid: a57aad3c7fb243d4d9c20cd2a68c621e,
+      type: 3}
+  - blindMaterial: {fileID: 2100000, guid: 67d7a797b4337ff4f9c0ca1653f916ce, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

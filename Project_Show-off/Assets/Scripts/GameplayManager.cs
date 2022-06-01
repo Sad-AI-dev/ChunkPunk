@@ -34,6 +34,10 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] int winScore = 2;
     [SerializeField] float setupTime = 5f;
     float timer = 0;
+    //countdown event
+    bool triggeredCountdown = false;
+    [SerializeField] float countdownTime = 3f;
+    [SerializeField] UnityEvent onStartCountdown = new UnityEvent();
 
     float raceTime = 0;
     [HideInInspector] public Player winner;
@@ -68,6 +72,7 @@ public class GameplayManager : MonoBehaviour
         switch (activeState) {
             case State.setup:
                 timer -= Time.deltaTime;
+                CountdownCheck();
                 UpdateSetupTimer();
                 break;
             case State.race:
@@ -106,7 +111,7 @@ public class GameplayManager : MonoBehaviour
     //------setup state
     void StartTimer()
     {
-        timerLabel.gameObject.SetActive(true);
+        triggeredCountdown = false;
         timer = setupTime;
         StartCoroutine(SetupTimerCo());
     }
@@ -117,6 +122,16 @@ public class GameplayManager : MonoBehaviour
         //start race state
         timerLabel.gameObject.SetActive(false);
         SetGameState(State.race);
+    }
+
+    void CountdownCheck()
+    {
+        if (!triggeredCountdown && timer < countdownTime) {
+            triggeredCountdown = true;
+            onStartCountdown?.Invoke();
+            //show timer
+            timerLabel.gameObject.SetActive(true);
+        }
     }
 
     //------done state

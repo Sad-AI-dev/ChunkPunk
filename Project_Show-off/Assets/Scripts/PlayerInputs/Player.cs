@@ -188,5 +188,7 @@ public class Player : MonoBehaviour
     {
         float yInput = toMove.y * (toMove.y > 0 ? maxSpeed : minSpeed);
         return yInput + forwardForce;
+
+
     }
 }

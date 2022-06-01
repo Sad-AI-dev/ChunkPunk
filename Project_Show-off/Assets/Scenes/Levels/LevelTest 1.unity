@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 262.38354, g: 325.1084, b: 430.30957, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1585,6 +1585,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 2003447649}
   - {fileID: 516357364}
+  compareDistance: 0
 --- !u!4 &42935101
 Transform:
   m_ObjectHideFlags: 0
@@ -3983,6 +3984,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 889314710}
   - {fileID: 1073480153}
+  compareDistance: 0
 --- !u!4 &188325742
 Transform:
   m_ObjectHideFlags: 0
@@ -6476,6 +6478,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1662554054}
   - {fileID: 1579098639}
+  compareDistance: 0
 --- !u!4 &362780425
 Transform:
   m_ObjectHideFlags: 0
@@ -7038,6 +7041,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1941555694}
   - {fileID: 1662554054}
+  compareDistance: 0
 --- !u!1001 &393649892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7255,6 +7259,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 834373600}
   - {fileID: 1051563366}
+  compareDistance: 0
 --- !u!4 &412794113
 Transform:
   m_ObjectHideFlags: 0
@@ -8162,6 +8167,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1927135514}
   - {fileID: 1144631170}
+  compareDistance: 0
 --- !u!4 &441395906
 Transform:
   m_ObjectHideFlags: 0
@@ -9035,6 +9041,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 42935100}
   - {fileID: 2101137599}
+  compareDistance: 0
 --- !u!4 &516357365
 Transform:
   m_ObjectHideFlags: 0
@@ -10976,7 +10983,7 @@ PrefabInstance:
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
       propertyPath: m_Size.z
-      value: 6.558716
+      value: 6.083496
       objectReference: {fileID: 0}
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
@@ -10986,7 +10993,7 @@ PrefabInstance:
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
       propertyPath: m_Center.z
-      value: 1.5698853
+      value: 1.3322754
       objectReference: {fileID: 0}
     - target: {fileID: 895913638283796061, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
@@ -12762,6 +12769,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1579098639}
   - {fileID: 412794112}
+  compareDistance: 0
 --- !u!4 &834373601
 Transform:
   m_ObjectHideFlags: 0
@@ -13964,6 +13972,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1732722148}
   - {fileID: 188325741}
+  compareDistance: 0
 --- !u!4 &889314711
 Transform:
   m_ObjectHideFlags: 0
@@ -14630,6 +14639,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 2146384029}
   - {fileID: 1732722148}
+  compareDistance: 0
 --- !u!4 &954864148
 Transform:
   m_ObjectHideFlags: 0
@@ -16400,6 +16410,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 412794112}
   - {fileID: 1170272286}
+  compareDistance: 0
 --- !u!4 &1051563367
 Transform:
   m_ObjectHideFlags: 0
@@ -17437,6 +17448,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 188325741}
   - {fileID: 1476481701}
+  compareDistance: 0
 --- !u!4 &1073480154
 Transform:
   m_ObjectHideFlags: 0
@@ -18147,6 +18159,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 441395905}
   - {fileID: 2146384029}
+  compareDistance: 0
 --- !u!4 &1144631171
 Transform:
   m_ObjectHideFlags: 0
@@ -18951,6 +18964,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1051563366}
   - {fileID: 1825093652}
+  compareDistance: 0
 --- !u!4 &1170272287
 Transform:
   m_ObjectHideFlags: 0
@@ -19775,7 +19789,7 @@ PrefabInstance:
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
       propertyPath: m_Size.x
-      value: 14.677719
+      value: 14.105667
       objectReference: {fileID: 0}
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
@@ -19790,7 +19804,7 @@ PrefabInstance:
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.46161652
+      value: -0.17559052
       objectReference: {fileID: 0}
     - target: {fileID: 895913638283796035, guid: ef9a72b8c8558ee4eaaf9cd35724687b,
         type: 3}
@@ -23105,6 +23119,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1073480153}
   - {fileID: 2062065116}
+  compareDistance: 0
 --- !u!4 &1476481702
 Transform:
   m_ObjectHideFlags: 0
@@ -24734,6 +24749,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 362780424}
   - {fileID: 834373600}
+  compareDistance: 0
 --- !u!1001 &1583387720
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27046,6 +27062,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 362780424}
   - {fileID: 393502901}
+  compareDistance: 0
 --- !u!4 &1662554055
 Transform:
   m_ObjectHideFlags: 0
@@ -27601,6 +27618,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 954864147}
   - {fileID: 889314710}
+  compareDistance: 0
 --- !u!4 &1732722149
 Transform:
   m_ObjectHideFlags: 0
@@ -28330,6 +28348,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1170272286}
   - {fileID: 2003447649}
+  compareDistance: 0
 --- !u!4 &1825093653
 Transform:
   m_ObjectHideFlags: 0
@@ -30023,6 +30042,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1961901063}
   - {fileID: 441395905}
+  compareDistance: 0
 --- !u!4 &1927135515
 Transform:
   m_ObjectHideFlags: 0
@@ -30256,6 +30276,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 2062065116}
   - {fileID: 393502901}
+  compareDistance: 0
 --- !u!4 &1941555695
 Transform:
   m_ObjectHideFlags: 0
@@ -30708,6 +30729,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 2101137599}
   - {fileID: 1927135514}
+  compareDistance: 0
 --- !u!4 &1961901064
 Transform:
   m_ObjectHideFlags: 0
@@ -31208,6 +31230,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1825093652}
   - {fileID: 42935100}
+  compareDistance: 0
 --- !u!4 &2003447650
 Transform:
   m_ObjectHideFlags: 0
@@ -31593,6 +31616,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1476481701}
   - {fileID: 1941555694}
+  compareDistance: 0
 --- !u!4 &2062065117
 Transform:
   m_ObjectHideFlags: 0
@@ -31820,6 +31844,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 516357364}
   - {fileID: 1961901063}
+  compareDistance: 0
 --- !u!4 &2101137600
 Transform:
   m_ObjectHideFlags: 0
@@ -32364,6 +32389,7 @@ MonoBehaviour:
   neighbours:
   - {fileID: 1144631170}
   - {fileID: 954864147}
+  compareDistance: 0
 --- !u!4 &2146384030
 Transform:
   m_ObjectHideFlags: 0

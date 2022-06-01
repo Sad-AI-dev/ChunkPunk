@@ -10,7 +10,7 @@ public class NodeGraph : MonoBehaviour
     //TEST
     private void Start()
     {
-        GetBestGoalPos(1);
+        //GetBestGoalPos(1);
     }
 
     public Node GetClosestNode(Vector3 pos)
@@ -28,39 +28,42 @@ public class NodeGraph : MonoBehaviour
         return closest;
     }
 
-    public Vector3 GetBestGoalPos(int minDistance = 0)
+    public Vector3 GetBestGoalPos()
     {
         foreach (Player p in PlayerManager.instance.players) {
-            StartBreadthSearch(p, GetClosestNode(p.transform.position));
+            BreadthSearch(p, GetClosestNode(p.transform.position));
         }
         //find best positions
-        nodes.Sort((Node a, Node b) => a.ComparativeSort(a, b, minDistance));
+        nodes.Sort((Node a, Node b) => a.compareDistance.CompareTo(b.compareDistance));
         return nodes[0].transform.position;
     }
 
     //-------------------------breadth first search---------------------------
-    void StartBreadthSearch(Player p, Node startPoint)
+    void BreadthSearch(Player p, Node startPoint)
     {
-        startPoint.SetSteps(p, 0);
-        searchedNodes = new List<Node> { startPoint };
-        //start search
-        BreadthSearch(p, 1, startPoint);
-    }
+        int steps = 0;
+        Queue<Node> registerQueue = new Queue<Node>( new[] { startPoint } );
+        Queue<Node> nextStepQueue = new Queue<Node>();
+        List<Node> searchedNodes = new List<Node>();
 
-    void BreadthSearch(Player p, int steps, Node currentNode)
-    {
-        //set steps
-        List<Node> toSearch = new List<Node>();
-        foreach (Node n in currentNode.GetNeighbours()) {
-            if (!searchedNodes.Contains(n)) {
-                n.SetSteps(p, steps);
-                searchedNodes.Add(n);
-                toSearch.Add(n);
+        while (registerQueue.Count > 0) {
+            Node n = registerQueue.Peek();
+            //register node
+            n.SetSteps(p, steps);
+            searchedNodes.Add(n);
+            registerQueue.Dequeue();
+            //register next steps
+            foreach (Node neighbour in n.GetNeighbours()) {
+                if (!searchedNodes.Contains(neighbour)) {
+                    nextStepQueue.Enqueue(neighbour);
+                }
             }
-        }
-        //pass on search
-        foreach (Node n in toSearch) {
-            BreadthSearch(p, steps + 1, n);
+            //next step check
+            if (registerQueue.Count <= 0 && nextStepQueue.Count > 0) {
+                steps++;
+                registerQueue = new Queue<Node>(nextStepQueue);
+                nextStepQueue.Clear(); //reset next step queue
+            }
         }
     }
 }
