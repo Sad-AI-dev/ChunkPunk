@@ -54,7 +54,6 @@ public class PlayerManager : MonoBehaviour
         if (GoalManager.instance != null) { //add player to external
             GameplayManager.instance.scores.Add(player, 0);
             ScoreManager.instance.playerScores.Add(player, 0);
-            GoalManager.instance.players.Add(player.transform);
             CoinManager.instance.money.Add(player, 0);
         }
     }

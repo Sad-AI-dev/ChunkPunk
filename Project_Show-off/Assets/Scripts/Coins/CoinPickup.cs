@@ -10,7 +10,7 @@ public class CoinPickup : MonoBehaviour
 
     [Header("Technical settings")]
     [SerializeField] GameObject visuals;
-    [SerializeField] UnityEvent onPickup = new();
+    [SerializeField] UnityEvent onPickup;
 
     private void OnTriggerEnter(Collider other)
     {
