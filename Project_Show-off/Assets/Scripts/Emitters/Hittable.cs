@@ -41,7 +41,7 @@ public class Hittable : MonoBehaviour
     }
     private IEnumerator hitReactTimer(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out Projectile proj))
+        if (canHit && collision.transform.TryGetComponent(out Projectile proj))
         {
             Debug.Log("atleastRegistered");
             yield return StartCoroutine(smallTimer());
