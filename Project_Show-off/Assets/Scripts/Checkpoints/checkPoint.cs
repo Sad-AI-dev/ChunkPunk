@@ -11,7 +11,7 @@ public class checkPoint : MonoBehaviour
         if(other.gameObject.tag == "Player" && isInside == false)
         {
             indexer++;
-            Debug.Log(indexer);
+            //Debug.Log(indexer);
             //Debug.Log("New checkpoint is " + other.transform);
             Player currentPlayer = other.GetComponent<Player>();
             
@@ -25,10 +25,6 @@ public class checkPoint : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         isInside = false;
-        Debug.Log(isInside);
-    }
-    private void Update()
-    {
-
+        //Debug.Log(isInside);
     }
 }

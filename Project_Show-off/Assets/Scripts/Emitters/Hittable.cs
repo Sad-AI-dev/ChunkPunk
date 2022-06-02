@@ -22,7 +22,7 @@ public class Hittable : MonoBehaviour
 
     private IEnumerator OnCollisionEnter(Collision collision)
     {
-        Debug.Log("imTouched");
+        //Debug.Log("imTouched");
         yield return StartCoroutine(hitReactTimer(collision));
     }
 
@@ -41,9 +41,9 @@ public class Hittable : MonoBehaviour
     }
     private IEnumerator hitReactTimer(Collision collision)
     {
-        if (collision.transform.TryGetComponent(out Projectile proj))
+        if (canHit && collision.transform.TryGetComponent(out Projectile proj))
         {
-            Debug.Log("atleastRegistered");
+            //Debug.Log("atleastRegistered");
             yield return StartCoroutine(smallTimer());
             if (bought && proj.owner == buyer) { Activate(); }
             else

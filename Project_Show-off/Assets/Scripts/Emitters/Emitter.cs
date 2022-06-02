@@ -17,18 +17,16 @@ public class Emitter : MonoBehaviour
     public List<GameObject> Emit()
     {
         List<GameObject> objs = new();
-        foreach (Transform t in emitLocations) {
-            if (canShoot)
-            {
+        if (canShoot) {
+            foreach (Transform t in emitLocations) {
                 GameObject emitted = Instantiate(emitPrefab);
                 emitted.transform.SetPositionAndRotation(t.position, t.rotation);
                 //add to list
                 objs.Add(emitted);
                 StartCoroutine(timer());
             }
-            
+            onEmit?.Invoke();
         }
-        onEmit?.Invoke();
         return objs;
     }
 
