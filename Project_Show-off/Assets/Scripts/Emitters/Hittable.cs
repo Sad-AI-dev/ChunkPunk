@@ -16,6 +16,7 @@ public class Hittable : MonoBehaviour
 
     private void Start()
     {
+        canHit = true;
         priceLabel.text = price.ToString();
     }
 
