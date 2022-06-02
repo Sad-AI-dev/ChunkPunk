@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 2223398958395480528, guid: 0ae4e12edce416c4b9db3580854c39b0, type: 3}
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 8bbb4a8112fee7b4194fb0749517e2b9, type: 3}
 --- !u!1 &7663813212993152841
 GameObject:
   m_ObjectHideFlags: 0
