@@ -113,6 +113,7 @@ public class GameplayManager : MonoBehaviour
     {
         triggeredCountdown = false;
         timer = setupTime;
+        timerLabel.gameObject.SetActive(true);
         StartCoroutine(SetupTimerCo());
     }
 
@@ -129,8 +130,6 @@ public class GameplayManager : MonoBehaviour
         if (!triggeredCountdown && timer < countdownTime) {
             triggeredCountdown = true;
             onStartCountdown?.Invoke();
-            //show timer
-            timerLabel.gameObject.SetActive(true);
         }
     }
 
