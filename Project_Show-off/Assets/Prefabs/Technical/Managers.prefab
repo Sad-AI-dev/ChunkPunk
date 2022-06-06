@@ -126,8 +126,14 @@ MonoBehaviour:
   activeState: 0
   winScore: 2
   setupTime: 5
+  countdownTime: 3
+  onStartCountdown:
+    m_PersistentCalls:
+      m_Calls: []
   winner: {fileID: 0}
   timerLabel: {fileID: 0}
+  trapLabel: Place traps!
+  raceLabel: Get to the Finish!
   gameplayUI: {fileID: 0}
   gameFinishedUI: {fileID: 0}
   board: {fileID: 0}

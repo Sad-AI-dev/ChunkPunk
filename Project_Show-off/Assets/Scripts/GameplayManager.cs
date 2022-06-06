@@ -46,6 +46,10 @@ public class GameplayManager : MonoBehaviour
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
     TMP_Text[] scoreLabels = new TMP_Text[2];
+    TMP_Text[] stateLabels = new TMP_Text[2];
+    [SerializeField] string trapLabel;
+    [SerializeField] string raceLabel;
+
     [SerializeField] GameObject gameplayUI, gameFinishedUI;
     [SerializeField] ScoreBoard board;
 
@@ -65,15 +69,25 @@ public class GameplayManager : MonoBehaviour
             Transform scoreLabel = PlayerManager.instance.playerUI[i].transform.Find("Score"); //it's string based and I hate it, might change this later
             scoreLabels[i] = scoreLabel.GetComponent<TMP_Text>();
         }
+        //load state labels
+        for (int i = 0; i < stateLabels.Length; i++) {
+            Transform stateLabel = PlayerManager.instance.playerUI[i].transform.Find("State"); //still hate this
+            stateLabels[i] = stateLabel.GetComponent<TMP_Text>();
+        }
     }
 
     private void Update()
     {
+        UpdateTimers();
+    }
+
+    void UpdateTimers()
+    {
         switch (activeState) {
             case State.setup:
                 timer -= Time.deltaTime;
-                CountdownCheck();
                 UpdateSetupTimer();
+                CountdownCheck();
                 break;
             case State.race:
                 raceTime += Time.deltaTime;
@@ -97,9 +111,7 @@ public class GameplayManager : MonoBehaviour
                 break;
 
             case State.race:
-                Goal g = GoalManager.instance.SpawnGoal();
-                g.onReachGoal.AddListener((Player p) => GainScore(p));
-                raceTime = 0f;
+                StartRace();
                 break;
 
             case State.done:
@@ -114,6 +126,8 @@ public class GameplayManager : MonoBehaviour
         triggeredCountdown = false;
         timer = setupTime;
         StartCoroutine(SetupTimerCo());
+        //UI
+        SetStateLabels(trapLabel);
     }
 
     IEnumerator SetupTimerCo()
@@ -132,6 +146,16 @@ public class GameplayManager : MonoBehaviour
             //show timer
             timerLabel.gameObject.SetActive(true);
         }
+    }
+
+    //------race state
+    void StartRace()
+    {
+        Goal g = GoalManager.instance.SpawnGoal();
+        g.onReachGoal.AddListener((Player p) => GainScore(p));
+        raceTime = 0f;
+        //UI
+        SetStateLabels(raceLabel);
     }
 
     //------done state
@@ -182,5 +206,12 @@ public class GameplayManager : MonoBehaviour
     void UpdateScoreLabel(Player p)
     {
         scoreLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Score: {scores[p]}";
+    }
+
+    void SetStateLabels(string s)
+    {
+        foreach (TMP_Text t in stateLabels) {
+            t.text = s;
+        }
     }
 }
