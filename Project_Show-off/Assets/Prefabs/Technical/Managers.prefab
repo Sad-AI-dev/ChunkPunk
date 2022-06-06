@@ -134,6 +134,7 @@ MonoBehaviour:
   timerLabel: {fileID: 0}
   trapLabel: Place traps!
   raceLabel: Get to the Finish!
+  fadeTime: 2
   gameplayUI: {fileID: 0}
   gameFinishedUI: {fileID: 0}
   board: {fileID: 0}

@@ -46,9 +46,14 @@ public class GameplayManager : MonoBehaviour
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
     TMP_Text[] scoreLabels = new TMP_Text[2];
+
+    //state labels
     TMP_Text[] stateLabels = new TMP_Text[2];
+    CanvasGroup[] stateLabelGroups;
     [SerializeField] string trapLabel;
     [SerializeField] string raceLabel;
+    [SerializeField] float fadeTime = 1f;
+    float stateTimer;
 
     [SerializeField] GameObject gameplayUI, gameFinishedUI;
     [SerializeField] ScoreBoard board;
@@ -70,9 +75,11 @@ public class GameplayManager : MonoBehaviour
             scoreLabels[i] = scoreLabel.GetComponent<TMP_Text>();
         }
         //load state labels
+        stateLabelGroups = new CanvasGroup[2];
         for (int i = 0; i < stateLabels.Length; i++) {
             Transform stateLabel = PlayerManager.instance.playerUI[i].transform.Find("State"); //still hate this
             stateLabels[i] = stateLabel.GetComponent<TMP_Text>();
+            stateLabelGroups[i] = stateLabel.GetComponent<CanvasGroup>();
         }
     }
 
@@ -86,11 +93,11 @@ public class GameplayManager : MonoBehaviour
         switch (activeState) {
             case State.setup:
                 timer -= Time.deltaTime;
-                UpdateSetupTimer();
-                CountdownCheck();
+                UpdateUI();
                 break;
             case State.race:
                 raceTime += Time.deltaTime;
+                UpdateStateLabels();
                 break;
         }
     }
@@ -193,6 +200,13 @@ public class GameplayManager : MonoBehaviour
     }
 
     //-------------------------UI----------------------------
+    void UpdateUI()
+    {
+        UpdateSetupTimer();
+        UpdateStateLabels();
+        CountdownCheck();
+    }
+
     void UpdateSetupTimer()
     {
         timerLabel.text = FormatTimer();
@@ -212,6 +226,16 @@ public class GameplayManager : MonoBehaviour
     {
         foreach (TMP_Text t in stateLabels) {
             t.text = s;
+        }
+        stateTimer = 0;
+        foreach (CanvasGroup group in stateLabelGroups) { group.alpha = 1; }
+    }
+
+    void UpdateStateLabels()
+    {
+        stateTimer += Time.deltaTime;
+        foreach (CanvasGroup group in stateLabelGroups) {
+            group.alpha = 1f - (Mathf.Min(stateTimer, fadeTime) / fadeTime);
         }
     }
 }
