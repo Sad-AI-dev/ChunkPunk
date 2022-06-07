@@ -14,7 +14,7 @@ public class CoinPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && visuals.activeSelf) {
+        if (other.CompareTag("Player") && visuals.activeSelf && CoinManager.instance.money[other.GetComponent<Player>()] < CoinManager.instance.maximumBullets) {
             CoinManager.instance.GainMoney(other.GetComponent<Player>(), value);
             onPickup?.Invoke();
             StartCoroutine(RespawnCo());
