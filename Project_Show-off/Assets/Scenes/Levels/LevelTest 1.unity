@@ -33467,17 +33467,22 @@ PrefabInstance:
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.116437286
+      value: 0.11643729
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.81400675
+      value: -0.8140068
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.17504154
+      value: 0.17504156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052337668537378461, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: maximumBullets
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5052337668862425524, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -33517,17 +33522,17 @@ PrefabInstance:
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.116437286
+      value: 0.11643729
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.81400675
+      value: -0.8140068
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.17504154
+      value: 0.17504156
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669186560501, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -33613,6 +33618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395793152961105958, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: m_text
+      value: Bullets 0 / 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395793153776461752, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: m_text
+      value: 'Bullets: 0 / 0'
       objectReference: {fileID: 0}
     - target: {fileID: 7395908251915216165, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
