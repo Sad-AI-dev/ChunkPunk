@@ -96,7 +96,7 @@ PrefabInstance:
     - target: {fileID: 7003569041457126761, guid: eddc6c3dd3f021744a856d6d1298c058,
         type: 3}
       propertyPath: m_Name
-      value: LandMineWTarget
+      value: LandMineWTarget Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7003569041457126763, guid: eddc6c3dd3f021744a856d6d1298c058,
         type: 3}

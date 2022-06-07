@@ -11,13 +11,16 @@ public class LandMine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collision");
-        if (other.transform.TryGetComponent(out Player player))
+        if (other.gameObject.tag == "Player")
         {
+            Debug.Log("Player");
+            other.transform.TryGetComponent(out Player player);
             Rigidbody body = player.GetComponent<Rigidbody>();
             body.AddForceAtPosition(force, this.transform.position);
         }
-        else if (other.transform.TryGetComponent(out Projectile projectile))
+        else if (other.gameObject.tag == "Projectile")
         {
+            other.transform.TryGetComponent(out Projectile projectile);
             Debug.Log("hit with bullet");
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
             foreach (var hitCollider in hitColliders)
