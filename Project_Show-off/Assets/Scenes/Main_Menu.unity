@@ -136,6 +136,8 @@ GameObject:
   - component: {fileID: 39113294}
   - component: {fileID: 39113293}
   - component: {fileID: 39113292}
+  - component: {fileID: 39113297}
+  - component: {fileID: 39113296}
   m_Layer: 5
   m_Name: Donate
   m_TagString: Untagged
@@ -271,6 +273,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39113290}
   m_CullTransparentMesh: 1
+--- !u!114 &39113296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39113290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795f911d9f6928a4988537eeb1d3077b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHeightIncrease: 30
+  ButtonWidthIncrease: 50
+--- !u!114 &39113297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39113290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 39113296}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Increase
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 39113296}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Decrease
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &44868326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,6 +1377,8 @@ GameObject:
   - component: {fileID: 791111092}
   - component: {fileID: 791111091}
   - component: {fileID: 791111090}
+  - component: {fileID: 791111095}
+  - component: {fileID: 791111094}
   m_Layer: 5
   m_Name: Credit
   m_TagString: Untagged
@@ -1451,6 +1514,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791111088}
   m_CullTransparentMesh: 1
+--- !u!114 &791111094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791111088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795f911d9f6928a4988537eeb1d3077b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHeightIncrease: 30
+  ButtonWidthIncrease: 50
+--- !u!114 &791111095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791111088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 791111094}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Increase
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 791111094}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Decrease
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &812177278
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,6 +2490,8 @@ GameObject:
   - component: {fileID: 1188353968}
   - component: {fileID: 1188353967}
   - component: {fileID: 1188353966}
+  - component: {fileID: 1188353970}
+  - component: {fileID: 1188353971}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -2503,6 +2627,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188353964}
   m_CullTransparentMesh: 1
+--- !u!114 &1188353970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188353964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795f911d9f6928a4988537eeb1d3077b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHeightIncrease: 30
+  ButtonWidthIncrease: 50
+--- !u!114 &1188353971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188353964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1188353970}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Increase
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1188353970}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Decrease
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1189816148
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,6 +3045,8 @@ GameObject:
   - component: {fileID: 1346831302}
   - component: {fileID: 1346831301}
   - component: {fileID: 1346831300}
+  - component: {fileID: 1346831305}
+  - component: {fileID: 1346831306}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -2947,14 +3132,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1346831300}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadRelativeScene
-        m_Mode: 3
+      - m_Target: {fileID: 1346831301}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2997,6 +3182,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346831298}
   m_CullTransparentMesh: 1
+--- !u!114 &1346831305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346831298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1346831306}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Increase
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1346831306}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Decrease
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1346831306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346831298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795f911d9f6928a4988537eeb1d3077b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHeightIncrease: 30
+  ButtonWidthIncrease: 50
 --- !u!1 &1349198434
 GameObject:
   m_ObjectHideFlags: 0
@@ -3009,6 +3253,8 @@ GameObject:
   - component: {fileID: 1349198438}
   - component: {fileID: 1349198437}
   - component: {fileID: 1349198436}
+  - component: {fileID: 1349198440}
+  - component: {fileID: 1349198439}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -3144,6 +3390,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349198434}
   m_CullTransparentMesh: 1
+--- !u!114 &1349198439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349198434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795f911d9f6928a4988537eeb1d3077b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHeightIncrease: 30
+  ButtonWidthIncrease: 50
+--- !u!114 &1349198440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349198434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1349198439}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Increase
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1349198439}
+          m_TargetAssemblyTypeName: Buttonincrease, Assembly-CSharp
+          m_MethodName: Decrease
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1352909783
 GameObject:
   m_ObjectHideFlags: 0
