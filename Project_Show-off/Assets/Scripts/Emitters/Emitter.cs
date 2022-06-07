@@ -9,6 +9,7 @@ public class Emitter : MonoBehaviour
     [SerializeField] GameObject emitPrefab;
     [SerializeField] List<Transform> emitLocations;
     [SerializeField] public Transform lookAt;
+    public Player player;
     private bool canShoot = true;
 
     [Header("Events")]
@@ -26,9 +27,13 @@ public class Emitter : MonoBehaviour
                 StartCoroutine(timer());
             }
             onEmit?.Invoke();
+            CoinManager.instance.ChargeMoney(this.player, 1);
         }
         return objs;
     }
+
+
+
 
 
     private IEnumerator timer()
@@ -42,5 +47,14 @@ public class Emitter : MonoBehaviour
     private void FixedUpdate()
     {
         transform.LookAt(lookAt);
+
+
+        if(CoinManager.instance.money[this.player] < 1)
+        {
+            canShoot = false;
+        } else
+        {
+            canShoot = true;
+        }
     }
 }

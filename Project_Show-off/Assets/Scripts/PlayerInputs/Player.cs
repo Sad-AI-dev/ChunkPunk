@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        emitter.player = this;
         rb = GetComponent<Rigidbody>();
         inventory = GetComponent<Inventory>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
