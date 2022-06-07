@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        emitter.player = this;
         rb = GetComponent<Rigidbody>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
         lookAtStarter = LookAt.localPosition;
