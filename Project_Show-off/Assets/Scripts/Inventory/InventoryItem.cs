@@ -12,6 +12,7 @@ public class InventoryItem : ScriptableObject
     public virtual void Initialize(Inventory inventory)
     {
         owner = inventory;
+        inventory.count = count;
     }
 
     public virtual void Update()
@@ -28,7 +29,7 @@ public class InventoryItem : ScriptableObject
     //called when button is released
     public virtual void OnUse()
     {
-        count--;
-        if (count <= 0) { owner.hasItem = false; }
+        owner.count--;
+        if (owner.count <= 0) { owner.hasItem = false; }
     }
 }

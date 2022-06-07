@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    InventoryItem heldItem;
-    [HideInInspector] public bool hasItem = false;
+    [SerializeField] InventoryItem heldItem;
+    public bool hasItem = false;
+    [HideInInspector] public int count;
 
     //instantiation points
     public Transform placePoint, shootPoint;
+
+    //TEST
+    private void Start()
+    {
+        if (hasItem) { heldItem.Initialize(this); }
+    }
 
     private void Update()
     {
