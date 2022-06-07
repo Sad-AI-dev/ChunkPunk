@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Data", menuName = "SOs/InventoryItems/InventoryItem", order = 1)]
 public class InventoryItem : ScriptableObject
 {
     [SerializeField] int count = 1;
-    [SerializeField] GameObject ObstaclePrefab;
+    [SerializeField] protected GameObject obstaclePrefab;
     
     protected Inventory owner;
 
     public virtual void Initialize(Inventory inventory)
     {
         owner = inventory;
+    }
+
+    public virtual void Update()
+    {
+
     }
 
     //called when button is pressed down

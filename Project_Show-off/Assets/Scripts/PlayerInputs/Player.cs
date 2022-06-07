@@ -37,11 +37,15 @@ public class Player : MonoBehaviour
     private Transform characterModel;
     private float accelerate = 1;
 
+    //Inventory
+    [HideInInspector] public Inventory inventory;
+
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        inventory = GetComponent<Inventory>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
         lookAtStarter = LookAt.localPosition;
         characterModel = transform.GetChild(0);

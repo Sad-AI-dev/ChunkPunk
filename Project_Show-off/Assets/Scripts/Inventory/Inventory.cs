@@ -5,7 +5,17 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     InventoryItem heldItem;
-    public bool hasItem = false;
+    [HideInInspector] public bool hasItem = false;
+
+    //instantiation points
+    public Transform placePoint, shootPoint;
+
+    private void Update()
+    {
+        if (hasItem) {
+            heldItem.Update();
+        }
+    }
 
     public bool TryGetItem(InventoryItem item)
     {
