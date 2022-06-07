@@ -1009,6 +1009,7 @@ MonoBehaviour:
   aimVCam: {fileID: 0}
   LookAt: {fileID: 6837359926435268486}
   isStunned: 0
+  inventory: {fileID: 0}
 --- !u!114 &333056779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,6 +1129,7 @@ MonoBehaviour:
   aimVCam: {fileID: 0}
   LookAt: {fileID: 539253896308011409}
   isStunned: 0
+  inventory: {fileID: 0}
 --- !u!114 &2091570861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,8 +1173,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7625441766881285965}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -5.9, y: 11.79, z: 0}
+  m_LocalRotation: {x: 0.000001013279, y: 0.7071068, z: 0.7071068, w: -0.000001013279}
+  m_LocalPosition: {x: 0, y: 11.5, z: -6}
   m_LocalScale: {x: 8.9056, y: 8.9056, z: 8.9056}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1180,7 +1182,7 @@ Transform:
   - {fileID: 7039342636427600942}
   m_Father: {fileID: 9183214118127803899}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
 --- !u!1 &7959953713252760361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,6 +1316,7 @@ MonoBehaviour:
   emitLocations:
   - {fileID: 3917566556367587408}
   lookAt: {fileID: 539253896308011409}
+  player: {fileID: 0}
   onEmit:
     m_PersistentCalls:
       m_Calls: []
@@ -1367,6 +1370,7 @@ MonoBehaviour:
   emitLocations:
   - {fileID: 3917566555051273579}
   lookAt: {fileID: 6837359926435268486}
+  player: {fileID: 0}
   onEmit:
     m_PersistentCalls:
       m_Calls: []
