@@ -1394,7 +1394,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-54342
+  m_Name: pb_Mesh-13136
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1702,25 +1702,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: LandMine
       objectReference: {fileID: 0}
+    - target: {fileID: 2304739250653155493, guid: 55e690c2f4d8ea149b02618ac21c15cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2738328435532122590, guid: 55e690c2f4d8ea149b02618ac21c15cd,
         type: 3}
       propertyPath: radius
-      value: 50
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 2738328435532122590, guid: 55e690c2f4d8ea149b02618ac21c15cd,
         type: 3}
       propertyPath: force.x
-      value: 1000
+      value: 10000000
       objectReference: {fileID: 0}
     - target: {fileID: 2738328435532122590, guid: 55e690c2f4d8ea149b02618ac21c15cd,
         type: 3}
       propertyPath: force.y
-      value: 1000
+      value: 1e+9
       objectReference: {fileID: 0}
     - target: {fileID: 2738328435532122590, guid: 55e690c2f4d8ea149b02618ac21c15cd,
         type: 3}
       propertyPath: force.z
-      value: 10000
+      value: 100000000
       objectReference: {fileID: 0}
     - target: {fileID: 9161640860662840716, guid: 55e690c2f4d8ea149b02618ac21c15cd,
         type: 3}
@@ -23033,7 +23038,7 @@ PrefabInstance:
     - target: {fileID: 3752201983375852729, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6014
+      value: 6017
       objectReference: {fileID: 0}
     - target: {fileID: 5544986100133376823, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
@@ -23168,7 +23173,7 @@ PrefabInstance:
     - target: {fileID: 8793602086981393399, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 6011
+      value: 6014
       objectReference: {fileID: 0}
     - target: {fileID: 9207465528200980659, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
@@ -24557,7 +24562,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-54356
+  m_Name: pb_Mesh-13150
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33919,7 +33924,7 @@ PrefabInstance:
     - target: {fileID: 5052337668537378461, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: maximumBullets
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5052337668862425524, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -34078,6 +34083,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395908251915216165, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
+      propertyPath: bulletDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395908251915216165, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
       propertyPath: forwardForce
       value: 12
       objectReference: {fileID: 0}
@@ -34095,6 +34105,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minSpeed
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395908252191211550, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: bulletDelay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7395908252191211550, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
