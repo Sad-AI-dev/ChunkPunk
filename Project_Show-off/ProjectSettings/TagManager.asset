@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - Ramp
   - Blind
+  - Floor
   layers:
   - Default
   - TransparentFX

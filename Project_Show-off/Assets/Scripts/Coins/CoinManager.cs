@@ -5,7 +5,7 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] public int maximumBullets;
+    public int maximumBullets;
     //--------singleton-------
     private void Awake()
     {
@@ -25,16 +25,13 @@ public class CoinManager : MonoBehaviour
 
     private void Start()
     {
-
         foreach(Player player in PlayerManager.instance.players)
         {
-
             moneyLabels[PlayerManager.instance.players.IndexOf(player)].text = $"Bullets: {money[player]} / {maximumBullets}";
         }
         
         for (int i = 0; i < moneyLabels.Length; i++) {
-            GameObject moneyLabel = PlayerManager.instance.playerUI[i];
-            moneyLabels[i] = moneyLabel.transform.Find("Money").GetComponent<TMP_Text>();
+            moneyLabels[i] = PlayerManager.instance.playerUI[i].ammoLabel;
         }
     }
 

@@ -45,10 +45,10 @@ public class GameplayManager : MonoBehaviour
     //-----------UI----------
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
-    TMP_Text[] scoreLabels = new TMP_Text[2];
+    TMP_Text[] scoreLabels;
 
     //state labels
-    TMP_Text[] stateLabels = new TMP_Text[2];
+    TMP_Text[] stateLabels;
     CanvasGroup[] stateLabelGroups;
     [SerializeField] string trapLabel;
     [SerializeField] string raceLabel;
@@ -69,17 +69,16 @@ public class GameplayManager : MonoBehaviour
     {
         gameplayUI.SetActive(true);
         gameFinishedUI.SetActive(false);
-        //load score labels
-        for (int i = 0; i < scoreLabels.Length; i++) {
-            Transform scoreLabel = PlayerManager.instance.playerUI[i].transform.Find("Score"); //it's string based and I hate it, might change this later
-            scoreLabels[i] = scoreLabel.GetComponent<TMP_Text>();
-        }
-        //load state labels
+        //get UI refs
+        scoreLabels = new TMP_Text[2];
+        stateLabels = new TMP_Text[2];
         stateLabelGroups = new CanvasGroup[2];
-        for (int i = 0; i < stateLabels.Length; i++) {
-            Transform stateLabel = PlayerManager.instance.playerUI[i].transform.Find("State"); //still hate this
-            stateLabels[i] = stateLabel.GetComponent<TMP_Text>();
-            stateLabelGroups[i] = stateLabel.GetComponent<CanvasGroup>();
+        for (int i = 0; i < scoreLabels.Length; i++) {
+            UIInterfacer playerUI = PlayerManager.instance.playerUI[i];
+            scoreLabels[i] = playerUI.scoreLabel;
+            //state labels
+            stateLabels[i] = playerUI.stateLabel;
+            stateLabelGroups[0] = playerUI.stateGroup;
         }
     }
 

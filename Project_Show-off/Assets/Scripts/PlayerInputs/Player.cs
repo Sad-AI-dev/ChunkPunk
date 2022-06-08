@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
 
     [Header("Camera Rotation settings")]
+    [SerializeField] ChangeTheFace face;
     [SerializeField] Vector2 rotateSpeed;
     [SerializeField] float maxAimHeight = 2f;
     [SerializeField] float minAimHeight = -2f;
