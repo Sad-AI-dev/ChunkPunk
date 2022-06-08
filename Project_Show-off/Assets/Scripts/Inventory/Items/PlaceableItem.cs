@@ -12,7 +12,7 @@ public class PlaceableItem : InventoryItem
     //materials
     Material previewMat;
     [SerializeField] Material failMat;
-    MeshRenderer previewRenderer;
+    MeshRenderer[] previewRenderer;
 
     Transform preview;
     CollisionDetector detector;
@@ -30,14 +30,14 @@ public class PlaceableItem : InventoryItem
         //collisions detector
         detector = preview.GetComponent<CollisionDetector>();
         //meshRenderer
-        previewRenderer = preview.GetComponentInChildren<MeshRenderer>();
-        previewMat = previewRenderer.material;
+        previewRenderer = preview.GetComponentsInChildren<MeshRenderer>();
+        previewMat = previewRenderer[0].material;
     }
 
     public override void Update()
     {
         if (isActive) {
-            //update preview pos
+            //update preview pos?
         }
     }
 
@@ -61,7 +61,7 @@ public class PlaceableItem : InventoryItem
     }
     IEnumerator FailUseCo()
     {
-        previewRenderer.material = failMat;
+        SetMaterial(failMat);
         yield return new WaitForSeconds(failShowDelay);
         ResetPreview();
         isActive = false;
@@ -81,6 +81,14 @@ public class PlaceableItem : InventoryItem
     void ResetPreview()
     {
         preview.gameObject.SetActive(false);
-        previewRenderer.material = previewMat;
+        SetMaterial(previewMat);
+    }
+
+    //----------Materials----------
+    void SetMaterial(Material mat)
+    {
+        foreach (MeshRenderer mesh in previewRenderer) {
+            mesh.material = mat;
+        }
     }
 }

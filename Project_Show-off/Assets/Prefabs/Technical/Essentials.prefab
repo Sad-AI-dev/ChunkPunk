@@ -898,6 +898,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3412938847539882105, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
         type: 3}
+      propertyPath: emitPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412938847539882105, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 602547853056513451, guid: a47424ec92667a647b5f20163a163c7d,
+        type: 3}
+    - target: {fileID: 3412938847539882105, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
+        type: 3}
       propertyPath: onEmit.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -936,6 +947,17 @@ PrefabInstance:
       propertyPath: shootWait
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3412938848857705794, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
+        type: 3}
+      propertyPath: emitPrefab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3412938848857705794, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 602547853056513451, guid: a47424ec92667a647b5f20163a163c7d,
+        type: 3}
     - target: {fileID: 3412938848857705794, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
         type: 3}
       propertyPath: onEmit.m_PersistentCalls.m_Calls.Array.size
