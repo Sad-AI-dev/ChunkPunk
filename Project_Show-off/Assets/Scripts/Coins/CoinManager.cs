@@ -5,7 +5,7 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
-    [SerializeField] int maximumBullets;
+    public int maximumBullets;
     //--------singleton-------
     private void Awake()
     {
