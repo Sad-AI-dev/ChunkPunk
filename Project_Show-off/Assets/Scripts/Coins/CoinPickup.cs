@@ -18,6 +18,7 @@ public class CoinPickup : MonoBehaviour
             CoinManager.instance.GainMoney(other.GetComponent<Player>(), value);
             onPickup?.Invoke();
             StartCoroutine(RespawnCo());
+            
         }
     }
 
