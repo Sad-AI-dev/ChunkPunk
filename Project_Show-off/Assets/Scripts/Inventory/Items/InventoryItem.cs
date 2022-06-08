@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryItem : ScriptableObject
 {
     [SerializeField] int count = 1;
-    [SerializeField] Sprite sprite;
+    public Sprite sprite;
 
     [Header("Technical")]
     [SerializeField] protected GameObject obstaclePrefab;
@@ -33,6 +33,10 @@ public class InventoryItem : ScriptableObject
     public virtual void OnUse()
     {
         owner.count--;
-        if (owner.count <= 0) { owner.hasItem = false; }
+        owner.SetUICount();
+        if (owner.count <= 0) { 
+            owner.hasItem = false;
+            owner.SetUIImage(null);
+        }
     }
 }

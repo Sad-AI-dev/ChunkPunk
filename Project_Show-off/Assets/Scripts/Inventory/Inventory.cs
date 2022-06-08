@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] InventoryItem heldItem;
-    public bool hasItem = false;
+    InventoryItem heldItem;
+    [HideInInspector] public bool hasItem = false;
     [HideInInspector] public int count;
 
     //instantiation points
     public Transform placePoint, shootPoint;
 
     //UI
-    [HideInInspector] public Image targetImage;
+    Image targetImage;
+    TMP_Text itemCount;
+
 
     //TEST
     private void Start()
     {
-        if (hasItem) { heldItem.Initialize(this); }
+        InitializeUI();
     }
 
     private void Update()
@@ -31,9 +34,9 @@ public class Inventory : MonoBehaviour
     public bool TryGetItem(InventoryItem item)
     {
         if (!hasItem) {
-            //TODO update UI
             heldItem = item;
             heldItem.Initialize(this);
+            SetUIImage(heldItem.sprite);
             hasItem = true;
             return true; //succes
         }
@@ -55,9 +58,21 @@ public class Inventory : MonoBehaviour
     }
 
     //---------UI------------
-    void GetTargetImage()
+    void InitializeUI()
     {
-        GameObject playerUI = PlayerManager.instance.playerUI[PlayerManager.instance.players.IndexOf(GetComponent<Player>())];
-        
+        UIInterfacer playerUI = PlayerManager.instance.playerUI[PlayerManager.instance.players.IndexOf(GetComponent<Player>())];
+        targetImage = playerUI.inventoryImage;
+        itemCount = playerUI.inventoryLabel;
+    }
+
+    public void SetUICount()
+    {
+        itemCount.text = count.ToString();
+    }
+
+    public void SetUIImage(Sprite sprite)
+    {
+        targetImage.sprite = sprite;
+        targetImage.color = sprite == null ? new Color(0, 0, 0, 0) : new Color(1, 1, 1, 1);
     }
 }
