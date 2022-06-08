@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Inventory : MonoBehaviour
 
     //instantiation points
     public Transform placePoint, shootPoint;
+
+    //UI
+    [HideInInspector] public Image targetImage;
 
     //TEST
     private void Start()
@@ -48,5 +52,12 @@ public class Inventory : MonoBehaviour
         if (hasItem) {
             heldItem.OnUse();
         }
+    }
+
+    //---------UI------------
+    void GetTargetImage()
+    {
+        GameObject playerUI = PlayerManager.instance.playerUI[PlayerManager.instance.players.IndexOf(GetComponent<Player>())];
+        
     }
 }

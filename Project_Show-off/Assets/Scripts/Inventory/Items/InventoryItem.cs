@@ -5,6 +5,9 @@ using UnityEngine;
 public class InventoryItem : ScriptableObject
 {
     [SerializeField] int count = 1;
+    [SerializeField] Sprite sprite;
+
+    [Header("Technical")]
     [SerializeField] protected GameObject obstaclePrefab;
     
     protected Inventory owner;
