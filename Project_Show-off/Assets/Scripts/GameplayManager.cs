@@ -78,7 +78,7 @@ public class GameplayManager : MonoBehaviour
             scoreLabels[i] = playerUI.scoreLabel;
             //state labels
             stateLabels[i] = playerUI.stateLabel;
-            stateLabelGroups[0] = playerUI.stateGroup;
+            stateLabelGroups[i] = playerUI.stateGroup;
         }
     }
 

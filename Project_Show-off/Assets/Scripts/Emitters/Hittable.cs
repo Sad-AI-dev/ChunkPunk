@@ -67,16 +67,17 @@ public class Hittable : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //yield return StartCoroutine(hitReactTimer(collision));
-        if (canHit && collision.gameObject.tag == "Player") {
-            collision.transform.TryGetComponent(out Projectile proj);
-            if (bought && proj.owner == buyer) { 
-                StartCoroutine(Activate());
+        if (canHit && collision.gameObject.CompareTag("Player")) {
+            if (collision.transform.TryGetComponent(out Projectile proj)) {
+                if (bought && proj.owner == buyer) {
+                    StartCoroutine(Activate());
+                }
+                else {
+                    TryPurchase(proj.owner);
+                }
+                //got hit, go on cooldown
+                StartCoroutine(CanHitCo());
             }
-            else {
-                TryPurchase(proj.owner);
-            }
-            //got hit, go on cooldown
-            StartCoroutine(CanHitCo());
         }
     }
 
