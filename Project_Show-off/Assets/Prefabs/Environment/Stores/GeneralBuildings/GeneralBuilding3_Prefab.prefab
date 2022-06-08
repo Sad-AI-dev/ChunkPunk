@@ -15,22 +15,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -227.76
+      value: -201.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 53.75
+      value: 53.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1161.47
+      value: 1136.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
@@ -40,7 +40,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
@@ -66,7 +66,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 64893f28e3729d44c9b547a8c29f3479, type: 2}
+      objectReference: {fileID: 2100000, guid: e4b0218399a6342498e2c92f853aa177, type: 2}
     - target: {fileID: -2994574054460991704, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6f9f76c910fb9e249a1de4796d4c9f52,
         type: 3}
       propertyPath: m_Name
-      value: GeneralBuilding_03_Prefab
+      value: GeneralBuilding3_Prefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f9f76c910fb9e249a1de4796d4c9f52, type: 3}
