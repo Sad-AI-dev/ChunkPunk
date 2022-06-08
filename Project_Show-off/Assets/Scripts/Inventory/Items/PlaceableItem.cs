@@ -39,20 +39,26 @@ public class PlaceableItem : InventoryItem
 
     public override void OnUse()
     {
-        if (!detector.HasCollisions()) {
-            base.OnUse();
-            CreateObstacle();
-            ResetPreview();
-            isActive = false;
-        }
-        else {
-            //TODO give player feedback that this shit ain't working
-            Debug.Log("nah");
-            ResetPreview();
-            isActive = false;
+        if (isActive) {
+            if (!detector.HasCollisions()) {
+                base.OnUse();
+                PlaceObstacle();
+            }
+            else {
+                //TODO give player feedback that this shit ain't working
+                Debug.Log("nah");
+                ResetPreview();
+                isActive = false;
+            }
         }
     }
 
+    void PlaceObstacle()
+    {
+        CreateObstacle();
+        ResetPreview();
+        isActive = false;
+    }
     void CreateObstacle()
     {
         Transform t = Instantiate(obstaclePrefab).transform;

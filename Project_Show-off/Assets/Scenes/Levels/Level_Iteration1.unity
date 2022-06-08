@@ -33909,17 +33909,17 @@ PrefabInstance:
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11643729
+      value: 0.116437286
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8140068
+      value: -0.81400675
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.17504156
+      value: 0.17504154
       objectReference: {fileID: 0}
     - target: {fileID: 5052337668537378461, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -33964,23 +33964,41 @@ PrefabInstance:
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.11643729
+      value: 0.116437286
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8140068
+      value: -0.81400675
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.17504156
+      value: 0.17504154
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669186560501, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: graph
       value: 
       objectReference: {fileID: 709760326}
+    - target: {fileID: 6629856473914728318, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 2259820588655371433, guid: 46dc81e64558d1e4fb2d0f191c3e6f8d,
+        type: 3}
+    - target: {fileID: 6629856473914728318, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 7338958960593429013, guid: 96a8c728772992e4183afc018bfc109d,
+        type: 3}
+    - target: {fileID: 6629856473914728318, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 6718470190865832951, guid: 890532b9b8ca88847976284f8313b3b1,
+        type: 3}
     - target: {fileID: 6629856473914728318, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: onEmit.m_PersistentCalls.m_Calls.Array.size
@@ -34016,6 +34034,24 @@ PrefabInstance:
       propertyPath: onEmit.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6629856474702510661, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 6718470190865832951, guid: 890532b9b8ca88847976284f8313b3b1,
+        type: 3}
+    - target: {fileID: 6629856474702510661, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 7338958960593429013, guid: 96a8c728772992e4183afc018bfc109d,
+        type: 3}
+    - target: {fileID: 6629856474702510661, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
+        type: 3}
+      propertyPath: emitPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 2259820588655371433, guid: 46dc81e64558d1e4fb2d0f191c3e6f8d,
+        type: 3}
     - target: {fileID: 6629856474702510661, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: onEmit.m_PersistentCalls.m_Calls.Array.size

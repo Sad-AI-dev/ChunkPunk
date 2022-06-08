@@ -96,4 +96,16 @@ public class InputReciever : MonoBehaviour
             }
         }
     }
+
+    public void RightBumper(InputAction.CallbackContext context)
+    {
+        if (target) {
+            if (context.started) {
+                target.inventory.SelectItem();
+            }
+            else if (context.canceled) {
+                target.inventory.UseItem();
+            }
+        }
+    }
 }

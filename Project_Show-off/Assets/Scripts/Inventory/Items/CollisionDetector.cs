@@ -18,15 +18,20 @@ public class CollisionDetector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!collisions.Contains(other.gameObject)) {
-            collisions.Add(other.gameObject);
+        if (!other.CompareTag("Player") && !other.CompareTag("Floor")) {
+            if (!collisions.Contains(other.gameObject)) {
+                collisions.Add(other.gameObject);
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (collisions.Contains(other.gameObject)) {
-            collisions.Remove(other.gameObject);
-        }
+        collisions.Remove(other.gameObject);
+    }
+
+    private void OnDisable()
+    {
+        collisions = new List<GameObject>();
     }
 }
