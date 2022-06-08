@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkOnStart: 0
+  id: 0
 --- !u!114 &2722814710032209076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,19 +126,7 @@ MonoBehaviour:
     m_ActionId: 36ef55ef-3c18-4236-99f2-68dd3e883333
     m_ActionName: Player/ButtonTest[/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth,/DualSenseGamepadHID/buttonSouth,/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2722814710032209075}
-        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
-        m_MethodName: Die
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: f274628f-60a7-4071-a389-433b7e910527
     m_ActionName: Player/Test[/Keyboard/a]
   - m_PersistentCalls:
@@ -156,6 +145,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0082a9e9-9d1b-4185-b8ec-b0fc316a7639
     m_ActionName: Player/Aim[/DualSenseGamepadHID/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8e28df12-1c41-4920-9138-7334e5829a89
+    m_ActionName: Player/Accelerate[/DualShock4GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c536b7f-727e-499f-a98a-6966b62ffe41
+    m_ActionName: Player/Decelerate[/DualShock4GamepadHID/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2722814710032209075}
+        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
+        m_MethodName: RightBumper
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a09285ec-5e7e-4a59-b9d1-b8b47101f4e0
+    m_ActionName: Player/RightBumper[/DualShock4GamepadHID/rightShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

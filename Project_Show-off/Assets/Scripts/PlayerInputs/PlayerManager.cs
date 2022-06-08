@@ -26,7 +26,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] List<GameObject> AimVCams = new();
 
     [Header("UI Settings")]
-    public List<GameObject> playerUI = new();
+    public List<UIInterfacer> playerUI = new();
 
     private void Start()
     {

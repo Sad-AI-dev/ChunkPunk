@@ -5,6 +5,7 @@ using TMPro;
 
 public class CoinManager : MonoBehaviour
 {
+    public int maximumBullets;
     //--------singleton-------
     private void Awake()
     {
@@ -24,9 +25,13 @@ public class CoinManager : MonoBehaviour
 
     private void Start()
     {
+        foreach(Player player in PlayerManager.instance.players)
+        {
+            moneyLabels[PlayerManager.instance.players.IndexOf(player)].text = $"Bullets: {money[player]} / {maximumBullets}";
+        }
+        
         for (int i = 0; i < moneyLabels.Length; i++) {
-            GameObject moneyLabel = PlayerManager.instance.playerUI[i];
-            moneyLabels[i] = moneyLabel.transform.Find("Money").GetComponent<TMP_Text>();
+            moneyLabels[i] = PlayerManager.instance.playerUI[i].ammoLabel;
         }
     }
 
@@ -47,8 +52,12 @@ public class CoinManager : MonoBehaviour
 
     public void GainMoney(Player p, int amount)
     {
-        money[p] += amount;
-        UpdateMoneyLabel(p);
+        if(this.money[p] < maximumBullets)
+        {
+            money[p] += amount;
+            UpdateMoneyLabel(p);
+
+        }
     }
     public void ChargeMoney(Player p, int amount)
     {
@@ -59,6 +68,6 @@ public class CoinManager : MonoBehaviour
     //-------------------UI-------------------
     void UpdateMoneyLabel(Player p)
     {
-        moneyLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Money: {money[p]}";
+        moneyLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Bullets: {money[p]} / {maximumBullets}";
     }
 }

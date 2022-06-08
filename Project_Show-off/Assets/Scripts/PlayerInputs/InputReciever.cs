@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,8 +36,21 @@ public class InputReciever : MonoBehaviour
     
     public void SouthButton(InputAction.CallbackContext context)
     {
+        /*
         if (context.started) {
             if (target) { target.Shoot(); }
+        }
+        */
+        if (context.started)
+        {
+            if (target)
+            {
+                StartCoroutine(target.Shoot(true));
+            }
+        } else if (context.canceled)
+        {
+            StartCoroutine(target.Shoot(false));
+        
         }
     }
 
@@ -79,6 +93,18 @@ public class InputReciever : MonoBehaviour
             else if (context.canceled)
             {
                 target.Decelerate(false);
+            }
+        }
+    }
+
+    public void RightBumper(InputAction.CallbackContext context)
+    {
+        if (target) {
+            if (context.started) {
+                target.inventory.SelectItem();
+            }
+            else if (context.canceled) {
+                target.inventory.UseItem();
             }
         }
     }

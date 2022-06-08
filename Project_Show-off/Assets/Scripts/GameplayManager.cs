@@ -45,7 +45,16 @@ public class GameplayManager : MonoBehaviour
     //-----------UI----------
     [Header("UI Settings")]
     [SerializeField] TMP_Text timerLabel;
-    TMP_Text[] scoreLabels = new TMP_Text[2];
+    TMP_Text[] scoreLabels;
+
+    //state labels
+    TMP_Text[] stateLabels;
+    CanvasGroup[] stateLabelGroups;
+    [SerializeField] string trapLabel;
+    [SerializeField] string raceLabel;
+    [SerializeField] float fadeTime = 1f;
+    float stateTimer;
+
     [SerializeField] GameObject gameplayUI, gameFinishedUI;
     [SerializeField] ScoreBoard board;
 
@@ -60,23 +69,34 @@ public class GameplayManager : MonoBehaviour
     {
         gameplayUI.SetActive(true);
         gameFinishedUI.SetActive(false);
-        //load score labels
+        //get UI refs
+        scoreLabels = new TMP_Text[2];
+        stateLabels = new TMP_Text[2];
+        stateLabelGroups = new CanvasGroup[2];
         for (int i = 0; i < scoreLabels.Length; i++) {
-            Transform scoreLabel = PlayerManager.instance.playerUI[i].transform.Find("Score"); //it's string based and I hate it, might change this later
-            scoreLabels[i] = scoreLabel.GetComponent<TMP_Text>();
+            UIInterfacer playerUI = PlayerManager.instance.playerUI[i];
+            scoreLabels[i] = playerUI.scoreLabel;
+            //state labels
+            stateLabels[i] = playerUI.stateLabel;
+            stateLabelGroups[0] = playerUI.stateGroup;
         }
     }
 
     private void Update()
     {
+        UpdateTimers();
+    }
+
+    void UpdateTimers()
+    {
         switch (activeState) {
             case State.setup:
                 timer -= Time.deltaTime;
-                CountdownCheck();
-                UpdateSetupTimer();
+                UpdateUI();
                 break;
             case State.race:
                 raceTime += Time.deltaTime;
+                UpdateStateLabels();
                 break;
         }
     }
@@ -97,9 +117,7 @@ public class GameplayManager : MonoBehaviour
                 break;
 
             case State.race:
-                Goal g = GoalManager.instance.SpawnGoal();
-                g.onReachGoal.AddListener((Player p) => GainScore(p));
-                raceTime = 0f;
+                StartRace();
                 break;
 
             case State.done:
@@ -115,6 +133,8 @@ public class GameplayManager : MonoBehaviour
         timer = setupTime;
         timerLabel.gameObject.SetActive(true);
         StartCoroutine(SetupTimerCo());
+        //UI
+        SetStateLabels(trapLabel);
     }
 
     IEnumerator SetupTimerCo()
@@ -131,6 +151,16 @@ public class GameplayManager : MonoBehaviour
             triggeredCountdown = true;
             onStartCountdown?.Invoke();
         }
+    }
+
+    //------race state
+    void StartRace()
+    {
+        Goal g = GoalManager.instance.SpawnGoal();
+        g.onReachGoal.AddListener((Player p) => GainScore(p));
+        raceTime = 0f;
+        //UI
+        SetStateLabels(raceLabel);
     }
 
     //------done state
@@ -168,6 +198,13 @@ public class GameplayManager : MonoBehaviour
     }
 
     //-------------------------UI----------------------------
+    void UpdateUI()
+    {
+        UpdateSetupTimer();
+        UpdateStateLabels();
+        CountdownCheck();
+    }
+
     void UpdateSetupTimer()
     {
         timerLabel.text = FormatTimer();
@@ -181,5 +218,22 @@ public class GameplayManager : MonoBehaviour
     void UpdateScoreLabel(Player p)
     {
         scoreLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Score: {scores[p]}";
+    }
+
+    void SetStateLabels(string s)
+    {
+        foreach (TMP_Text t in stateLabels) {
+            t.text = s;
+        }
+        stateTimer = 0;
+        foreach (CanvasGroup group in stateLabelGroups) { group.alpha = 1; }
+    }
+
+    void UpdateStateLabels()
+    {
+        stateTimer += Time.deltaTime;
+        foreach (CanvasGroup group in stateLabelGroups) {
+            group.alpha = 1f - (Mathf.Min(stateTimer, fadeTime) / fadeTime);
+        }
     }
 }

@@ -25,12 +25,12 @@
                 },
                 {
                     "name": "Fire",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "ded5293f-3107-4973-bbd7-59925b57fb4f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ButtonTest",
@@ -72,6 +72,15 @@
                     "name": "Decelerate",
                     "type": "Button",
                     "id": "7c536b7f-727e-499f-a98a-6966b62ffe41",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightBumper",
+                    "type": "Button",
+                    "id": "a09285ec-5e7e-4a59-b9d1-b8b47101f4e0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -395,6 +404,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Decelerate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4024be11-4df7-4b79-a8c1-9f979510747e",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "RightBumper",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
