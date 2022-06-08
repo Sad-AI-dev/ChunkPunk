@@ -13,8 +13,9 @@ public class BlindTrap : MonoBehaviour
     private float timer;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.TryGetComponent(out Player player))
+        if (other.gameObject.tag == "Player")
         {
+            other.transform.TryGetComponent(out Player player);
             Debug.Log("blinded");
             theBlind = PlayerManager.instance.playerUI[player.id - 1].blindGroup;
             theBlind.alpha = 1;

@@ -12,12 +12,14 @@ public class Player : MonoBehaviour
     [SerializeField] float maxSpeed = 5f;
     [SerializeField] float bananaTime;
     [SerializeField] float bananaSpinSpeed;
+    [SerializeField] float bulletDelay;
     private bool isBananed;
     //result vectors
     Vector2 toMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
 
     [Header("Camera Rotation settings")]
+    [SerializeField] ChangeTheFace face;
     [SerializeField] Vector2 rotateSpeed;
     [SerializeField] float maxAimHeight = 2f;
     [SerializeField] float minAimHeight = -2f;
@@ -63,14 +65,22 @@ public class Player : MonoBehaviour
         turnDirection = lookDir;
     }
 
-    public void Shoot()
+    public IEnumerator Shoot(bool isOn)
     {
-        List<GameObject> objs = emitter.Emit();
-        foreach (GameObject obj in objs) {
-            if (obj.TryGetComponent(out Projectile proj)) {
-                proj.owner = this; //set owner of projectiles
+        while (isOn && CoinManager.instance.money[this] > 0)
+        {
+            List<GameObject> objs = emitter.Emit();
+            foreach (GameObject obj in objs)
+            {
+                if (obj.TryGetComponent(out Projectile proj))
+                {
+                    proj.owner = this; //set owner of projectiles
+                }
+                yield return new WaitForSeconds(bulletDelay);
             }
+
         }
+        
     }
 
     public void Died()
