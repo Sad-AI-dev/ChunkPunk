@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5550886833567863323}
   - component: {fileID: 6003736510043661021}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Coin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f29b5900dd35a4e819d0eff8211a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 2
+  value: 3
   minRespawnTime: 5
   maxRespawnTime: 10
   visuals: {fileID: 5550886834119187459}

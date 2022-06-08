@@ -48,10 +48,12 @@ public class Player : MonoBehaviour
     {
         emitter.player = this;
         rb = GetComponent<Rigidbody>();
-        inventory = GetComponent<Inventory>();
         PlayerManager.instance.AddPlayer(this); //notify others of player's existance
         lookAtStarter = LookAt.localPosition;
         characterModel = transform.GetChild(0);
+        //inventory
+        inventory = GetComponent<Inventory>();
+        inventory.Initialize();
     }
 
     public void SetMoveDir(Vector2 newToMove)

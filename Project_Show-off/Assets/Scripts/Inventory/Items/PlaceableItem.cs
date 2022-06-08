@@ -6,6 +6,13 @@ using UnityEngine;
 public class PlaceableItem : InventoryItem
 {
     [SerializeField] GameObject previewPrefab;
+    [SerializeField] float failShowDelay = 1f;
+
+    [Header("Materials")]
+    //materials
+    Material previewMat;
+    [SerializeField] Material failMat;
+    MeshRenderer[] previewRenderer;
 
     Transform preview;
     CollisionDetector detector;
@@ -22,12 +29,15 @@ public class PlaceableItem : InventoryItem
         preview.gameObject.SetActive(false);
         //collisions detector
         detector = preview.GetComponent<CollisionDetector>();
+        //meshRenderer
+        previewRenderer = preview.GetComponentsInChildren<MeshRenderer>();
+        previewMat = previewRenderer[0].material;
     }
 
     public override void Update()
     {
         if (isActive) {
-            //update preview pos
+            //update preview pos?
         }
     }
 
@@ -45,12 +55,16 @@ public class PlaceableItem : InventoryItem
                 PlaceObstacle();
             }
             else {
-                //TODO give player feedback that this shit ain't working
-                Debug.Log("nah");
-                ResetPreview();
-                isActive = false;
+                owner.CoroutineStarter(FailUseCo());
             }
         }
+    }
+    IEnumerator FailUseCo()
+    {
+        SetMaterial(failMat);
+        yield return new WaitForSeconds(failShowDelay);
+        ResetPreview();
+        isActive = false;
     }
 
     void PlaceObstacle()
@@ -67,5 +81,14 @@ public class PlaceableItem : InventoryItem
     void ResetPreview()
     {
         preview.gameObject.SetActive(false);
+        SetMaterial(previewMat);
+    }
+
+    //----------Materials----------
+    void SetMaterial(Material mat)
+    {
+        foreach (MeshRenderer mesh in previewRenderer) {
+            mesh.material = mat;
+        }
     }
 }

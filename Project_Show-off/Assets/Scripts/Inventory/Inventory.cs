@@ -17,9 +17,14 @@ public class Inventory : MonoBehaviour
     Image targetImage;
     TMP_Text itemCount;
 
-
-    //TEST
     private void Start()
+    {
+        //reset items
+        hasItem = false;
+        heldItem = null;
+    }
+
+    public void Initialize()
     {
         InitializeUI();
     }
@@ -36,6 +41,7 @@ public class Inventory : MonoBehaviour
         if (!hasItem) {
             heldItem = item;
             heldItem.Initialize(this);
+            SetUICount();
             SetUIImage(heldItem.sprite);
             hasItem = true;
             return true; //succes
@@ -68,11 +74,18 @@ public class Inventory : MonoBehaviour
     public void SetUICount()
     {
         itemCount.text = count.ToString();
+        itemCount.alpha = count <= 1 ? 0 : 255; //hide text if 1 or less items left
     }
 
     public void SetUIImage(Sprite sprite)
     {
         targetImage.sprite = sprite;
-        targetImage.color = sprite == null ? new Color(0, 0, 0, 0) : new Color(1, 1, 1, 1);
+        targetImage.color = sprite == null ? new Color(0, 0, 0, 0) : new Color(255, 255, 255, 255);
+    }
+
+    //--------------util-----------
+    public void CoroutineStarter(IEnumerator coRoutine)
+    {
+        StartCoroutine(coRoutine);
     }
 }
