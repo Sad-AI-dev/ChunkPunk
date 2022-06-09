@@ -10,8 +10,12 @@ public class SetupController : MonoBehaviour
 {
     int joinedPlayers = -1;
 
+    [SerializeField] string joinedText = "JOINED!";
+
     [SerializeField] List<TMP_Text> joinLabels;
     [SerializeField] Button startButton;
+
+    [SerializeField] List<GameObject> disableObjects;
 
     public void OnPlayerJoined(PlayerInput input)
     {
@@ -25,7 +29,8 @@ public class SetupController : MonoBehaviour
 
     void UpdatePlayerUI()
     {
-        joinLabels[joinedPlayers].text = "Joined!";
+        joinLabels[joinedPlayers].text = joinedText;
+        disableObjects[joinedPlayers].SetActive(false);
         if (joinedPlayers >= 1) { //max amount of players have joined, enable start button
             startButton.interactable = true;
         }
