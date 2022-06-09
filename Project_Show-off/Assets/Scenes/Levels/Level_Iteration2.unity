@@ -2270,7 +2270,7 @@ GameObject:
   - component: {fileID: 121552867}
   m_Layer: 0
   m_Name: Checkpoint (2)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8418,7 +8418,7 @@ GameObject:
   - component: {fileID: 427351615}
   m_Layer: 0
   m_Name: Checkpoint (6)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10660,7 +10660,7 @@ GameObject:
   - component: {fileID: 555146631}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11223,7 +11223,7 @@ GameObject:
   - component: {fileID: 612612075}
   m_Layer: 0
   m_Name: Checkpoint (5)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16958,7 +16958,7 @@ GameObject:
   - component: {fileID: 987251435}
   m_Layer: 0
   m_Name: Checkpoint (4)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18388,7 +18388,7 @@ GameObject:
   - component: {fileID: 1046742070}
   m_Layer: 0
   m_Name: Checkpoint (8)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18494,7 +18494,7 @@ GameObject:
   - component: {fileID: 1052470290}
   m_Layer: 0
   m_Name: Checkpoint (1)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26036,7 +26036,7 @@ GameObject:
   - component: {fileID: 1491606521}
   m_Layer: 0
   m_Name: Checkpoint (3)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30262,7 +30262,7 @@ GameObject:
   - component: {fileID: 1693504603}
   m_Layer: 0
   m_Name: Checkpoint (7)
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38036,17 +38036,17 @@ PrefabInstance:
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.54147565
+      value: 0.5414756
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.116437405
+      value: 0.11643743
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.81400675
+      value: -0.8140067
       objectReference: {fileID: 0}
     - target: {fileID: 5052337667838303691, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -38091,17 +38091,17 @@ PrefabInstance:
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.54147565
+      value: 0.5414756
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.116437405
+      value: 0.11643743
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.81400675
+      value: -0.8140067
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}

@@ -13,9 +13,6 @@ public class CollisionDetector : MonoBehaviour
 
     public bool HasCollisions()
     {
-        if (collisions.Count > 0) {
-            foreach (GameObject g in collisions) { Debug.Log(g.name); }
-        }
         return collisions.Count > 0;
     }
 
