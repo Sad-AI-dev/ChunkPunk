@@ -41,16 +41,17 @@ public class InputReciever : MonoBehaviour
             if (target) { target.Shoot(); }
         }
         */
-        if (context.started)
+        if (target)
         {
-            if (target)
+            if (context.started)
             {
                 StartCoroutine(target.Shoot(true));
             }
-        } else if (context.canceled)
-        {
-            StartCoroutine(target.Shoot(false));
-        
+            else if (context.canceled)
+            {
+                StartCoroutine(target.Shoot(false));
+
+            }
         }
     }
 
