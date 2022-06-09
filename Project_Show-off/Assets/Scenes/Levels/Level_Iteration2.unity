@@ -5593,7 +5593,7 @@ GameObject:
   - component: {fileID: 229891933}
   - component: {fileID: 229891932}
   m_Layer: 0
-  m_Name: GlassFence
+  m_Name: BalconyFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5607,12 +5607,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 229891930}
   m_LocalRotation: {x: -0, y: 0.26959214, z: -0, w: 0.96297467}
-  m_LocalPosition: {x: 1.9, y: 30.613285, z: -14.5}
-  m_LocalScale: {x: 0.34375, y: 9.5022, z: 55.22408}
+  m_LocalPosition: {x: 1.8999939, y: 30.613285, z: -14.5}
+  m_LocalScale: {x: 0.34375, y: 9.5022, z: 55.224083}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8407578008884522061}
-  m_RootOrder: 10
+  m_Father: {fileID: 514758522}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 31.28, z: 0}
 --- !u!65 &229891932
 BoxCollider:
@@ -10580,6 +10580,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 501107277}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &514758521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514758522}
+  m_Layer: 0
+  m_Name: Fences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &514758522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514758521}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 229891931}
+  - {fileID: 1259872415}
+  - {fileID: 2000464454}
+  m_Father: {fileID: 8407578008884522061}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &516357363
 GameObject:
   m_ObjectHideFlags: 0
@@ -10851,13 +10885,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532050549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.2, y: 30.27, z: 59.08}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 66.2, y: 30.27, z: 59.079956}
   m_LocalScale: {x: 0.34375, y: 9.5022, z: 52.27535}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8407578008884522061}
-  m_RootOrder: 13
+  m_Father: {fileID: 2000464454}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &532050551
 BoxCollider:
@@ -13457,13 +13491,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688515938}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 51.34, y: 30.269999, z: 85.37}
-  m_LocalScale: {x: 0.34375, y: 9.5022, z: 29.78445}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 51.339996, y: 30.269997, z: 85.369995}
+  m_LocalScale: {x: 0.34374994, y: 9.5022, z: 29.78445}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8407578008884522061}
-  m_RootOrder: 14
+  m_Father: {fileID: 2000464454}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &688515940
 BoxCollider:
@@ -23917,7 +23951,7 @@ GameObject:
   - component: {fileID: 1259872417}
   - component: {fileID: 1259872416}
   m_Layer: 0
-  m_Name: GlassFenceLower
+  m_Name: FoodCourtFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23931,12 +23965,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259872414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.36746, y: 24.613285, z: -20.16}
+  m_LocalPosition: {x: 66.36746, y: 24.613285, z: -20.160034}
   m_LocalScale: {x: 0.34375, y: 9.5022, z: 59.2784}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8407578008884522061}
-  m_RootOrder: 11
+  m_Father: {fileID: 514758522}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1259872416
 BoxCollider:
@@ -25417,12 +25451,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1372489572}
   m_LocalRotation: {x: -0, y: 0.69427115, z: -0, w: 0.71971357}
-  m_LocalPosition: {x: -15.37, y: 30.613285, z: -38.4}
-  m_LocalScale: {x: 0.34375, y: 9.5022, z: 5.785652}
+  m_LocalPosition: {x: -15.369995, y: 30.613285, z: -38.400024}
+  m_LocalScale: {x: 0.34375, y: 9.5022, z: 5.785653}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8407578008884522061}
-  m_RootOrder: 12
+  m_Father: {fileID: 2000464454}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 87.938, z: 0}
 --- !u!65 &1372489574
 BoxCollider:
@@ -31971,13 +32005,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748192947}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 63.01, y: 30.269999, z: 32.86}
-  m_LocalScale: {x: 0.34375, y: 9.5022, z: 6.450121}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 63.009995, y: 30.269997, z: 32.859985}
+  m_LocalScale: {x: 0.34374994, y: 9.5022, z: 6.450122}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8407578008884522061}
-  m_RootOrder: 15
+  m_Father: {fileID: 2000464454}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &1748192949
 BoxCollider:
@@ -35829,6 +35863,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1990385579}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2000464453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000464454}
+  m_Layer: 0
+  m_Name: LoungeAreaFence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000464454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000464453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1372489573}
+  - {fileID: 532050550}
+  - {fileID: 688515939}
+  - {fileID: 1748192948}
+  m_Father: {fileID: 514758522}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2001573119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39045,12 +39114,7 @@ Transform:
   - {fileID: 2021974203}
   - {fileID: 339457578}
   - {fileID: 448790988}
-  - {fileID: 229891931}
-  - {fileID: 1259872415}
-  - {fileID: 1372489573}
-  - {fileID: 532050550}
-  - {fileID: 688515939}
-  - {fileID: 1748192948}
+  - {fileID: 514758522}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
