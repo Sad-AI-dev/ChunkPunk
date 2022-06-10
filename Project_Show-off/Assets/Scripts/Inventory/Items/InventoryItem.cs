@@ -10,12 +10,12 @@ public class InventoryItem : ScriptableObject
     [Header("Technical")]
     [SerializeField] protected GameObject obstaclePrefab;
     
-    protected Inventory owner;
+    [HideInInspector] public Inventory owner;
 
     public virtual void Initialize(Inventory inventory)
     {
         owner = inventory;
-        inventory.count = count;
+        owner.count = count;
     }
 
     public virtual void Update()
