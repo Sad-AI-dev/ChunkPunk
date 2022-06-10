@@ -19,7 +19,7 @@ public class CoinManager : MonoBehaviour
     public static CoinManager instance;
 
     //track money per player
-    public Dictionary<Player, int> money = new();
+    public Dictionary<Player, int> bullets = new();
     //UI
     readonly TMP_Text[] moneyLabels = new TMP_Text[2];
 
@@ -27,7 +27,7 @@ public class CoinManager : MonoBehaviour
     {
         foreach(Player player in PlayerManager.instance.players)
         {
-            moneyLabels[PlayerManager.instance.players.IndexOf(player)].text = $"Bullets: {money[player]} / {maximumBullets}";
+            moneyLabels[PlayerManager.instance.players.IndexOf(player)].text = $"Bullets: {bullets[player]} / {maximumBullets}";
         }
         
         for (int i = 0; i < moneyLabels.Length; i++) {
@@ -47,29 +47,29 @@ public class CoinManager : MonoBehaviour
     
     public bool CanPlayerAfford(Player p, int amount)
     {
-        return money[p] >= amount;
+        return bullets[p] >= amount;
     }
 
-    public void GainMoney(Player p, int amount)
+    public void GainBullets(Player p, int amount)
     {
-        if(this.money[p] < maximumBullets)
+        if(this.bullets[p] < maximumBullets)
         {
-            money[p] += amount;
-            if (money[p] > maximumBullets)
-                money[p] = maximumBullets;
-            UpdateMoneyLabel(p);
+            bullets[p] += amount;
+            if (bullets[p] > maximumBullets)
+                bullets[p] = maximumBullets;
+            UpdateBulletsLevel(p);
 
         }
     }
     public void ChargeMoney(Player p, int amount)
     {
-        money[p] -= amount;
-        UpdateMoneyLabel(p);
+        bullets[p] -= amount;
+        UpdateBulletsLevel(p);
     }
 
     //-------------------UI-------------------
-    void UpdateMoneyLabel(Player p)
+    void UpdateBulletsLevel(Player p)
     {
-        moneyLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Bullets: {money[p]} / {maximumBullets}";
+        moneyLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Bullets: {bullets[p]} / {maximumBullets}";
     }
 }

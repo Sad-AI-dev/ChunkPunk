@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator Shoot(bool isOn)
     {
-        while (isOn && CoinManager.instance.money[this] > 0)
+        while (isOn && CoinManager.instance.bullets[this] > 0)
         {
             List<GameObject> objs = emitter.Emit();
             foreach (GameObject obj in objs)
