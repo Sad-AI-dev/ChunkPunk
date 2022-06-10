@@ -17,10 +17,12 @@ public class ItemPickup : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (visuals.activeSelf && other.CompareTag("Player")) {
-            if (other.GetComponent<Player>().inventory.TryGetItem(GetRandomItem())) {
-                //item picked up, disable
-                onPickup?.Invoke();
-                StartCoroutine(DisableCo());
+            if (other.TryGetComponent(out Player player)) {
+                if (player.inventory.TryGetItem(GetRandomItem())) {
+                    //item picked up, disable
+                    onPickup?.Invoke();
+                    StartCoroutine(DisableCo());
+                }
             }
         }
     }
@@ -37,7 +39,7 @@ public class ItemPickup : MonoBehaviour
         float r = Random.Range(0f, GetTotalWeight());
         int index = 0;
         while (r > 0) {
-            if (r < itemChances[index].chance) { return itemChances[index].obj; }
+            if (r < itemChances[index].chance) { return Instantiate(itemChances[index].obj); }
             else {
                 r -= itemChances[index].chance;
                 index++;

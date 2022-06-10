@@ -41,6 +41,8 @@ public class InputReciever : MonoBehaviour
             if (target) { target.Shoot(); }
         }
         */
+        //Disable for test
+        /*
         if (target)
         {
             if (context.started)
@@ -53,6 +55,7 @@ public class InputReciever : MonoBehaviour
 
             }
         }
+        */
     }
 
     public void Aim(InputAction.CallbackContext context)

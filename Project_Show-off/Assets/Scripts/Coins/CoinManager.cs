@@ -55,6 +55,8 @@ public class CoinManager : MonoBehaviour
         if(this.money[p] < maximumBullets)
         {
             money[p] += amount;
+            if (money[p] > maximumBullets)
+                money[p] = maximumBullets;
             UpdateMoneyLabel(p);
 
         }
