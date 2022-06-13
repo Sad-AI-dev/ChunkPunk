@@ -9,7 +9,6 @@ public class InventoryItem : ScriptableObject
 
     [Header("Technical")]
     [SerializeField] protected GameObject obstaclePrefab;
-    
     [HideInInspector] public Inventory owner;
 
     public virtual void Initialize(Inventory inventory)
@@ -18,16 +17,10 @@ public class InventoryItem : ScriptableObject
         owner.count = count;
     }
 
-    public virtual void Update()
-    {
-
-    }
+    public virtual void Update() { }
 
     //called when button is pressed down
-    public virtual void OnSelect()
-    {
-
-    }
+    public virtual void OnSelect() { }
 
     //called when button is released
     public virtual void OnUse()

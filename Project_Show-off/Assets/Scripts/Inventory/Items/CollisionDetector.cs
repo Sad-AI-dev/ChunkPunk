@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CollisionDetector : MonoBehaviour
 {
     List<GameObject> collisions;
+    [HideInInspector] public UnityEvent onCollisionChanged;
 
     private void Start()
     {
@@ -13,7 +15,7 @@ public class CollisionDetector : MonoBehaviour
 
     public bool HasCollisions()
     {
-        foreach (GameObject g in collisions) { Debug.Log(g.name); }
+        //foreach (GameObject g in collisions) { Debug.Log(g.name); }
         return collisions.Count > 0;
     }
 
@@ -22,13 +24,17 @@ public class CollisionDetector : MonoBehaviour
         if (!other.CompareTag("Player") && !other.CompareTag("Floor")) {
             if (!collisions.Contains(other.gameObject)) {
                 collisions.Add(other.gameObject);
+                onCollisionChanged?.Invoke();
             }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        collisions.Remove(other.gameObject);
+        if (collisions.Contains(other.gameObject)) {
+            collisions.Remove(other.gameObject);
+            onCollisionChanged?.Invoke();
+        }
     }
 
     private void OnDisable()

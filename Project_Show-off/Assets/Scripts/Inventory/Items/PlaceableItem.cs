@@ -17,6 +17,7 @@ public class PlaceableItem : InventoryItem
     Transform preview;
     CollisionDetector detector;
     bool isActive = false;
+    bool frozen = false;
 
     public override void Initialize(Inventory inventory)
     {
@@ -29,6 +30,7 @@ public class PlaceableItem : InventoryItem
         preview.gameObject.SetActive(false);
         //collisions detector
         detector = preview.GetComponent<CollisionDetector>();
+        detector.onCollisionChanged.AddListener(UpdatePreview);
         //meshRenderer
         previewRenderer = preview.GetComponentsInChildren<MeshRenderer>();
         previewMat = previewRenderer[0].material;
@@ -45,6 +47,7 @@ public class PlaceableItem : InventoryItem
     {
         preview.gameObject.SetActive(true);
         isActive = true;
+        UpdatePreview();
     }
 
     public override void OnUse()
@@ -61,12 +64,14 @@ public class PlaceableItem : InventoryItem
     }
     IEnumerator FailUseCo()
     {
-        SetMaterial(failMat);
+        frozen = true;
         yield return new WaitForSeconds(failShowDelay);
         ResetPreview();
+        frozen = false;
         isActive = false;
     }
 
+    //--------------------place object------------------------
     void PlaceObstacle()
     {
         CreateObstacle();
@@ -78,10 +83,27 @@ public class PlaceableItem : InventoryItem
         Transform t = Instantiate(obstaclePrefab).transform;
         t.SetPositionAndRotation(preview.position, preview.rotation);
     }
+
+    //------------preview--------------
+    void UpdatePreview()
+    {
+        if (!frozen) {
+            if (detector.HasCollisions()) {
+                if (IsPreviewMaterial()) { 
+                    SetMaterial(failMat);
+                }
+            }
+            else if (!detector.HasCollisions()) {
+                if (!IsPreviewMaterial()) {
+                    SetMaterial(previewMat);
+                }
+            }
+        }
+    }
+
     void ResetPreview()
     {
         preview.gameObject.SetActive(false);
-        SetMaterial(previewMat);
     }
 
     //----------Materials----------
@@ -90,5 +112,10 @@ public class PlaceableItem : InventoryItem
         foreach (MeshRenderer mesh in previewRenderer) {
             mesh.material = mat;
         }
+    }
+
+    bool IsPreviewMaterial()
+    {
+        return previewRenderer[0].material == previewMat;
     }
 }

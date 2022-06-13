@@ -45,7 +45,7 @@ public class ItemPickup : MonoBehaviour
                 index++;
             }
         }
-        return null;
+        return Instantiate(itemChances[0].obj);
     }
 
     float GetTotalWeight()

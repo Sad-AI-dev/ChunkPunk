@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] float bananaSpinSpeed;
     [SerializeField] float bulletDelay;
     private bool isBananed;
+    public bool isShoting;
     //result vectors
     Vector2 toMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
@@ -67,22 +68,20 @@ public class Player : MonoBehaviour
         turnDirection = lookDir;
     }
 
-    public IEnumerator Shoot(bool isOn)
+    public IEnumerator isShooting()
     {
-        while (isOn && CoinManager.instance.bullets[this] > 0)
+        Debug.Log("yes i shoot");
+        List<GameObject> objs = emitter.Emit();
+        foreach (GameObject obj in objs)
         {
-            List<GameObject> objs = emitter.Emit();
-            foreach (GameObject obj in objs)
+            if (obj.TryGetComponent(out Projectile proj))
             {
-                if (obj.TryGetComponent(out Projectile proj))
-                {
-                    proj.owner = this; //set owner of projectiles
-                }
-                yield return new WaitForSeconds(bulletDelay);
+                proj.owner = this; //set owner of projectiles
             }
-
+            yield return new WaitForSeconds(bulletDelay);
+            if (isShoting)
+                StartCoroutine(isShooting());
         }
-        
     }
 
     public void Died()
@@ -129,7 +128,6 @@ public class Player : MonoBehaviour
             Rotate();
             Move();
         }
-        
     }
 
     //------------------------rotation----------------------------

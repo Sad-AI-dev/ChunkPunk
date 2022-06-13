@@ -336,7 +336,7 @@
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "ButtonTest",
                     "isComposite": false,
                     "isPartOfComposite": false
