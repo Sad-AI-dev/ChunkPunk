@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour
     //---------UI------------
     void InitializeUI()
     {
-        UIInterfacer playerUI = PlayerManager.instance.playerUI[PlayerManager.instance.players.IndexOf(GetComponent<Player>())];
+        UIInterfacer playerUI = PlayerManager.instance.playerUI[GetComponent<Player>().id - 1];
         targetImage = playerUI.inventoryImage;
         itemCount = playerUI.inventoryLabel;
     }

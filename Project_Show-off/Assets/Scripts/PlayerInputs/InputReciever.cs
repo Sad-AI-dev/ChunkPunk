@@ -36,23 +36,23 @@ public class InputReciever : MonoBehaviour
     
     public void SouthButton(InputAction.CallbackContext context)
     {
-        /*
-        if (context.started) {
-            if (target) { target.Shoot(); }
-        }
-        */
+        
         if (target)
         {
             if (context.started)
             {
-                StartCoroutine(target.Shoot(true));
+                target.isShoting = true;
+                StartCoroutine(target.isShooting());
             }
+            
             else if (context.canceled)
             {
-                StartCoroutine(target.Shoot(false));
+                target.isShoting = false;
 
             }
+            
         }
+        
     }
 
     public void Aim(InputAction.CallbackContext context)

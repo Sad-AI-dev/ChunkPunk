@@ -51,7 +51,7 @@ public class Emitter : MonoBehaviour
         transform.LookAt(lookAt);
 
 
-        if(CoinManager.instance.money[this.player] < 1)
+        if(CoinManager.instance.bullets[this.player] < 1)
         {
             canShoot = false;
         } else
