@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BlindTrap : MonoBehaviour
 {
     [SerializeField] float timeToRemove;
-    [SerializeField] float perSecondClearSpeed;
+
     private CanvasGroup theBlind;
     private bool isFaded;
     private float timer;
