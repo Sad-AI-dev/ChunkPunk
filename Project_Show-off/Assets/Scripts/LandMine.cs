@@ -7,7 +7,7 @@ public class LandMine : MonoBehaviour
     [SerializeField] Vector3 force;
     [SerializeField] float radius;
     
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("collision");
@@ -18,17 +18,25 @@ public class LandMine : MonoBehaviour
             Rigidbody body = player.GetComponent<Rigidbody>();
             body.AddForceAtPosition(force, this.transform.position);
         }
-        else if (other.gameObject.tag == "Projectile")
+    }
+    */
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Projectile")
         {
-            other.transform.TryGetComponent(out Projectile projectile);
+            //collision.transform.TryGetComponent(out Projectile projectile);
             Debug.Log("hit with bullet");
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
             foreach (var hitCollider in hitColliders)
             {
-                if (hitCollider.TryGetComponent(out Rigidbody body))
+                if (hitCollider.CompareTag("Player"))
                 {
+                    Rigidbody body = hitCollider.GetComponent<Rigidbody>();
                     body.AddForceAtPosition(force, this.transform.position);
-
+                } else if (hitCollider.CompareTag("Obstacle"))
+                {
+                    Debug.Log("Yoooooooooooooooooooo");
+                    Destroy(hitCollider.gameObject);
                 }
             }
         }

@@ -843,7 +843,7 @@ GameObject:
   - component: {fileID: -2265506903558327724}
   m_Layer: 0
   m_Name: Pole_Preview
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -900,6 +900,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2a52dd8f65713438faee193a9002fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onCollisionChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8510658785112424437
 GameObject:
   m_ObjectHideFlags: 0
