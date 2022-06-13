@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c998ad06b9b469248b7492043ef6fc17, type: 3}
   m_Name: PoleItem
   m_EditorClassIdentifier: 
-  count: 4
+  count: 3
   sprite: {fileID: 21300000, guid: fc308fc9148cf0649b6137b1d99fd0e6, type: 3}
   obstaclePrefab: {fileID: 4693307053281596022, guid: 56fa28b2845769841936e3c72e574cec,
     type: 3}
+  owner: {fileID: 0}
   previewPrefab: {fileID: 7229732257690314852, guid: 8091e73f29beca04cb282312fcd45de3,
     type: 3}
-  failShowDelay: 1
+  failShowDelay: 0.5
   failMat: {fileID: 2100000, guid: d15e41cf508b0994babc5c03b7e204c0, type: 2}
