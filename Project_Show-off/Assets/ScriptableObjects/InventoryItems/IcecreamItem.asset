@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c998ad06b9b469248b7492043ef6fc17, type: 3}
+  m_Name: IcecreamItem
+  m_EditorClassIdentifier: 
+  count: 1
+  sprite: {fileID: 21300000, guid: 11fa0600c38ff1f41adc2826fc09fcef, type: 3}
+  obstaclePrefab: {fileID: 5886969166635238265, guid: 69c6ebdad8984a44582c85f9384674a8,
+    type: 3}
+  owner: {fileID: 0}
+  previewPrefab: {fileID: 5692212775163716994, guid: 847092b94a3c18045ac1334eca160ad9,
+    type: 3}
+  failShowDelay: 0.5
+  failMat: {fileID: 2100000, guid: d15e41cf508b0994babc5c03b7e204c0, type: 2}
