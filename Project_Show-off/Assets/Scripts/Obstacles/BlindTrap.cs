@@ -6,34 +6,58 @@ using UnityEngine.UI;
 
 public class BlindTrap : MonoBehaviour
 {
-    [SerializeField] float timeToRemove;
+    [SerializeField] float blindTime = 1f;
+    [SerializeField] float fadeTime = 1f;
 
-    private CanvasGroup theBlind;
-    private bool isFaded;
+    [SerializeField] GameObject visuals;
+
+    private CanvasGroup blindGroup;
     private float timer;
+    //states
+    private bool fading;
+    bool activated;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            other.transform.TryGetComponent(out Player player);
-            Debug.Log("blinded");
-            theBlind = PlayerManager.instance.playerUI[player.id - 1].blindGroup;
-            theBlind.alpha = 1;
-            isFaded = true;
-            timer = 0;
-           // StartCoroutine(removeBlind(theBlind));
-            
-            
+        if (!activated && other.gameObject.CompareTag("Player")) {
+            if (other.transform.TryGetComponent(out Player player)) {
+                blindGroup = GetTargetGroup(player);
+                GetTriggered();
+            }
         }
+    }
+    CanvasGroup GetTargetGroup(Player target)
+    {
+        return PlayerManager.instance.playerUI[target.id - 1].blindGroup;
+    }
+
+    void GetTriggered()
+    {
+        activated = true;
+        visuals.SetActive(false);
+        StartCoroutine(StartFadeCo());
+    }
+
+    IEnumerator StartFadeCo()
+    {
+        blindGroup.alpha = 1;
+        timer = 0;
+        fading = false;
+        yield return new WaitForSeconds(blindTime); //stay fully blind for duration
+        fading = true;
     }
 
     private void Update()
     {
-        if(isFaded)
-        {
+        if(fading) {
             timer += Time.deltaTime;
-            theBlind.alpha = 1 - (timer / timeToRemove);
-            
+            blindGroup.alpha = 1 - (timer / fadeTime);
+            if (timer > fadeTime) { End(); }
         }
+    }
+
+    void End()
+    {
+        Destroy(gameObject);
     }
 }

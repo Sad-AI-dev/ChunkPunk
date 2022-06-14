@@ -1065,7 +1065,7 @@ GameObject:
   - component: {fileID: 767294238}
   m_Layer: 0
   m_Name: Icecream
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1082,7 +1082,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7f77dbb5c84f746b39062883738cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToRemove: 2
+  blindTime: 1
+  fadeTime: 2
+  visuals: {fileID: 3753277299243532660}
 --- !u!65 &767294239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1094,8 +1096,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 12, y: 2, z: 12}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &767294240
 Transform:
   m_ObjectHideFlags: 0
@@ -2104,6 +2106,64 @@ Transform:
   m_Father: {fileID: 17930399}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1495678474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1495678475}
+  - component: {fileID: 1495678476}
+  m_Layer: 0
+  m_Name: Decal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1495678475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495678474}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4565947975360224206}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1495678476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495678474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19d9143a39eb3b46bc4563e9889cfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: cc116cc702593e84fa5ee895d34864de, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_AffectsTransparency: 0
+  m_DecalLayerMask: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_Size: {x: 15, y: 15, z: 1}
+  m_FadeFactor: 1
+  m_Version: 2
 --- !u!1 &1601078974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,9 +2939,10 @@ Transform:
   m_GameObject: {fileID: 3753277299243532660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1495678475}
   m_Father: {fileID: 767294240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2910,17 +2971,17 @@ PrefabInstance:
     - target: {fileID: 483035182955583180, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14142138
+      value: 0.14142135
       objectReference: {fileID: 0}
     - target: {fileID: 483035182955583180, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029502797
+      value: 1.7406504e-15
       objectReference: {fileID: 0}
     - target: {fileID: 483035182955583180, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004214686
+      value: 3.857488e-16
       objectReference: {fileID: 0}
     - target: {fileID: 3664060107837453041, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
@@ -3000,17 +3061,17 @@ PrefabInstance:
     - target: {fileID: 5052337668862425524, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14142138
+      value: 0.14142135
       objectReference: {fileID: 0}
     - target: {fileID: 5052337668862425524, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029502797
+      value: 1.7406504e-15
       objectReference: {fileID: 0}
     - target: {fileID: 5052337668862425524, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004214686
+      value: 3.857488e-16
       objectReference: {fileID: 0}
     - target: {fileID: 5052337669029910048, guid: df6c8b5271acdcc4f909cd3e0b5259a7,
         type: 3}
