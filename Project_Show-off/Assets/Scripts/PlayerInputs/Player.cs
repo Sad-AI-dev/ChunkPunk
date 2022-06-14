@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
         } 
         if(toMove.y < 0.3f )
         {
-            Debug.Log(isAccelerating);
+            //Debug.Log(isAccelerating);
             isAccelerating = false;
         }
 
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator isShooting()
     {
-        Debug.Log("yes i shoot");
+        //Debug.Log("yes i shoot");
         List<GameObject> objs = emitter.Emit();
         foreach (GameObject obj in objs)
         {
@@ -137,10 +137,10 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Died");
         //int ID = this.id;
-        Debug.Log("ateast ehre");
+        //Debug.Log("ateast ehre");
         //Debug.Log(ID);
         this.transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
-        Debug.Log("transfor is " + transform.position);
+        //Debug.Log("transfor is " + transform.position);
         //Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
         //Debug.Log(transform.position);
         //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
         {
             accelerate += 1;
             yield return new WaitForSeconds(1);
-            Debug.Log("speed up");
+            //Debug.Log("speed up");
         }
         else if (!isAccelerating && accelerate > accelerateMin)
             accelerate -= 1;
@@ -225,7 +225,7 @@ public class Player : MonoBehaviour
 
     public void Banana(Vector3 direction)
     {
-        Debug.Log("banaan");
+        //Debug.Log("banaan");
         isBananed = true;
         StartCoroutine(bananaSpin());
         StartCoroutine(bananaTimer());
@@ -235,7 +235,7 @@ public class Player : MonoBehaviour
     
     private IEnumerator bananaSpin()
     {
-        Debug.Log(isBananed);
+        //Debug.Log(isBananed);
         while (isBananed)
         {
             isStunned = true;
