@@ -47,18 +47,23 @@ public class Player : MonoBehaviour
     //Inventory
     [HideInInspector] public Inventory inventory;
 
-    Rigidbody rb;
+    [HideInInspector] public Rigidbody rb;
+    [HideInInspector] public GetHit getHit;
 
     private void Start()
     {
+        //initialize values
         emitter.player = this;
-        rb = GetComponent<Rigidbody>();
-        PlayerManager.instance.AddPlayer(this); //notify others of player's existance
         lookAtStarter = LookAt.localPosition;
         characterModel = transform.GetChild(0);
+        //get external components
+        rb = GetComponent<Rigidbody>();
+        getHit = GetComponent<GetHit>();
         //inventory
         inventory = GetComponent<Inventory>();
         inventory.Initialize();
+        //notify others of player's existance
+        PlayerManager.instance.AddPlayer(this);
     }
 
     public void SetMoveDir(Vector2 newToMove)
