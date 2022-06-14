@@ -1026,12 +1026,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedX: 0
-  forwardForce: 12
-  minSpeed: 8
-  maxSpeed: 10
+  forwardForce: 13.5
+  minSpeed: 9.5
+  maxSpeed: 6
   bananaTime: 3
   bananaSpinSpeed: 100
   bulletDelay: 1
+  isShoting: 0
   externalToMove: {x: 0, y: 0, z: 0}
   face: {fileID: 0}
   rotateSpeed: {x: 120, y: 10}
@@ -1276,12 +1277,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeedX: 0
-  forwardForce: 12
-  minSpeed: 8
-  maxSpeed: 10
+  forwardForce: 13.5
+  minSpeed: 9.5
+  maxSpeed: 6
   bananaTime: 3
   bananaSpinSpeed: 100
   bulletDelay: 1
+  isShoting: 0
   externalToMove: {x: 0, y: 0, z: 0}
   face: {fileID: 0}
   rotateSpeed: {x: 120, y: 10}
