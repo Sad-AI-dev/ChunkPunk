@@ -31,11 +31,8 @@ public class GetHit : MonoBehaviour
             Vector3 direction = projectile.transform.forward * X_ZAxisForce;
             direction.y = yKnockback;
             playerHit(direction.normalized);
-            alreadyHit = true;
-            StartCoroutine(stunned());
-            StartCoroutine(cantHit());
-            Debug.Log("hit");
-            onGetHit?.Invoke();
+            //stun the player
+            StunPlayer(stunTime, invicibilityTime);
         }
     }
 
@@ -49,16 +46,24 @@ public class GetHit : MonoBehaviour
         rb.AddForce(bulletDir * bulletForce);
     }
 
-    private IEnumerator stunned()
+    public void StunPlayer(float stunDuration, float invinceDuration)
+    {
+        alreadyHit = true;
+        StartCoroutine(stunned(stunDuration));
+        StartCoroutine(cantHit(invinceDuration));
+        onGetHit?.Invoke();
+    }
+
+    private IEnumerator stunned(float duration)
     {
         thisPlayer.isStunned = true;
-        yield return new WaitForSeconds(stunTime);
+        yield return new WaitForSeconds(duration);
         thisPlayer.isStunned = false;
     }
 
-    private IEnumerator cantHit()
+    private IEnumerator cantHit(float duration)
     {
-        yield return new WaitForSeconds(invicibilityTime);
+        yield return new WaitForSeconds(duration);
         alreadyHit = false;
     }
 }
