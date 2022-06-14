@@ -66,7 +66,7 @@ public class InputReciever : MonoBehaviour
             }
         }
     }
-
+    
     public void Accelerate(InputAction.CallbackContext context)
     {
         if (target)
@@ -82,6 +82,7 @@ public class InputReciever : MonoBehaviour
             }
         }
     }
+    
     public void Deccelerate(InputAction.CallbackContext context)
     {
         if (target)

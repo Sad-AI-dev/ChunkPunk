@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float bananaTime;
     [SerializeField] float bananaSpinSpeed;
     [SerializeField] float bulletDelay;
+    [SerializeField] float accelerateIncrease;
+    [SerializeField] float timeToSpeedUp;
     private bool isBananed;
     public bool isShoting;
     //result vectors
@@ -39,6 +41,8 @@ public class Player : MonoBehaviour
     public bool isStunned = false;
     private Transform characterModel;
     private float accelerate = 1;
+    private bool isAccelerating;
+    private bool isBraking;
 
     //Inventory
     [HideInInspector] public Inventory inventory;
@@ -60,8 +64,48 @@ public class Player : MonoBehaviour
     public void SetMoveDir(Vector2 newToMove)
     {
         toMove = newToMove;
+
+        if(toMove.y > 0.3f && accelerate < accelerateMax)
+        {
+            StartCoroutine(increaseSpeed());
+            isAccelerating = true;
+        } 
+        if(toMove.y < 0.3f )
+        {
+            Debug.Log(isAccelerating);
+            isAccelerating = false;
+        }
+
+
+        if(toMove.y < -0.3f && accelerate > accelerateMin)
+        {
+            StartCoroutine(decreaseSpeed());
+            isBraking = true;
+        } else if (toMove.y > -0.3f && accelerate < 1)
+        {
+            isBraking = false;
+        }
     }
     
+    private IEnumerator increaseSpeed()
+    {
+        accelerate += accelerateIncrease;
+        yield return new WaitForSeconds(timeToSpeedUp);
+        if (isAccelerating && accelerate < accelerateMax)
+            StartCoroutine(increaseSpeed());
+    }
+
+    private IEnumerator decreaseSpeed()
+    {
+        accelerate -= accelerateIncrease;
+        yield return new WaitForSeconds(timeToSpeedUp);
+        if(isBraking && accelerate > accelerateMin)
+        {
+            StartCoroutine(decreaseSpeed());
+        }
+    }
+
+
     public void Look(Vector2 lookDir)
     {
         if (lookDir.magnitude > 1f) { lookDir.Normalize(); }
@@ -98,7 +142,7 @@ public class Player : MonoBehaviour
         //transform.position = checkPointManager.instance.allPlayerCheckPoints[this];
     }
 
-
+    /*
     public void Accelerate(bool isAccelerating)
     {
         if (isAccelerating && accelerate < accelerateMax)
@@ -108,14 +152,29 @@ public class Player : MonoBehaviour
          else if (!isAccelerating && accelerate > accelerateMin)
             accelerate -= 1;
     }
-    public void Decelerate(bool isDecelerating)
+    */
+    public IEnumerator Accelerate(bool isAccelerating)
+    {
+        if (isAccelerating && accelerate < accelerateMax)
+        {
+            accelerate += 1;
+            yield return new WaitForSeconds(1);
+            Debug.Log("speed up");
+        }
+        else if (!isAccelerating && accelerate > accelerateMin)
+            accelerate -= 1;
+        yield return new WaitForSeconds(1);
+    }
+    public IEnumerator Decelerate(bool isDecelerating)
     {
         if (isDecelerating && accelerate > accelerateMin)
         {
             accelerate -= 0.1f;
+            yield return new WaitForSeconds(1);
         }
         else if (!isDecelerating && accelerate < accelerateMin)
             accelerate += 0.2f;
+        yield return new WaitForSeconds(1);
     }
 
 
@@ -127,7 +186,16 @@ public class Player : MonoBehaviour
         {
             Rotate();
             Move();
+            Debug.Log(accelerate);
         }
+
+        if (!isAccelerating && accelerate > 1)
+        {
+            Debug.Log("Slow down!!");
+            accelerate -= 0.1f;
+        }
+        else if (!isBraking && accelerate < 1)
+            accelerate += 0.1f;
     }
 
     //------------------------rotation----------------------------
@@ -190,7 +258,7 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector2 input = GetInputVelocity();
-        Vector3 velocity = (transform.right * input.x) + (transform.forward * input.y * accelerate ) + (externalToMove * (100 * Time.deltaTime));
+        Vector3 velocity = (transform.right * input.x) + (transform.forward * (input.y * accelerate) ) + (externalToMove * (100 * Time.deltaTime));
         rb.velocity = new Vector3(velocity.x, rb.velocity.y , velocity.z );
     }
 
