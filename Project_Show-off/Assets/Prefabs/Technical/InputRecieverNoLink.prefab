@@ -169,6 +169,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a09285ec-5e7e-4a59-b9d1-b8b47101f4e0
     m_ActionName: Player/RightBumper[/DualShock4GamepadHID/rightShoulder]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2722814710032209075}
+        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
+        m_MethodName: Skip
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 24e1b18b-fe56-4e44-8da9-04843444532d
+    m_ActionName: Player/Skip[/DualSenseGamepadHID/buttonSouth,/DualSenseGamepadHID1/buttonSouth,/XInputControllerWindows/buttonSouth,/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start,/XInputControllerWindows/start,/DualSenseGamepadHID/buttonWest,/DualSenseGamepadHID1/buttonWest,/XInputControllerWindows/buttonWest]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
