@@ -135,29 +135,8 @@ public class Player : MonoBehaviour
 
     public void Died()
     {
-        //Debug.Log("Died");
-        //int ID = this.id;
-        //Debug.Log("ateast ehre");
-        //Debug.Log(ID);
         this.transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
-        //Debug.Log("transfor is " + transform.position);
-        //Debug.Log("checkpoint is " + checkPointManager.instance.allPlayerCheckPoints[id].position);
-        //Debug.Log(transform.position);
-        //transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
-        //transform.position = checkPointManager.instance.allPlayerCheckPoints[this];
     }
-
-    /*
-    public void Accelerate(bool isAccelerating)
-    {
-        if (isAccelerating && accelerate < accelerateMax)
-        {
-            accelerate += 1;
-        }
-         else if (!isAccelerating && accelerate > accelerateMin)
-            accelerate -= 1;
-    }
-    */
     public IEnumerator Accelerate(bool isAccelerating)
     {
         if (isAccelerating && accelerate < accelerateMax)
