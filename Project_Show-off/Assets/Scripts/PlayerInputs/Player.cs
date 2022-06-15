@@ -15,8 +15,6 @@ public class Player : MonoBehaviour
     [SerializeField] float bulletDelay;
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
-    private bool isBananed;
-    public bool isShoting;
     //result vectors
     Vector2 toMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
@@ -38,21 +36,27 @@ public class Player : MonoBehaviour
     [HideInInspector] public GameObject neutralVCam;
     [HideInInspector] public GameObject aimVCam;
     public Transform LookAt;
+    public Transform characterModel { get; private set; }
+    public float accelerate;
+
+    //states
     public bool isStunned = false;
-    private Transform characterModel;
-    private float accelerate = 1;
+    private bool isBananed;
+
+    public bool isShoting;
+
     private bool isAccelerating;
     private bool isBraking;
 
-    //Inventory
+    //external components
     [HideInInspector] public Inventory inventory;
-
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public GetHit getHit;
 
     private void Start()
     {
         //initialize values
+        accelerate = 1;
         emitter.player = this;
         lookAtStarter = LookAt.localPosition;
         characterModel = transform.GetChild(0);
@@ -202,35 +206,12 @@ public class Player : MonoBehaviour
         
     }
 
-    public void Banana(Vector3 direction)
+    //---------------------Getters-------------------
+    public float GetAccelerate()
     {
-        //Debug.Log("banaan");
-        isBananed = true;
-        StartCoroutine(bananaSpin());
-        StartCoroutine(bananaTimer());
-        //rb.AddForceAtPosition(direction * 100000, transform.position);
+        return accelerate;
     }
 
-    
-    private IEnumerator bananaSpin()
-    {
-        //Debug.Log(isBananed);
-        while (isBananed)
-        {
-            isStunned = true;
-            //characterModel.rotation = Quaternion.Euler((new Vector3(0, 10, 0)) * Time.deltaTime);
-            characterModel.Rotate((new Vector3(0, 10, 0)) * bananaSpinSpeed * Time.deltaTime * accelerate);
-            yield return null;
-        }
-    }
-    
-    private IEnumerator bananaTimer()
-    {
-        yield return new WaitForSeconds(bananaTime);
-        isBananed = false;
-        isStunned = false;
-        characterModel.localRotation = Quaternion.Euler(new Vector3(0, 75, 0));
-    }
     //---------------aiming------------------
     public void Aim(bool isAimed)
     {
@@ -255,7 +236,5 @@ public class Player : MonoBehaviour
     {
         float yInput = toMove.y * (toMove.y > 0 ? maxSpeed : minSpeed);
         return yInput + forwardForce;
-
-
     }
 }
