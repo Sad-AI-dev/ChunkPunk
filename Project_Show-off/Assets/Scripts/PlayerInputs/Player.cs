@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] float forwardForce = 4;
     [SerializeField] float minSpeed = 3f;
     [SerializeField] float maxSpeed = 5f;
-    [SerializeField] float bananaTime;
-    [SerializeField] float bananaSpinSpeed;
     [SerializeField] float bulletDelay;
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
@@ -41,7 +39,6 @@ public class Player : MonoBehaviour
 
     //states
     public bool isStunned = false;
-    private bool isBananed;
 
     public bool isShoting;
 
@@ -175,15 +172,15 @@ public class Player : MonoBehaviour
             Rotate();
             Move();
             //Debug.Log(accelerate);
-        }
 
-        if (!isAccelerating && accelerate > 1)
-        {
-            //Debug.Log("Slow down!!");
-            accelerate -= 0.1f;
+            if (!isAccelerating && accelerate > 1)
+            {
+                //Debug.Log("Slow down!!");
+                accelerate -= 0.1f;
+            }
+            else if (!isBraking && accelerate < 1)
+                accelerate += 0.1f;
         }
-        else if (!isBraking && accelerate < 1)
-            accelerate += 0.1f;
     }
 
     //------------------------rotation----------------------------
