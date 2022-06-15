@@ -56,6 +56,17 @@ public class InputReciever : MonoBehaviour
         
     }
 
+
+    public void UseMap(InputAction.CallbackContext context)
+    {
+        if (target)
+        {
+            if (context.started || context.canceled)
+            {
+                target.UseMap();
+            }
+        }
+    }
     public void Aim(InputAction.CallbackContext context)
     {
         if (target) {
