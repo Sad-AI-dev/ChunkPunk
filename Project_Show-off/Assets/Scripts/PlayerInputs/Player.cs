@@ -175,15 +175,15 @@ public class Player : MonoBehaviour
             Rotate();
             Move();
             //Debug.Log(accelerate);
-        }
 
-        if (!isAccelerating && accelerate > 1)
-        {
-            //Debug.Log("Slow down!!");
-            accelerate -= 0.1f;
+            if (!isAccelerating && accelerate > 1)
+            {
+                //Debug.Log("Slow down!!");
+                accelerate -= 0.1f;
+            }
+            else if (!isBraking && accelerate < 1)
+                accelerate += 0.1f;
         }
-        else if (!isBraking && accelerate < 1)
-            accelerate += 0.1f;
     }
 
     //------------------------rotation----------------------------
