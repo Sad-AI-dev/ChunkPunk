@@ -1119,7 +1119,7 @@ PrefabInstance:
         type: 3}
       propertyPath: emitPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 2259820588655371433, guid: 46dc81e64558d1e4fb2d0f191c3e6f8d,
+      objectReference: {fileID: 602547853056513451, guid: a47424ec92667a647b5f20163a163c7d,
         type: 3}
     - target: {fileID: 3412938847539882105, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
         type: 3}
@@ -1130,7 +1130,7 @@ PrefabInstance:
         type: 3}
       propertyPath: emitPrefab.Array.data[0]
       value: 
-      objectReference: {fileID: 6718470190865832951, guid: 890532b9b8ca88847976284f8313b3b1,
+      objectReference: {fileID: 602547853056513451, guid: a47424ec92667a647b5f20163a163c7d,
         type: 3}
     - target: {fileID: 3412938848857705794, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
         type: 3}
