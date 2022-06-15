@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     [SerializeField] float forwardForce = 4;
     [SerializeField] float minSpeed = 3f;
     [SerializeField] float maxSpeed = 5f;
-    [SerializeField] float bananaTime;
-    [SerializeField] float bananaSpinSpeed;
     [SerializeField] float bulletDelay;
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
@@ -41,7 +39,6 @@ public class Player : MonoBehaviour
 
     //states
     public bool isStunned = false;
-    private bool isBananed;
 
     public bool isShoting;
 
