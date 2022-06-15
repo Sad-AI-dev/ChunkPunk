@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class videoScript : MonoBehaviour
 {
+    public bool VideoDone;
     RenderTexture text;
     [SerializeField] VideoPlayer originalVideo;
     private void Awake()
@@ -18,8 +19,11 @@ public class videoScript : MonoBehaviour
     private IEnumerator ShowVideo()
     {
         double time = originalVideo.clip.length;
+        Debug.Log(time);
         yield return new WaitForSeconds((float)time);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        VideoDone = true;
+        Debug.Log("video" + VideoDone);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     

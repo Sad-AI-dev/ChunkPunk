@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5846916, y: 0.39649898}
   m_AnchorMax: {x: 0.9620001, y: 0.44733682}
-  m_AnchoredPosition: {x: 8.2196045, y: -0.9063034}
+  m_AnchoredPosition: {x: 8.2196045, y: -0.90631104}
   m_SizeDelta: {x: 16.4394, y: 1.8126}
   m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!114 &132687519
@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 358857673}
   - component: {fileID: 358857672}
   - component: {fileID: 358857675}
+  - component: {fileID: 358857676}
   m_Layer: 5
   m_Name: StartGame
   m_TagString: Untagged
@@ -742,6 +743,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8af1cd5397fb2448e32c564f63d639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &358857676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358857670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0318ee6db7a0514e8a5238f4d79ba3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  video: {fileID: 1123193910}
 --- !u!1 &813179379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f689a969b42404b4883c25c6c31f0d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VideoDone: 0
   originalVideo: {fileID: 1598885187}
 --- !u!1 &1301767877
 GameObject:
@@ -1546,6 +1561,7 @@ GameObject:
   - component: {fileID: 1598885183}
   - component: {fileID: 1598885187}
   - component: {fileID: 1598885188}
+  - component: {fileID: 1598885189}
   m_Layer: 5
   m_Name: LoadingGame
   m_TagString: Untagged
@@ -1682,6 +1698,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0e8450308d477469c2ccb5602ec609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1598885189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598885182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0318ee6db7a0514e8a5238f4d79ba3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  video: {fileID: 1123193910}
 --- !u!1 &1602339492
 GameObject:
   m_ObjectHideFlags: 0
