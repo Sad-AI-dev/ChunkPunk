@@ -201,7 +201,8 @@ public class Player : MonoBehaviour
             LookAt.localPosition = new Vector3(LookAt.localPosition.x, clampedPos, LookAt.localPosition.z);
         } else
         {
-            LookAt.localPosition = lookAtStarter;
+            float clampedXPos = Mathf.Clamp(turnDirection.x * 5, -5, 5);
+            LookAt.localPosition = new Vector3(clampedXPos, LookAt.localPosition.y, LookAt.localPosition.z);
         }
         
     }
