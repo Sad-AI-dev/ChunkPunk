@@ -70,7 +70,7 @@ MonoBehaviour:
   - obj: {fileID: 11400000, guid: 5cda393aec7a2b5469600bfe959b9cbb, type: 2}
     chance: 1
   - obj: {fileID: 11400000, guid: 2975af1c3060e0e46accd0a58bf6e86a, type: 2}
-    chance: 10
+    chance: 1
   onPickup:
     m_PersistentCalls:
       m_Calls: []
