@@ -18,4 +18,5 @@ public class UIInterfacer : MonoBehaviour
     [Header("Groups")]
     public CanvasGroup blindGroup;
     public CanvasGroup stateGroup;
+    public CanvasGroup mapGroup;
 }

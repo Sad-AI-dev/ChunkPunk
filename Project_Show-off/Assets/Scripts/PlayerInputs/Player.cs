@@ -45,6 +45,8 @@ public class Player : MonoBehaviour
     private bool isAccelerating;
     private bool isBraking;
 
+    private CanvasGroup mapGroup;
+
     //external components
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public Rigidbody rb;
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
         emitter.player = this;
         lookAtStarter = LookAt.localPosition;
         characterModel = transform.GetChild(0);
+        mapGroup = GetTargetGroup(this);
         //get external components
         rb = GetComponent<Rigidbody>();
         getHit = GetComponent<GetHit>();
@@ -93,6 +96,23 @@ public class Player : MonoBehaviour
         }
     }
     
+    public void UseMap()
+    {
+        //if (isUsed)
+        //{
+        //    Debug.Log("AHhhhhhhhhhhhhhhhhhhh");
+        //    mapGroup = GetTargetGroup(this);
+        //} else if (!isUsed)
+        //{
+        //    mapGroup.gameObject.SetActive(false);
+        //}
+        mapGroup.gameObject.SetActive(!mapGroup.gameObject.activeSelf);
+    }
+    
+    CanvasGroup GetTargetGroup(Player target)
+    {
+        return PlayerManager.instance.playerUI[target.id - 1].mapGroup;
+    }
     private IEnumerator increaseSpeed()
     {
         accelerate += accelerateIncrease;
