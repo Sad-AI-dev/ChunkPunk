@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float bulletDelay;
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
+    [SerializeField] float timeBetweenClick;
+    float bulletClickCap;
     //result vectors
     Vector2 toMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
@@ -153,17 +155,25 @@ public class Player : MonoBehaviour
     public IEnumerator isShooting()
     {
         //Debug.Log("yes i shoot");
-        List<GameObject> objs = emitter.Emit();
-        foreach (GameObject obj in objs)
+        if(bulletClickCap <= 0)
         {
-            if (obj.TryGetComponent(out Projectile proj))
+            List<GameObject> objs = emitter.Emit();
+            foreach (GameObject obj in objs)
             {
-                proj.owner = this; //set owner of projectiles
+                Debug.Log(bulletClickCap);
+                if (obj.TryGetComponent(out Projectile proj))
+                {
+                    proj.owner = this; //set owner of projectiles
+                }
+                bulletClickCap = timeBetweenClick;
+
+                yield return new WaitForSeconds(bulletDelay);
+                if (isShoting)
+                    StartCoroutine(isShooting());
             }
-            yield return new WaitForSeconds(bulletDelay);
-            if (isShoting)
-                StartCoroutine(isShooting());
+
         }
+        
     }
 
     public void Died()
@@ -213,6 +223,9 @@ public class Player : MonoBehaviour
             else if (!isBraking && accelerate < 1)
                 accelerate += 0.1f;
         }
+
+        if (bulletClickCap >= 0)
+            bulletClickCap -= Time.deltaTime;
     }
 
     //------------------------rotation----------------------------
