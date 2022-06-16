@@ -22,6 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 rotateSpeed;
     [SerializeField] float maxAimHeight = 2f;
     [SerializeField] float minAimHeight = -2f;
+    [SerializeField] float leadEffectStrength = 2f;
+    [SerializeField] float leadEffectSpeed = 10f;
+
     [SerializeField] float accelerateMax;
     [SerializeField] float accelerateMin;
     Vector2 turnDirection;
@@ -34,7 +37,13 @@ public class Player : MonoBehaviour
     [HideInInspector] public GameObject neutralVCam;
     [HideInInspector] public GameObject aimVCam;
     public Transform LookAt;
+    //leading camera vars
+    [SerializeField] Transform baseLookAt;
+    Vector3 baseLookAtPos;
+
+    //visuals
     public Transform characterModel { get; private set; }
+
     public float accelerate;
 
     //states
@@ -44,6 +53,8 @@ public class Player : MonoBehaviour
 
     private bool isAccelerating;
     private bool isBraking;
+
+    private CanvasGroup mapGroup;
 
     //external components
     [HideInInspector] public Inventory inventory;
@@ -55,8 +66,12 @@ public class Player : MonoBehaviour
         //initialize values
         accelerate = 1;
         emitter.player = this;
+        //lookats
         lookAtStarter = LookAt.localPosition;
+        baseLookAtPos = baseLookAt.localPosition;
+        //visuals
         characterModel = transform.GetChild(0);
+        mapGroup = GetTargetGroup(this);
         //get external components
         rb = GetComponent<Rigidbody>();
         getHit = GetComponent<GetHit>();
@@ -93,6 +108,23 @@ public class Player : MonoBehaviour
         }
     }
     
+    public void UseMap()
+    {
+        //if (isUsed)
+        //{
+        //    Debug.Log("AHhhhhhhhhhhhhhhhhhhh");
+        //    mapGroup = GetTargetGroup(this);
+        //} else if (!isUsed)
+        //{
+        //    mapGroup.gameObject.SetActive(false);
+        //}
+        mapGroup.gameObject.SetActive(!mapGroup.gameObject.activeSelf);
+    }
+    
+    CanvasGroup GetTargetGroup(Player target)
+    {
+        return PlayerManager.instance.playerUI[target.id - 1].mapGroup;
+    }
     private IEnumerator increaseSpeed()
     {
         accelerate += accelerateIncrease;
@@ -196,12 +228,15 @@ public class Player : MonoBehaviour
             LookAt.localPosition += new Vector3(0, turnDirection.y, 0) * (rotateSpeed.y * Time.deltaTime);
             float clampedPos = Mathf.Clamp(LookAt.localPosition.y, minAimHeight, maxAimHeight); //clamp rotation
             LookAt.localPosition = new Vector3(LookAt.localPosition.x, clampedPos, LookAt.localPosition.z);
-        } else
-        {
-            float clampedXPos = Mathf.Clamp(turnDirection.x * 5, -5, 5);
-            LookAt.localPosition = new Vector3(clampedXPos, LookAt.localPosition.y, LookAt.localPosition.z);
         }
-        
+        //update lead effect
+        UpdateBaseLookAt();
+    }
+
+    void UpdateBaseLookAt()
+    {
+        Vector3 targetPos = baseLookAtPos + new Vector3(turnDirection.x * leadEffectStrength, 0, 0);
+        baseLookAt.localPosition = Vector3.MoveTowards(baseLookAt.localPosition, targetPos, leadEffectSpeed * Time.deltaTime);
     }
 
     //---------------------Getters-------------------

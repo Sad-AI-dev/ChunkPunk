@@ -22,7 +22,6 @@ public class videoScript : MonoBehaviour
         Debug.Log(time);
         yield return new WaitForSeconds((float)time);
         VideoDone = true;
-        Debug.Log("video" + VideoDone);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
