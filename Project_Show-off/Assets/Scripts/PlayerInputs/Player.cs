@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField] float UTurnAngle;
     [SerializeField] float accelerateMax;
     [SerializeField] float accelerateMin;
+    [SerializeField] float waitTime;
+    private float internalWaitTime;
     Vector2 turnDirection;
 
     [Header("Technical settings")]
@@ -63,6 +65,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public GetHit getHit;
+
+    private void Awake()
+    {
+        internalWaitTime = waitTime;
+    }
 
     private void Start()
     {
@@ -237,23 +244,30 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (!isStunned)
+        if(waitTime > 0)
         {
-            Rotate();
-            Move();
-            //Debug.Log(accelerate);
-
-            if (!isAccelerating && accelerate > 1)
-            {
-                //Debug.Log("Slow down!!");
-                accelerate -= 0.1f;
-            }
-            else if (!isBraking && accelerate < 1)
-                accelerate += 0.1f;
+            waitTime -= Time.deltaTime;
         }
+        if (waitTime <= 0){
+            if (!isStunned)
+            {
+                Rotate();
+                Move();
+                //Debug.Log(accelerate);
 
-        if (bulletClickCap >= 0)
-            bulletClickCap -= Time.deltaTime;
+                if (!isAccelerating && accelerate > 1)
+                {
+                    //Debug.Log("Slow down!!");
+                    accelerate -= 0.1f;
+                }
+                else if (!isBraking && accelerate < 1)
+                    accelerate += 0.1f;
+            }
+
+            if (bulletClickCap >= 0)
+                bulletClickCap -= Time.deltaTime;
+        }
+        
     }
 
     //------------------------rotation----------------------------
