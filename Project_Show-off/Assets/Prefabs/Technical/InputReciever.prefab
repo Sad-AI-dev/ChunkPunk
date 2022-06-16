@@ -201,6 +201,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 29c6541b-d133-4997-bac6-dc528462b3ae
     m_ActionName: Player/SelectMap[/DualSenseGamepadHID/select,/XInputControllerWindows/select]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2722814710032209075}
+        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
+        m_MethodName: UTurn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fc126bfe-887e-4955-bd3d-63e76dbbc5cf
+    m_ActionName: Player/UTurn[/DualSenseGamepadHID/dpad/down,/XInputControllerWindows/dpad/down,/DualSenseGamepadHID1/dpad/down,/DualSenseGamepadHID2/dpad/down,/XInputControllerWindows1/dpad/down,/Keyboard/s]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

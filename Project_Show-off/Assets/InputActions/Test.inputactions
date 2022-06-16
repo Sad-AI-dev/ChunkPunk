@@ -103,6 +103,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "UTurn",
+                    "type": "Button",
+                    "id": "fc126bfe-887e-4955-bd3d-63e76dbbc5cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -477,6 +486,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "SelectMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1ac7ed24-98b0-4696-b0b9-4362c6ff3785",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UTurn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "19fd508a-d9bb-40c4-900a-b3b2830de83f",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UTurn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
