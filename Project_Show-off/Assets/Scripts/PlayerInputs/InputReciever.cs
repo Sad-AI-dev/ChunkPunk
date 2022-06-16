@@ -27,6 +27,11 @@ public class InputReciever : MonoBehaviour
         if (target) { target.SetMoveDir(context.ReadValue<Vector2>()); }
     }
 
+    public void UTurn(InputAction.CallbackContext context)
+    {
+        if (target) { target.UTurn(); }
+    }
+
     public void Looking(InputAction.CallbackContext context)
     {
         if (target) {

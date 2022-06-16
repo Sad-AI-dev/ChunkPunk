@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     [SerializeField] float minAimHeight = -2f;
     [SerializeField] float leadEffectStrength = 2f;
     [SerializeField] float leadEffectSpeed = 10f;
-
+    [SerializeField] float UTurnSpeed;
+    [SerializeField] float UTurnAngle;
     [SerializeField] float accelerateMax;
     [SerializeField] float accelerateMin;
     Vector2 turnDirection;
@@ -112,14 +113,6 @@ public class Player : MonoBehaviour
     
     public void UseMap()
     {
-        //if (isUsed)
-        //{
-        //    Debug.Log("AHhhhhhhhhhhhhhhhhhhh");
-        //    mapGroup = GetTargetGroup(this);
-        //} else if (!isUsed)
-        //{
-        //    mapGroup.gameObject.SetActive(false);
-        //}
         mapGroup.gameObject.SetActive(!mapGroup.gameObject.activeSelf);
     }
     
@@ -174,6 +167,41 @@ public class Player : MonoBehaviour
 
         }
         
+    }
+
+
+    public void UTurn() {
+        float rotationSpeed = 0.5f * 360f;
+        Debug.Log("UTurn");
+        Vector3 newRot = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
+        StartCoroutine(RotateObject(UTurnAngle, Vector3.up, UTurnSpeed));
+    }
+    IEnumerator RotateObject(float angle, Vector3 axis, float inTime)
+    {
+        // calculate rotation speed
+        float rotationSpeed = angle / inTime;
+
+        while (true)
+        {
+            // save starting rotation position
+            Quaternion startRotation = transform.rotation;
+
+            float deltaAngle = 0;
+
+            // rotate until reaching angle
+            while (deltaAngle < angle)
+            {
+                deltaAngle += rotationSpeed * Time.deltaTime;
+                deltaAngle = Mathf.Min(deltaAngle, angle);
+
+                transform.rotation = startRotation * Quaternion.AngleAxis(deltaAngle, axis);
+
+                yield return null;
+            }
+
+            // delay here
+            break;
+        }
     }
 
     public void Died()
