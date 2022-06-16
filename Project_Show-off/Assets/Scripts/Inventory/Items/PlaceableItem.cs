@@ -22,11 +22,11 @@ public class PlaceableItem : InventoryItem
     public override void Initialize(Inventory inventory)
     {
         base.Initialize(inventory);
-        SetupPreview();
+        SetupPreview(inventory);
     }
-    void SetupPreview()
+    void SetupPreview(Inventory inventory)
     {
-        preview = Instantiate(previewPrefab, owner.placePoint).transform;
+        preview = Instantiate(previewPrefab, inventory.placePoint).transform;
         preview.gameObject.SetActive(false);
         //collisions detector
         detector = preview.GetComponent<CollisionDetector>();
@@ -36,29 +36,29 @@ public class PlaceableItem : InventoryItem
         previewMat = previewRenderer[0].material;
     }
 
-    public override void Update()
+    public override void UpdateItem(Inventory inventory)
     {
         if (isActive) {
             //update preview pos?
         }
     }
 
-    public override void OnSelect()
+    public override void OnSelect(Inventory inventory)
     {
         preview.gameObject.SetActive(true);
         isActive = true;
         UpdatePreview();
     }
 
-    public override void OnUse()
+    public override void OnUse(Inventory inventory)
     {
         if (isActive) {
             if (!detector.HasCollisions()) {
-                base.OnUse();
                 PlaceObstacle();
+                inventory.ConsumeItem();
             }
             else {
-                owner.CoroutineStarter(FailUseCo());
+                inventory.CoroutineStarter(FailUseCo());
             }
         }
     }

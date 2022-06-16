@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
 public class LandMine : MonoBehaviour
 {
@@ -13,20 +10,37 @@ public class LandMine : MonoBehaviour
     [SerializeField] float stunDuration = 1f;
     [SerializeField] float invinceDuration = 1.2f;
 
+    [Header("Technical Timings")]
+    [SerializeField] float startTime = 0.2f;
+    bool starting = false;
+
+    private void Start()
+    {
+        StartCoroutine(SetupCo());
+    }
+    IEnumerator SetupCo()
+    {
+        starting = true;
+        yield return new WaitForSeconds(startTime);
+        starting = false;
+    }
+
+    //----------------triggers--------------------------
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) {
+        if (!starting && other.gameObject.CompareTag("Player")) {
             Explode();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Projectile")) {
+        if (!starting && collision.gameObject.CompareTag("Projectile")) {
             Explode();
         }
     }
 
+    //--------------------trigger effect------------------------
     void Explode()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
