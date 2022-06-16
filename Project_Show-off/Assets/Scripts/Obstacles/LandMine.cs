@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LandMine : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class LandMine : MonoBehaviour
     [Header("Player Hit Settings")]
     [SerializeField] float stunDuration = 1f;
     [SerializeField] float invinceDuration = 1.2f;
+    [SerializeField] UnityEvent onExplode;
 
     [Header("Technical Timings")]
     [SerializeField] float startTime = 0.2f;
@@ -47,6 +49,7 @@ public class LandMine : MonoBehaviour
         foreach (var hitCollider in hitColliders) {
             EffectExternalObjects(hitCollider.gameObject);
         }
+        onExplode?.Invoke();
         Destroy(gameObject);
     }
 
