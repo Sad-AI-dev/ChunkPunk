@@ -2496,12 +2496,14 @@ MonoBehaviour:
   bulletDelay: 1
   accelerateIncrease: 0
   timeToSpeedUp: 0
+  timeBetweenClick: 0
   externalToMove: {x: 0, y: 0, z: 0}
   face: {fileID: 0}
   rotateSpeed: {x: 120, y: 10}
   maxAimHeight: 2
   minAimHeight: -1
-  leadEffectStrength: 2
+  leadEffectStrength: 6
+  leadEffectSpeed: 50
   accelerateMax: 4
   accelerateMin: 0.7
   emitter: {fileID: 3412938847539882105}
@@ -2753,12 +2755,14 @@ MonoBehaviour:
   bulletDelay: 1
   accelerateIncrease: 0
   timeToSpeedUp: 0
+  timeBetweenClick: 0
   externalToMove: {x: 0, y: 0, z: 0}
   face: {fileID: 0}
   rotateSpeed: {x: 120, y: 10}
   maxAimHeight: 2
   minAimHeight: -1
-  leadEffectStrength: 2
+  leadEffectStrength: 6
+  leadEffectSpeed: 50
   accelerateMax: 4
   accelerateMin: 0.7
   emitter: {fileID: 3412938848857705794}

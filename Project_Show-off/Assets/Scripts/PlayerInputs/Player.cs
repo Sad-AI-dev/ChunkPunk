@@ -290,7 +290,8 @@ public class Player : MonoBehaviour
 
     void UpdateBaseLookAt()
     {
-        Vector3 targetPos = baseLookAtPos + new Vector3(turnDirection.x * leadEffectStrength, 0, 0);
+        Vector3 targetOffset = new Vector3(turnDirection.normalized.x * leadEffectStrength, 0, 0);
+        Vector3 targetPos = baseLookAtPos + targetOffset;
         baseLookAt.localPosition = Vector3.MoveTowards(baseLookAt.localPosition, targetPos, leadEffectSpeed * Time.deltaTime);
     }
 
