@@ -32,7 +32,7 @@ public class Inventory : MonoBehaviour
     private void Update()
     {
         if (hasItem) {
-            heldItem.Update();
+            heldItem.UpdateItem(this);
         }
     }
 
@@ -52,14 +52,24 @@ public class Inventory : MonoBehaviour
     public void SelectItem()
     {
         if (hasItem) {
-            heldItem.OnSelect();
+            heldItem.OnSelect(this);
         }
     }
 
     public void UseItem()
     {
         if (hasItem) {
-            heldItem.OnUse();
+            heldItem.OnUse(this);
+        }
+    }
+
+    public void ConsumeItem()
+    {
+        count--;
+        SetUICount();
+        if (count <= 0) { 
+            hasItem = false;
+            SetUIImage(null);
         }
     }
 

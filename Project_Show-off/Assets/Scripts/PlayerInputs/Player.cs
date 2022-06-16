@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] float bulletDelay;
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
+    [SerializeField] float timeBetweenClick;
+    float bulletClickCap;
     //result vectors
     Vector2 toMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
@@ -24,9 +26,12 @@ public class Player : MonoBehaviour
     [SerializeField] float minAimHeight = -2f;
     [SerializeField] float leadEffectStrength = 2f;
     [SerializeField] float leadEffectSpeed = 10f;
-
+    [SerializeField] float UTurnSpeed;
+    [SerializeField] float UTurnAngle;
     [SerializeField] float accelerateMax;
     [SerializeField] float accelerateMin;
+    [SerializeField] float waitTime;
+    private float internalWaitTime;
     Vector2 turnDirection;
 
     [Header("Technical settings")]
@@ -60,6 +65,11 @@ public class Player : MonoBehaviour
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public GetHit getHit;
+
+    private void Awake()
+    {
+        internalWaitTime = waitTime;
+    }
 
     private void Start()
     {
@@ -110,14 +120,6 @@ public class Player : MonoBehaviour
     
     public void UseMap()
     {
-        //if (isUsed)
-        //{
-        //    Debug.Log("AHhhhhhhhhhhhhhhhhhhh");
-        //    mapGroup = GetTargetGroup(this);
-        //} else if (!isUsed)
-        //{
-        //    mapGroup.gameObject.SetActive(false);
-        //}
         mapGroup.gameObject.SetActive(!mapGroup.gameObject.activeSelf);
     }
     
@@ -153,16 +155,59 @@ public class Player : MonoBehaviour
     public IEnumerator isShooting()
     {
         //Debug.Log("yes i shoot");
-        List<GameObject> objs = emitter.Emit();
-        foreach (GameObject obj in objs)
+        if(bulletClickCap <= 0)
         {
-            if (obj.TryGetComponent(out Projectile proj))
+            List<GameObject> objs = emitter.Emit();
+            foreach (GameObject obj in objs)
             {
-                proj.owner = this; //set owner of projectiles
+                Debug.Log(bulletClickCap);
+                if (obj.TryGetComponent(out Projectile proj))
+                {
+                    proj.owner = this; //set owner of projectiles
+                }
+                bulletClickCap = timeBetweenClick;
+
+                yield return new WaitForSeconds(bulletDelay);
+                if (isShoting)
+                    StartCoroutine(isShooting());
             }
-            yield return new WaitForSeconds(bulletDelay);
-            if (isShoting)
-                StartCoroutine(isShooting());
+
+        }
+        
+    }
+
+
+    public void UTurn() {
+        float rotationSpeed = 0.5f * 360f;
+        Debug.Log("UTurn");
+        Vector3 newRot = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
+        StartCoroutine(RotateObject(UTurnAngle, Vector3.up, UTurnSpeed));
+    }
+    IEnumerator RotateObject(float angle, Vector3 axis, float inTime)
+    {
+        // calculate rotation speed
+        float rotationSpeed = angle / inTime;
+
+        while (true)
+        {
+            // save starting rotation position
+            Quaternion startRotation = transform.rotation;
+
+            float deltaAngle = 0;
+
+            // rotate until reaching angle
+            while (deltaAngle < angle)
+            {
+                deltaAngle += rotationSpeed * Time.deltaTime;
+                deltaAngle = Mathf.Min(deltaAngle, angle);
+
+                transform.rotation = startRotation * Quaternion.AngleAxis(deltaAngle, axis);
+
+                yield return null;
+            }
+
+            // delay here
+            break;
         }
     }
 
@@ -199,20 +244,30 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (!isStunned)
+        if(waitTime > 0)
         {
-            Rotate();
-            Move();
-            //Debug.Log(accelerate);
-
-            if (!isAccelerating && accelerate > 1)
-            {
-                //Debug.Log("Slow down!!");
-                accelerate -= 0.1f;
-            }
-            else if (!isBraking && accelerate < 1)
-                accelerate += 0.1f;
+            waitTime -= Time.deltaTime;
         }
+        if (waitTime <= 0){
+            if (!isStunned)
+            {
+                Rotate();
+                Move();
+                //Debug.Log(accelerate);
+
+                if (!isAccelerating && accelerate > 1)
+                {
+                    //Debug.Log("Slow down!!");
+                    accelerate -= 0.1f;
+                }
+                else if (!isBraking && accelerate < 1)
+                    accelerate += 0.1f;
+            }
+
+            if (bulletClickCap >= 0)
+                bulletClickCap -= Time.deltaTime;
+        }
+        
     }
 
     //------------------------rotation----------------------------
@@ -235,7 +290,8 @@ public class Player : MonoBehaviour
 
     void UpdateBaseLookAt()
     {
-        Vector3 targetPos = baseLookAtPos + new Vector3(turnDirection.x * leadEffectStrength, 0, 0);
+        Vector3 targetOffset = new Vector3(turnDirection.normalized.x * leadEffectStrength, 0, 0);
+        Vector3 targetPos = baseLookAtPos + targetOffset;
         baseLookAt.localPosition = Vector3.MoveTowards(baseLookAt.localPosition, targetPos, leadEffectSpeed * Time.deltaTime);
     }
 
