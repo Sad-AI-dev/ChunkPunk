@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4572222835178575892}
   m_Layer: 0
   m_Name: CandyGrenade
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,6 +109,9 @@ MonoBehaviour:
   radius: 6
   stunDuration: 2
   invinceDuration: 2.5
+  onExplode:
+    m_PersistentCalls:
+      m_Calls: []
   startTime: 0.2
 --- !u!1001 &7129138768083596747
 PrefabInstance:

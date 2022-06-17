@@ -1377,14 +1377,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 966769299}
-  m_LocalRotation: {x: 0.25491768, y: -0.12728085, z: -0.1099507, w: 0.9522224}
+  m_LocalRotation: {x: 0.23203799, y: -0.865241, z: 0.15241118, w: 0.41747725}
   m_LocalPosition: {x: -0.91, y: 8.25, z: -8.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1006229557}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 27.225, y: -19.611, z: -17.966}
+  m_LocalEulerAnglesHint: {x: 27.225, y: -132.87, z: -17.966}
 --- !u!114 &966769301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1919,7 +1919,7 @@ GameObject:
   - component: {fileID: 1309290092}
   m_Layer: 0
   m_Name: Ramp
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

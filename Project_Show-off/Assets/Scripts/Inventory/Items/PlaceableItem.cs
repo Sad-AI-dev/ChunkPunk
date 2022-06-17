@@ -8,15 +8,21 @@ public class PlaceableItem : InventoryItem
     [SerializeField] GameObject previewPrefab;
     [SerializeField] float failShowDelay = 1f;
 
-    [Header("Materials")]
+    [Header("Technical")]
+    [SerializeField] float groundCheckDistance = 1f;
+
     //materials
+    [Header("Materials")]
     Material previewMat;
     [SerializeField] Material failMat;
     MeshRenderer[] previewRenderer;
 
     Transform preview;
     CollisionDetector detector;
+
+    //states
     bool isActive = false;
+    bool grounded = false;
     bool frozen = false;
 
     public override void Initialize(Inventory inventory)
@@ -39,7 +45,20 @@ public class PlaceableItem : InventoryItem
     public override void UpdateItem(Inventory inventory)
     {
         if (isActive) {
-            //update preview pos?
+            //UpdatePreviewPos(inventory);
+        }
+    }
+    void UpdatePreviewPos(Inventory inventory)
+    {
+        Ray ray = new Ray(inventory.placePoint.position + new Vector3(0, 1f, 0), Vector3.down);
+        grounded = Physics.Raycast(ray, out RaycastHit hit, groundCheckDistance, LayerMask.GetMask("Default"), QueryTriggerInteraction.Ignore);
+        if (grounded) {
+            //position
+            preview.position = hit.point;
+            //rotation
+            //preview.up = hit.normal;
+            //preview.localEulerAngles = new Vector3(preview.localEulerAngles.x, 0, preview.localEulerAngles.z);
+            preview.rotation = Quaternion.FromToRotation(Vector3.forward, Vector3.up) * Quaternion.LookRotation(hit.normal);
         }
     }
 
@@ -93,10 +112,8 @@ public class PlaceableItem : InventoryItem
                     SetMaterial(failMat);
                 }
             }
-            else if (!detector.HasCollisions()) {
-                if (!IsPreviewMaterial()) {
-                    SetMaterial(previewMat);
-                }
+            else if (!IsPreviewMaterial()) {
+                SetMaterial(previewMat);
             }
         }
     }

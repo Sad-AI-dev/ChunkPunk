@@ -10,7 +10,14 @@ public class SceneLoader : MonoBehaviour
     }
 
     //------------load specific scene---------------
-    
+    public void LoadScene(int sceneIndex)
+    {
+        SceneManager.LoadSceneAsync(sceneIndex);
+    }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+    }
     
     //----------------quit game-----------------
     public void QuitGame()
