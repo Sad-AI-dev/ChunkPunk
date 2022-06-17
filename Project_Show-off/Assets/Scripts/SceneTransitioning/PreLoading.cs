@@ -5,50 +5,32 @@ using System.Collections;
 
 public class PreLoading : MonoBehaviour
 {
-
     [SerializeField] videoScript video;
-    private void OnEnable()
-    {
-        startIt(3);
-    }
+    [HideInInspector] public bool skipped;
 
-    public void startIt(int sceneIndex)
+    public void LoadNextSceneInBackground()
     {
-        StartCoroutine(LoadYourAsyncScene(sceneIndex));
+        skipped = false;
+        StartCoroutine(LoadSceneCo());
     }
-    IEnumerator LoadYourAsyncScene(int sceneIndex)
+    IEnumerator LoadSceneCo()
     {
         yield return new WaitForSeconds(0.1f);
-        yield return null;
 
         //Begin to load the Scene you specify
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Level_Iteration1");
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         //Don't let the Scene activate until you allow it to
         asyncOperation.allowSceneActivation = false;
-        Debug.Log("Pro :" + asyncOperation.progress);
-        //When the load is still in progress, output the Text and progress bar
         bool isDoneThis = false;
-        while (!asyncOperation.isDone)
-        {
-            
-            //Output the current progress
-            Debug.Log(video.VideoDone);
-            Debug.Log(asyncOperation.progress);
-            Debug.Log("video" + video.VideoDone);
+        while (!asyncOperation.isDone) {
             // Check if the load has finished
-            if(asyncOperation.progress >= 0.9f)
-            {
+            if(asyncOperation.progress >= 0.9f) {
                 isDoneThis = true;
             }
-            Debug.Log("done" + isDoneThis);
-            if (video.VideoDone && isDoneThis)
-            {
-                //Change the Text to show the Scene is ready
-                //Wait to you press the space key to activate the Scene
-                Debug.Log("Finsihed");
+            if ((video.VideoDone || skipped) && isDoneThis) {
+                //go to next scene
                 asyncOperation.allowSceneActivation = true;
             }
-
             yield return null;
         }
     }

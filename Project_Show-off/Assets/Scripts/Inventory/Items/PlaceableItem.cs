@@ -72,7 +72,7 @@ public class PlaceableItem : InventoryItem
     public override void OnUse(Inventory inventory)
     {
         if (isActive) {
-            if (!detector.HasCollisions() && grounded) {
+            if (!detector.HasCollisions()) {
                 PlaceObstacle();
                 inventory.ConsumeItem();
             }
@@ -107,15 +107,13 @@ public class PlaceableItem : InventoryItem
     void UpdatePreview()
     {
         if (!frozen) {
-            if (detector.HasCollisions() && grounded) {
+            if (detector.HasCollisions()) {
                 if (IsPreviewMaterial()) { 
                     SetMaterial(failMat);
                 }
             }
-            else {
-                if (!IsPreviewMaterial()) {
-                    SetMaterial(previewMat);
-                }
+            else if (!IsPreviewMaterial()) {
+                SetMaterial(previewMat);
             }
         }
     }

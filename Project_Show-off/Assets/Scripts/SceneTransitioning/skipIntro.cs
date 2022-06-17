@@ -7,9 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class skipIntro : MonoBehaviour
 {
+    [SerializeField] PreLoading targetLoader;
+
     private void Awake()
     {
-        Debug.Log("I woke up");
         var myAction = new InputAction(binding: "<Gamepad>/<button>");
         myAction.started += content => skip();
         myAction.Enable();
@@ -18,7 +19,6 @@ public class skipIntro : MonoBehaviour
 
     private void skip()
     {
-        Debug.Log("SKippppppppppppppppppppp");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        targetLoader.skipped = true;
     }
 }

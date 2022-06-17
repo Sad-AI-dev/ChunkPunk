@@ -1,5 +1,5 @@
-using System.Collections;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,17 +11,26 @@ public class InputReciever : MonoBehaviour
     [HideInInspector] public int id = 0;
     Player target;
 
+    //--------------------------------linking-------------------------------------
     private void Start()
     {
-        if (linkOnStart) Link();
+        if (linkOnStart) StartCoroutine(LinkCo());
+        else { SceneManager.sceneLoaded += OnSceneLoaded; }
     }
 
-    public void Link()
+    public IEnumerator LinkCo()
     {
+        yield return null; //wait a frame
         target = PlayerManager.instance.GetUnlinkedPlayer();
         if (!target) { Destroy(gameObject); } //make sure an unlinked player exists
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(LinkCo());
+    }
+
+    //---------------------------inputs--------------------------------------------
     public void Move(InputAction.CallbackContext context)
     {
         if (target) { target.SetMoveDir(context.ReadValue<Vector2>()); }

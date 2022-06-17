@@ -22,7 +22,8 @@ public class SetupController : MonoBehaviour
         joinedPlayers++;
         //register input reciever
         DontDestroyOnLoad(input.gameObject);
-        input.GetComponent<InputReciever>().id = joinedPlayers;
+        InputReciever reciever = input.GetComponent<InputReciever>();
+        reciever.id = joinedPlayers;
         //update ui
         UpdatePlayerUI();
     }
