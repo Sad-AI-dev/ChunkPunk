@@ -18,16 +18,25 @@ public class InputReciever : MonoBehaviour
         else { SceneManager.sceneLoaded += OnSceneLoaded; }
     }
 
-    public IEnumerator LinkCo()
+    IEnumerator LinkCo()
     {
+        target = null;
         yield return null; //wait a frame
-        target = PlayerManager.instance.GetUnlinkedPlayer();
-        if (!target) { Destroy(gameObject); } //make sure an unlinked player exists
+        if (PlayerManager.instance) {
+            target = PlayerManager.instance.GetUnlinkedPlayer();
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(LinkCo());
+    }
+    
+    //--------------------unlink---------------
+    public void Unlink()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Destroy(gameObject);
     }
 
     //---------------------------inputs--------------------------------------------
