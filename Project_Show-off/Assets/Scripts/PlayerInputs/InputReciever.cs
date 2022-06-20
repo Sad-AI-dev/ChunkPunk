@@ -18,16 +18,25 @@ public class InputReciever : MonoBehaviour
         else { SceneManager.sceneLoaded += OnSceneLoaded; }
     }
 
-    public IEnumerator LinkCo()
+    IEnumerator LinkCo()
     {
+        target = null;
         yield return null; //wait a frame
-        target = PlayerManager.instance.GetUnlinkedPlayer();
-        if (!target) { Destroy(gameObject); } //make sure an unlinked player exists
+        if (PlayerManager.instance) {
+            target = PlayerManager.instance.GetUnlinkedPlayer();
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(LinkCo());
+    }
+    
+    //--------------------unlink---------------
+    public void Unlink()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Destroy(gameObject);
     }
 
     //---------------------------inputs--------------------------------------------
@@ -73,12 +82,9 @@ public class InputReciever : MonoBehaviour
 
     public void UseMap(InputAction.CallbackContext context)
     {
-        if (target)
-        {
-            if (context.started || context.canceled)
-            {
-                target.UseMap();
-            }
+        if (target) {
+            if (context.started) { target.ShowMap(); }
+            else if (context.canceled) { target.HideMap(); }
         }
     }
     public void Aim(InputAction.CallbackContext context)

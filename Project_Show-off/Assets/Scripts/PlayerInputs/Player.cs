@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
     [SerializeField] float UTurnAngle;
     [SerializeField] float accelerateMax;
     [SerializeField] float accelerateMin;
-    [SerializeField] float waitTime;
-    private float internalWaitTime;
     Vector2 turnDirection;
 
     [Header("Technical settings")]
@@ -65,11 +63,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public GetHit getHit;
-
-    private void Awake()
-    {
-        internalWaitTime = waitTime;
-    }
 
     private void Start()
     {
@@ -118,9 +111,13 @@ public class Player : MonoBehaviour
         }
     }
     
-    public void UseMap()
+    public void ShowMap()
     {
-        mapGroup.gameObject.SetActive(!mapGroup.gameObject.activeSelf);
+        mapGroup.alpha = 1f;
+    }
+    public void HideMap()
+    {
+        mapGroup.alpha = 0f;
     }
     
     CanvasGroup GetTargetGroup(Player target)
@@ -178,9 +175,9 @@ public class Player : MonoBehaviour
 
 
     public void UTurn() {
-        float rotationSpeed = 0.5f * 360f;
-        Debug.Log("UTurn");
-        Vector3 newRot = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
+        //float rotationSpeed = 0.5f * 360f;
+        //Debug.Log("UTurn");
+        //Vector3 newRot = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
         StartCoroutine(RotateObject(UTurnAngle, Vector3.up, UTurnSpeed));
     }
     IEnumerator RotateObject(float angle, Vector3 axis, float inTime)
@@ -243,31 +240,22 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-
-        if(waitTime > 0)
+        if (!isStunned)
         {
-            waitTime -= Time.deltaTime;
-        }
-        if (waitTime <= 0){
-            if (!isStunned)
+            Rotate();
+            Move();
+            //Debug.Log(accelerate);
+
+            if (!isAccelerating && accelerate > 1)
             {
-                Rotate();
-                Move();
-                //Debug.Log(accelerate);
-
-                if (!isAccelerating && accelerate > 1)
-                {
-                    //Debug.Log("Slow down!!");
-                    accelerate -= 0.1f;
-                }
-                else if (!isBraking && accelerate < 1)
-                    accelerate += 0.1f;
+                //Debug.Log("Slow down!!");
+                accelerate -= 0.1f;
             }
-
-            if (bulletClickCap >= 0)
-                bulletClickCap -= Time.deltaTime;
+            else if (!isBraking && accelerate < 1)
+                accelerate += 0.1f;
         }
-        
+        if (bulletClickCap >= 0)
+            bulletClickCap -= Time.deltaTime;
     }
 
     //------------------------rotation----------------------------
