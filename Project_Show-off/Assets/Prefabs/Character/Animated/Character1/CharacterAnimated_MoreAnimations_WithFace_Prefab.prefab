@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d080a430022a9164db4c377571c0c69e, type: 2}
+  - {fileID: 2100000, guid: 9842b031eebf31145999b5567454cdc5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -366,7 +366,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6041627d6d67c98448db2f4ccff9e495, type: 2}
+  - {fileID: 2100000, guid: dd7a3e93faf6a4a408fd3134737b111a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -730,7 +730,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48d9abd86ce8d5a41bf1d1e8a150e214, type: 2}
+  - {fileID: 2100000, guid: 90143c35ccd134c4b9e889f3b6990cfe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -755,7 +755,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -8545447256379345787, guid: 13aa6567d8bb7814aa7c0b099b61d0ea, type: 3}
+  m_Mesh: {fileID: -8545447256379345787, guid: f168c2d06b7e77749bc0400bdd9dce13, type: 3}
   m_Bones:
   - {fileID: 1645171027684724724}
   - {fileID: 1640692624379211792}
@@ -975,7 +975,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14b30c8e3299b2b4f92aa788b82e84c1, type: 2}
+  - {fileID: 2100000, guid: a6e35e1182dc77a4384f068ca762c7b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1140,7 +1140,7 @@ GameObject:
   - component: {fileID: 7256037987298294660}
   - component: {fileID: 7149492342727899222}
   m_Layer: 0
-  m_Name: CharacterAnimated_WithFace_Prefab
+  m_Name: CharacterAnimated_MoreAnimations_WithFace_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,7 +1154,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8068604136261148990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -216.5379, y: 53.335007, z: 1163.1346}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

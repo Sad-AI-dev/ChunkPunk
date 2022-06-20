@@ -8,6 +8,7 @@ using TMPro;
 public class GameplayManager : MonoBehaviour
 {
     public enum State { 
+        start,
         setup,
         race,
         done
@@ -32,14 +33,23 @@ public class GameplayManager : MonoBehaviour
     public Dictionary<Player, int> scores = new();
     [Tooltip("Minimum amount of times a player needs to 'win' to end the game")]
     [SerializeField] int winScore = 2;
+
+    //------------Timing-----------------
+    [Header("Timings")]
+    [SerializeField] float startTime = 3f;
     [SerializeField] float setupTime = 5f;
+    [SerializeField] float countdownTime = 3f;
     float timer = 0;
+    float raceTime = 0;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent onGameStart;
+
     //countdown event
     bool triggeredCountdown = false;
-    [SerializeField] float countdownTime = 3f;
-    [SerializeField] UnityEvent onStartCountdown = new UnityEvent();
+    [SerializeField] UnityEvent onStartCountdown;
 
-    float raceTime = 0;
+    //determine winner score
     [HideInInspector] public Player winner;
 
     //-----------UI----------
@@ -90,10 +100,16 @@ public class GameplayManager : MonoBehaviour
     void UpdateTimers()
     {
         switch (activeState) {
+            case State.start:
+                timer -= Time.deltaTime;
+                UpdateSetupTimer();
+                break;
+
             case State.setup:
                 timer -= Time.deltaTime;
                 UpdateUI();
                 break;
+
             case State.race:
                 raceTime += Time.deltaTime;
                 UpdateStateLabels();
@@ -112,6 +128,10 @@ public class GameplayManager : MonoBehaviour
     {
         //state specific
         switch (activeState) {
+            case State.start:
+                StartDelay();
+                break;
+
             case State.setup:
                 StartTimer();
                 break;
@@ -124,6 +144,29 @@ public class GameplayManager : MonoBehaviour
                 FinishGame();
                 break;
         }
+    }
+    //--------start state
+    private void StartDelay()
+    {
+        timer = startTime;
+        timerLabel.gameObject.SetActive(true);
+        SetStateLabels(""); //hide state labels
+        onGameStart?.Invoke();
+        StartCoroutine(StartDelayCo());
+    }
+
+    private IEnumerator StartDelayCo()
+    {
+        yield return null;
+        List<Player> players = PlayerManager.instance.players;
+        foreach (Player p in players) {
+            p.isStunned = true;
+        }
+        yield return new WaitForSeconds(startTime);
+        foreach (Player p in players) {
+            p.isStunned = false;
+        }
+        SetGameState(State.setup);
     }
 
     //------setup state

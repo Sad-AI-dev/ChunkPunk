@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 
 public class BlindTrap : MonoBehaviour
@@ -12,6 +12,9 @@ public class BlindTrap : MonoBehaviour
     [SerializeField] float fadeinTime = 0.5f;
     [SerializeField] float fadeTime = 1f;
 
+    [SerializeField] private UnityEvent onBlind;
+
+    [Header("Technical")]
     [SerializeField] GameObject visuals;
 
     private CanvasGroup blindGroup;
@@ -53,7 +56,7 @@ public class BlindTrap : MonoBehaviour
     }
     CanvasGroup GetTargetGroup(Player target)
     {
-        return PlayerManager.instance.playerUI[target.id - 1].blindGroup;
+        return PlayerManager.instance.playerUI[PlayerManager.instance.players.IndexOf(target)].blindGroup;
     }
 
     private void OnTriggerExit(Collider other)
@@ -65,6 +68,7 @@ public class BlindTrap : MonoBehaviour
     void GetTriggered()
     {
         activated = true;
+        onBlind?.Invoke();
         visuals.SetActive(false);
         StartCoroutine(StartFadeCo());
     }
