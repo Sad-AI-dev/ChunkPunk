@@ -118,9 +118,13 @@ public class Player : MonoBehaviour
         }
     }
     
-    public void UseMap()
+    public void ShowMap()
     {
-        mapGroup.gameObject.SetActive(!mapGroup.gameObject.activeSelf);
+        mapGroup.alpha = 1f;
+    }
+    public void HideMap()
+    {
+        mapGroup.alpha = 0f;
     }
     
     CanvasGroup GetTargetGroup(Player target)
@@ -178,9 +182,9 @@ public class Player : MonoBehaviour
 
 
     public void UTurn() {
-        float rotationSpeed = 0.5f * 360f;
-        Debug.Log("UTurn");
-        Vector3 newRot = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
+        //float rotationSpeed = 0.5f * 360f;
+        //Debug.Log("UTurn");
+        //Vector3 newRot = new Vector3(0, rotationSpeed * Time.deltaTime, 0);
         StartCoroutine(RotateObject(UTurnAngle, Vector3.up, UTurnSpeed));
     }
     IEnumerator RotateObject(float angle, Vector3 axis, float inTime)

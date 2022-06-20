@@ -82,12 +82,9 @@ public class InputReciever : MonoBehaviour
 
     public void UseMap(InputAction.CallbackContext context)
     {
-        if (target)
-        {
-            if (context.started || context.canceled)
-            {
-                target.UseMap();
-            }
+        if (target) {
+            if (context.started) { target.ShowMap(); }
+            else if (context.canceled) { target.HideMap(); }
         }
     }
     public void Aim(InputAction.CallbackContext context)
