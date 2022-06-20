@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
             //link sorted players
             inputRecievers.Sort((InputReciever a, InputReciever b) => a.id.CompareTo(b.id));
             foreach (InputReciever inputRec in inputRecievers) {
-                inputRec.Link();
+                inputRec.LinkCo();
             }
         }
     }
