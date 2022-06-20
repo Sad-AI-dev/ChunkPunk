@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 42908848}
   - component: {fileID: 42908850}
   - component: {fileID: 42908849}
+  - component: {fileID: 42908851}
   m_Layer: 5
   m_Name: X
   m_TagString: Untagged
@@ -199,6 +200,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42908847}
   m_CullTransparentMesh: 1
+--- !u!95 &42908851
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42908847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ee149bab1650974a9da161bacc8e9bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &132687517
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,6 +231,7 @@ GameObject:
   - component: {fileID: 132687518}
   - component: {fileID: 132687520}
   - component: {fileID: 132687519}
+  - component: {fileID: 132687521}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -335,6 +357,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132687517}
   m_CullTransparentMesh: 1
+--- !u!95 &132687521
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132687517}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b0cab2618dc0e342ad361145fea9c49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &215581413
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +822,7 @@ GameObject:
   - component: {fileID: 813179380}
   - component: {fileID: 813179382}
   - component: {fileID: 813179381}
+  - component: {fileID: 813179383}
   m_Layer: 5
   m_Name: X
   m_TagString: Untagged
@@ -845,6 +888,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813179379}
   m_CullTransparentMesh: 1
+--- !u!95 &813179383
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813179379}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 999d5d37452ea034fb2541058266f992, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &855291825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,6 +1400,7 @@ GameObject:
   - component: {fileID: 1432114316}
   - component: {fileID: 1432114318}
   - component: {fileID: 1432114317}
+  - component: {fileID: 1432114319}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -1462,6 +1526,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432114315}
   m_CullTransparentMesh: 1
+--- !u!95 &1432114319
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432114315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 22d82523d99b2c54093febe7d2845035, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1508627117
 GameObject:
   m_ObjectHideFlags: 0

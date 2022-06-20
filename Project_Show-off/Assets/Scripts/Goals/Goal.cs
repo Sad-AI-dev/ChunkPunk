@@ -5,7 +5,13 @@ using UnityEngine.Events;
 
 public class Goal : MonoBehaviour
 {
+    [SerializeField] private UnityEvent onCreate;
     public UnityEvent<Player> onReachGoal;
+
+    private void Start()
+    {
+        onCreate?.Invoke();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

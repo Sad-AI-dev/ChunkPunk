@@ -6,6 +6,7 @@ public class InventoryItem : ScriptableObject
 {
     [SerializeField] int count = 1;
     public Sprite sprite;
+    public AudioClip clip;
 
     [Header("Technical")]
     [SerializeField] protected GameObject obstaclePrefab;
