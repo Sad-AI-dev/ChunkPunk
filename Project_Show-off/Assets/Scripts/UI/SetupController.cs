@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 using TMPro;
 
 [RequireComponent(typeof(PlayerInputManager))]
@@ -16,6 +17,8 @@ public class SetupController : MonoBehaviour
     [SerializeField] Button startButton;
 
     [SerializeField] List<GameObject> disableObjects;
+
+    [SerializeField] UnityEvent onPlayerJoin;
 
     private void Start()
     {
@@ -31,6 +34,8 @@ public class SetupController : MonoBehaviour
         reciever.id = joinedPlayers;
         //update ui
         UpdatePlayerUI();
+        //events
+        onPlayerJoin?.Invoke();
     }
 
     void UpdatePlayerUI()
