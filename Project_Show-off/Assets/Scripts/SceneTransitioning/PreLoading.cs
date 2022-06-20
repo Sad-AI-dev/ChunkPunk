@@ -15,7 +15,7 @@ public class PreLoading : MonoBehaviour
     }
     IEnumerator LoadSceneCo()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
 
         //Begin to load the Scene you specify
         AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
