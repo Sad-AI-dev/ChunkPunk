@@ -7,26 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 898551126084175638, guid: bd2776bea5671d943b1fe219321fde58,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48d9abd86ce8d5a41bf1d1e8a150e214, type: 2}
-    - target: {fileID: 1634099596928265439, guid: bd2776bea5671d943b1fe219321fde58,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 6041627d6d67c98448db2f4ccff9e495, type: 2}
-    - target: {fileID: 1925541374460696751, guid: bd2776bea5671d943b1fe219321fde58,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d080a430022a9164db4c377571c0c69e, type: 2}
-    - target: {fileID: 7149492342076512458, guid: bd2776bea5671d943b1fe219321fde58,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 14b30c8e3299b2b4f92aa788b82e84c1, type: 2}
     - target: {fileID: 7256037987298294660, guid: bd2776bea5671d943b1fe219321fde58,
         type: 3}
       propertyPath: m_RootOrder
@@ -35,17 +15,17 @@ PrefabInstance:
     - target: {fileID: 7256037987298294660, guid: bd2776bea5671d943b1fe219321fde58,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -308.47064
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256037987298294660, guid: bd2776bea5671d943b1fe219321fde58,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 68.68785
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256037987298294660, guid: bd2776bea5671d943b1fe219321fde58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1137.8336
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7256037987298294660, guid: bd2776bea5671d943b1fe219321fde58,
         type: 3}
@@ -85,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 8068604136261148990, guid: bd2776bea5671d943b1fe219321fde58,
         type: 3}
       propertyPath: m_Name
-      value: Character2Animated_WithFace_Prefab
+      value: Character2Animated_WithFace_Prefab Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd2776bea5671d943b1fe219321fde58, type: 3}
