@@ -2420,7 +2420,7 @@ GameObject:
   - component: {fileID: 634214845817016372}
   - component: {fileID: 333056779}
   - component: {fileID: 1276873909}
-  - component: {fileID: 8658330272735309860}
+  - component: {fileID: 1139128607013990923}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -2538,6 +2538,7 @@ MonoBehaviour:
   count: 0
   placePoint: {fileID: 4800701310537279137}
   shootPoint: {fileID: 3917566555051273579}
+  source: {fileID: 1139128607013990923}
 --- !u!114 &333056779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2559,7 +2560,7 @@ MonoBehaviour:
   onGetHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8658330272735309860}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -2668,7 +2669,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &8658330272735309860
+--- !u!82 &1139128607013990923
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2679,7 +2680,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: e3dde1f3807b07946a64f68768c1a838,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a7d53853d770dd04b8e8edd41478460b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -2780,7 +2781,7 @@ GameObject:
   - component: {fileID: 4085440302596347992}
   - component: {fileID: 2091570861}
   - component: {fileID: 530896207}
-  - component: {fileID: 731753437706802095}
+  - component: {fileID: 2453820369253943776}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -2898,6 +2899,7 @@ MonoBehaviour:
   count: 0
   placePoint: {fileID: 8780053711632381032}
   shootPoint: {fileID: 3917566556367587408}
+  source: {fileID: 2453820369253943776}
 --- !u!114 &2091570861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2919,7 +2921,7 @@ MonoBehaviour:
   onGetHit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 731753437706802095}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -3028,7 +3030,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &731753437706802095
+--- !u!82 &2453820369253943776
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3039,7 +3041,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: e3dde1f3807b07946a64f68768c1a838,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a7d53853d770dd04b8e8edd41478460b, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
