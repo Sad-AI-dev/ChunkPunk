@@ -28,21 +28,18 @@ public class PlayerManager : MonoBehaviour
     [Header("UI Settings")]
     public List<UIInterfacer> playerUI = new();
 
+    List<InputReciever> recievers;
+
     private void Start()
     {
         TryLinkPlayers();
     }
     void TryLinkPlayers()
     {
-        List<InputReciever> inputRecievers = new List<InputReciever>(FindObjectsOfType<InputReciever>());
-        if (inputRecievers.Count > 0) {
+        recievers = new List<InputReciever>(FindObjectsOfType<InputReciever>());
+        if (recievers.Count > 0) {
             //disable input manager
             GetComponent<PlayerInputManager>().DisableJoining();
-            //link sorted players
-            inputRecievers.Sort((InputReciever a, InputReciever b) => a.id.CompareTo(b.id));
-            foreach (InputReciever inputRec in inputRecievers) {
-                inputRec.Link();
-            }
         }
     }
 
@@ -72,5 +69,13 @@ public class PlayerManager : MonoBehaviour
             return players[linkedPlayerCount - 1];
         }
         return null;
+    }
+
+    //----------------------remove links-------------------
+    public void RemoveRecievers()
+    {
+        for (int i = recievers.Count - 1; i >= 0; i--) {
+            recievers[i].Unlink();
+        }
     }
 }

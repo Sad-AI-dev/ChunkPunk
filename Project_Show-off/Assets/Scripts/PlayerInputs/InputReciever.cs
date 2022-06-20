@@ -1,5 +1,5 @@
-using System.Collections;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,17 +11,35 @@ public class InputReciever : MonoBehaviour
     [HideInInspector] public int id = 0;
     Player target;
 
+    //--------------------------------linking-------------------------------------
     private void Start()
     {
-        if (linkOnStart) Link();
+        if (linkOnStart) StartCoroutine(LinkCo());
+        else { SceneManager.sceneLoaded += OnSceneLoaded; }
     }
 
-    public void Link()
+    IEnumerator LinkCo()
     {
-        target = PlayerManager.instance.GetUnlinkedPlayer();
-        if (!target) { Destroy(gameObject); } //make sure an unlinked player exists
+        target = null;
+        yield return null; //wait a frame
+        if (PlayerManager.instance) {
+            target = PlayerManager.instance.GetUnlinkedPlayer();
+        }
     }
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(LinkCo());
+    }
+    
+    //--------------------unlink---------------
+    public void Unlink()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        Destroy(gameObject);
+    }
+
+    //---------------------------inputs--------------------------------------------
     public void Move(InputAction.CallbackContext context)
     {
         if (target) { target.SetMoveDir(context.ReadValue<Vector2>()); }
@@ -64,12 +82,9 @@ public class InputReciever : MonoBehaviour
 
     public void UseMap(InputAction.CallbackContext context)
     {
-        if (target)
-        {
-            if (context.started || context.canceled)
-            {
-                target.UseMap();
-            }
+        if (target) {
+            if (context.started) { target.ShowMap(); }
+            else if (context.canceled) { target.HideMap(); }
         }
     }
     public void Aim(InputAction.CallbackContext context)

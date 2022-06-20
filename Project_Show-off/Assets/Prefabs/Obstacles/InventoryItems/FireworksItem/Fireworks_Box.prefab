@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8655294836191024476}
   m_Layer: 0
   m_Name: Fireworks_Box
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,6 +77,10 @@ MonoBehaviour:
   radius: 10
   stunDuration: 2
   invinceDuration: 2.5
+  onExplode:
+    m_PersistentCalls:
+      m_Calls: []
+  startTime: 0.2
 --- !u!1 &8857913788249465936
 GameObject:
   m_ObjectHideFlags: 0

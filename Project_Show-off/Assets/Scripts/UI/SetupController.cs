@@ -8,7 +8,7 @@ using TMPro;
 [RequireComponent(typeof(PlayerInputManager))]
 public class SetupController : MonoBehaviour
 {
-    int joinedPlayers = -1;
+    int joinedPlayers;
 
     [SerializeField] string joinedText = "JOINED!";
 
@@ -17,12 +17,18 @@ public class SetupController : MonoBehaviour
 
     [SerializeField] List<GameObject> disableObjects;
 
+    private void Start()
+    {
+        joinedPlayers = -1;
+    }
+
     public void OnPlayerJoined(PlayerInput input)
     {
         joinedPlayers++;
         //register input reciever
         DontDestroyOnLoad(input.gameObject);
-        input.GetComponent<InputReciever>().id = joinedPlayers;
+        InputReciever reciever = input.GetComponent<InputReciever>();
+        reciever.id = joinedPlayers;
         //update ui
         UpdatePlayerUI();
     }
