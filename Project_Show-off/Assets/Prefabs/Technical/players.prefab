@@ -2421,6 +2421,7 @@ GameObject:
   - component: {fileID: 333056779}
   - component: {fileID: 1276873909}
   - component: {fileID: 1139128607013990923}
+  - component: {fileID: 6373914544737065706}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -2509,7 +2510,6 @@ MonoBehaviour:
   UTurnAngle: 180
   accelerateMax: 1.8
   accelerateMin: 0.7
-  waitTime: 5
   emitter: {fileID: 3412938847539882105}
   id: 1
   neutralVCam: {fileID: 0}
@@ -2766,6 +2766,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6373914544737065706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220088474158358888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256aa94da28c9e14e8e49bf3d17da274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collideDelay: 1
+  onCollidePlayer:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7220088474960675923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2798,7 @@ GameObject:
   - component: {fileID: 2091570861}
   - component: {fileID: 530896207}
   - component: {fileID: 2453820369253943776}
+  - component: {fileID: 3533165571807388469}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -2870,7 +2887,6 @@ MonoBehaviour:
   UTurnAngle: 180
   accelerateMax: 1.8
   accelerateMin: 0.7
-  waitTime: 5
   emitter: {fileID: 3412938848857705794}
   id: 2
   neutralVCam: {fileID: 0}
@@ -3127,6 +3143,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3533165571807388469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220088474960675923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256aa94da28c9e14e8e49bf3d17da274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collideDelay: 1
+  onCollidePlayer:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7428555439015077973
 GameObject:
   m_ObjectHideFlags: 0

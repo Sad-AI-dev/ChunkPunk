@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Banana : MonoBehaviour
 {
+    [SerializeField] private UnityEvent onHit;
+
     [Header("Effect Settings")]
     [SerializeField] float spinSpeed = 1;
     [SerializeField] float moveCoef = 1f;
@@ -35,6 +38,7 @@ public class Banana : MonoBehaviour
         if (!starting && other.CompareTag("Player")) {
             if (other.TryGetComponent(out Player player)) {
                 if (!player.getHit.alreadyHit) { //make sure player is not invincable
+                    onHit?.Invoke();
                     SpinPlayer(player);
                 }
             }
