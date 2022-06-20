@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 using TMPro;
 
 public class Inventory : MonoBehaviour
@@ -16,6 +17,8 @@ public class Inventory : MonoBehaviour
     //UI
     Image targetImage;
     TMP_Text itemCount;
+
+    [SerializeField] private AudioSource source;
 
     private void Start()
     {
@@ -65,12 +68,22 @@ public class Inventory : MonoBehaviour
 
     public void ConsumeItem()
     {
+        PlaySound();
         count--;
         SetUICount();
         if (count <= 0) { 
             hasItem = false;
             SetUIImage(null);
         }
+    }
+
+    //-----------Sound------------
+    void PlaySound()
+    {
+        if (source.clip != heldItem.clip) {
+            source.clip = heldItem.clip;
+        }
+        source.Play();
     }
 
     //---------UI------------
