@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-
 public class BlindTrap : MonoBehaviour
 {
-    [SerializeField] float setupTime = 1f;
+    [SerializeField] float setupTime = 0.1f;
     [Header("trap settings")]
     [SerializeField] float blindTime = 1f;
     [SerializeField] float fadeinTime = 0.5f;
@@ -26,8 +25,6 @@ public class BlindTrap : MonoBehaviour
 
     bool starting;
 
-    Transform owner;
-
     private void Start()
     {
         StartCoroutine(SetupCo());
@@ -41,13 +38,7 @@ public class BlindTrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (starting) {
-            if (other.CompareTag("Player")) {
-                owner = other.transform;
-            }
-        }
-        else if (!activated && other.gameObject.CompareTag("Player")) {
-            if (other.transform == owner) { return; }
+        if (!starting && !activated && other.gameObject.CompareTag("Player")) {
             if (other.transform.TryGetComponent(out Player player)) {
                 blindGroup = GetTargetGroup(player);
                 GetTriggered();
@@ -56,21 +47,18 @@ public class BlindTrap : MonoBehaviour
     }
     CanvasGroup GetTargetGroup(Player target)
     {
-        return PlayerManager.instance.playerUI[PlayerManager.instance.players.IndexOf(target)].blindGroup;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.transform == owner) { owner = null; }
+        return PlayerManager.instance.playerUI[target.id - 1].blindGroup;
     }
 
     //----------------------trigger trap---------------------
     void GetTriggered()
     {
-        activated = true;
-        onBlind?.Invoke();
-        visuals.SetActive(false);
-        StartCoroutine(StartFadeCo());
+        if (blindGroup.alpha < 0.1f) {
+            activated = true;
+            onBlind?.Invoke();
+            visuals.SetActive(false);
+            StartCoroutine(StartFadeCo());
+        }
     }
 
     IEnumerator StartFadeCo()
@@ -109,7 +97,6 @@ public class BlindTrap : MonoBehaviour
         blindGroup.alpha = 1 - (timer / fadeTime);
         if (timer > fadeTime) { End(); }
     }
-
 
     void End()
     {
