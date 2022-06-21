@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: {x: 0, y: 4, z: -5}
-  radius: 6
+  radius: 10
   stunDuration: 2
   invinceDuration: 2.5
   onExplode:
@@ -127,7 +127,7 @@ MonoBehaviour:
         m_CallState: 2
   startTime: 0.2
   stunDelay: 0.4
-  destroyDelay: 1
+  destroyDelay: 2.7
 --- !u!1001 &3863896478498959111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,22 +143,22 @@ PrefabInstance:
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5568
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5568
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5568
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0048237
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.010292
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7548173667289096196, guid: dd61e28de3e825e4894bb1520332d119,
         type: 3}
