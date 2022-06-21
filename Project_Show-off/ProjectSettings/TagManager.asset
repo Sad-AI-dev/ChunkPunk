@@ -11,6 +11,8 @@ TagManager:
   - Blind
   - Floor
   - Obstacle
+  - Map
+  - wall
   layers:
   - Default
   - TransparentFX
