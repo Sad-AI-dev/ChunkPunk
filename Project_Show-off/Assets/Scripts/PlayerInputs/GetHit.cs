@@ -56,6 +56,7 @@ public class GetHit : MonoBehaviour
         thisPlayer.stateController.stun?.Invoke();
         Debug.Log("stunneddddddddddddddddddd");
         yield return new WaitForSeconds(duration);
+        thisPlayer.stateController.Skate?.Invoke();
         thisPlayer.isStunned = false;
     }
 

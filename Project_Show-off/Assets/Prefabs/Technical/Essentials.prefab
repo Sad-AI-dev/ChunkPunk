@@ -417,6 +417,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: players
       objectReference: {fileID: 0}
+    - target: {fileID: 4733834793351972548, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 09bc31fea2a6def459db572d56de3abe, type: 2}
+    - target: {fileID: 8363076541507339390, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 09bc31fea2a6def459db572d56de3abe, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c048fbfd81f2934fa57ce8bc298b80e, type: 3}
 --- !u!95 &527861602537354105 stripped
@@ -465,6 +475,12 @@ MonoBehaviour:
   stun:
     m_PersistentCalls:
       m_Calls: []
+  Idle:
+    m_PersistentCalls:
+      m_Calls: []
+  Skate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1688325034131616596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7220088474960675923, guid: 2c048fbfd81f2934fa57ce8bc298b80e,
@@ -485,6 +501,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3669658761181344195}
   stun:
+    m_PersistentCalls:
+      m_Calls: []
+  Idle:
+    m_PersistentCalls:
+      m_Calls: []
+  Skate:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &3296604390698676353 stripped
