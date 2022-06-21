@@ -28,6 +28,8 @@ public class PlayerManager : MonoBehaviour
     [Header("UI Settings")]
     public List<UIInterfacer> playerUI = new();
 
+    public List<MeshRenderer> playerFaces = new();
+
     List<InputReciever> recievers;
 
     private void Start()

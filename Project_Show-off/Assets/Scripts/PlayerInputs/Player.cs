@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
     [SerializeField] float timeBetweenClick;
+    [SerializeField] public ChangeTheFace faceChanger;
     float bulletClickCap;
     //result vectors
     Vector2 toMove;

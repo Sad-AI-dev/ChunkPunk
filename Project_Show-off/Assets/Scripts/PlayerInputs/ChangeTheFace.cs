@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChangeTheFace : MonoBehaviour
 {
@@ -10,8 +11,21 @@ public class ChangeTheFace : MonoBehaviour
     [SerializeField] Material Normal;
     [SerializeField] Material Stunned;
     MeshRenderer thisOne;
+    public UnityEvent DyingFace;
+    public UnityEvent NormalFace;
+    public UnityEvent StunnedFace;
     private void Awake()
     {
+        if (DyingFace == null)
+            DyingFace = new UnityEvent();
+        if (NormalFace == null)
+            NormalFace = new UnityEvent();
+        if (StunnedFace == null)
+            StunnedFace = new UnityEvent();
+
+        DyingFace.AddListener(ChangeDyingFace);
+        NormalFace.AddListener(ChangeNormalFace);
+        StunnedFace.AddListener(ChangeStunnedFace);
         playerFace = Face.Normal;
         thisOne = GetComponent<MeshRenderer>();
     }
@@ -23,21 +37,37 @@ public class ChangeTheFace : MonoBehaviour
                 playerFace = current;
             }
         }
-        
+
     }
 
     private void Update()
     {
-        if(playerFace == Face.Normal)
+        if (playerFace == Face.Normal)
         {
             thisOne.material = Normal;
         } else if (playerFace == Face.Dying)
         {
             thisOne.material = Dying;
-        } else if(playerFace == Face.Stunned)
+        } else if (playerFace == Face.Stunned)
         {
             thisOne.material = Stunned;
         }
+    }
+
+
+    private void ChangeDyingFace()
+    {
+        UpdateFace(Face.Dying);
+    }
+
+    private void ChangeNormalFace()
+    {
+        UpdateFace(Face.Normal);
+    }
+
+    private void ChangeStunnedFace()
+    {
+        UpdateFace(Face.Stunned);
     }
 
 }
