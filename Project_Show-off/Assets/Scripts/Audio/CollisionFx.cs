@@ -9,6 +9,7 @@ public class CollisionFx : MonoBehaviour
     private bool canSFX = true;
 
     [SerializeField] private UnityEvent onCollidePlayer;
+    [SerializeField] private UnityEvent onCollideWall;
 
     private void Start()
     {
@@ -20,6 +21,10 @@ public class CollisionFx : MonoBehaviour
         if (canSFX) {
             if (collision.transform.CompareTag("Player")) {
                 onCollidePlayer?.Invoke();
+                StartCoroutine(SFXCo());
+            }
+            else if (collision.transform.CompareTag("wall")) {
+                onCollideWall?.Invoke();
                 StartCoroutine(SFXCo());
             }
         }

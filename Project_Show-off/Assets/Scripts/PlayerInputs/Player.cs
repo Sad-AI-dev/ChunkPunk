@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public Inventory inventory;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public GetHit getHit;
+    [HideInInspector] public animationStateController stateController;
+
 
     private void Start()
     {
@@ -78,6 +80,7 @@ public class Player : MonoBehaviour
         //get external components
         rb = GetComponent<Rigidbody>();
         getHit = GetComponent<GetHit>();
+        stateController = GetComponent<animationStateController>();
         //inventory
         inventory = GetComponent<Inventory>();
         inventory.Initialize();
@@ -206,6 +209,11 @@ public class Player : MonoBehaviour
             // delay here
             break;
         }
+    }
+
+    public void stunned()
+    {
+        //stateController.stun?.Invoke();
     }
 
     public void Died()
