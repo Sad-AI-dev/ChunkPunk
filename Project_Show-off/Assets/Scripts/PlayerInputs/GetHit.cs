@@ -10,7 +10,6 @@ public class GetHit : MonoBehaviour
     [SerializeField] private int stunTime;
     [SerializeField] private float yKnockback;
     [SerializeField] private float invicibilityTime;
-
     //state
     [HideInInspector] public bool alreadyHit;
 
@@ -19,7 +18,6 @@ public class GetHit : MonoBehaviour
     Player thisPlayer;
 
     //events
-    [SerializeField] UnityEvent onGetHit;
 
 
     private void Awake()
@@ -50,14 +48,19 @@ public class GetHit : MonoBehaviour
         alreadyHit = true;
         StartCoroutine(StunCo(stunDuration));
         StartCoroutine(InvinceCo(invinceDuration));
-        onGetHit?.Invoke();
     }
 
     private IEnumerator StunCo(float duration)
     {
         thisPlayer.isStunned = true;
+        thisPlayer.stunned();
         yield return new WaitForSeconds(duration);
         thisPlayer.isStunned = false;
+    }
+
+    private void stunned()
+    {
+
     }
 
     private IEnumerator InvinceCo(float duration)

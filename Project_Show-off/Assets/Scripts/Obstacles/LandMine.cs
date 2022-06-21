@@ -15,9 +15,12 @@ public class LandMine : MonoBehaviour
     [Header("Technical Timings")]
     [SerializeField] float startTime = 0.2f;
     bool starting = false;
+    [SerializeField] float destroyDelay = 1f;
+    bool triggered = false;
 
     private void Start()
     {
+        triggered = false;
         StartCoroutine(SetupCo());
     }
     IEnumerator SetupCo()
@@ -30,14 +33,14 @@ public class LandMine : MonoBehaviour
     //----------------triggers--------------------------
     private void OnTriggerEnter(Collider other)
     {
-        if (!starting && other.gameObject.CompareTag("Player")) {
+        if (!starting && !triggered && other.gameObject.CompareTag("Player")) {
             Explode();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!starting && collision.gameObject.CompareTag("Projectile")) {
+        if (!starting && !triggered && collision.gameObject.CompareTag("Projectile")) {
             Explode();
         }
     }
@@ -45,12 +48,19 @@ public class LandMine : MonoBehaviour
     //--------------------trigger effect------------------------
     void Explode()
     {
+        triggered = true;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
         foreach (var hitCollider in hitColliders) {
             EffectExternalObjects(hitCollider.gameObject);
         }
         onExplode?.Invoke();
-        Destroy(gameObject);
+        StartCoroutine(ExplodeCo(gameObject, destroyDelay));
+    }
+
+    private IEnumerator ExplodeCo(GameObject target, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(target);
     }
 
     void EffectExternalObjects(GameObject obj)
@@ -65,8 +75,9 @@ public class LandMine : MonoBehaviour
             }
         } 
         else if (obj.CompareTag("Obstacle")) {
-            //destroy obstacles
-            Destroy(obj);
+            if (obj != gameObject) {
+                StartCoroutine(ExplodeCo(obj, Random.Range(0.1f, destroyDelay)));
+            }
         }
     }
 }
