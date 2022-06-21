@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class beSmall : MonoBehaviour
 {
-    private float thisTransform;
-    [SerializeField] float endSize;
-    [SerializeField] private float timeToSmall;
-     private Vector3 goal;
-    private float currentTime;
+    [SerializeField] private Transform target;
+
+    private float startSize;
+    [SerializeField] private float endSize;
+    [SerializeField] private float duration;
+
+    private float diff;
+    private float timer;
+
     private void Awake()
     {
-        goal = this.transform.localScale;
-        StartCoroutine(makeSmall());
-        currentTime = 0;
+        timer = 0;
+        startSize = target.localScale.x;
+        diff = Mathf.Abs(startSize - endSize);
+        StartCoroutine(MakeSmall());
     }
 
-
-    private IEnumerator makeSmall()
+    private IEnumerator MakeSmall()
     {
-        while(currentTime < timeToSmall)
-        {
-            currentTime += Time.deltaTime ;
-            float duration =  this.transform.localScale.x - endSize ;
-            thisTransform = goal.x - ((currentTime  / timeToSmall) * duration);
-            transform.localScale = new Vector3(thisTransform, transform.localScale.y, thisTransform);
-            yield return new WaitForSeconds(0.5f);
+        while(timer < duration) {
+            timer += Time.deltaTime;
+            float size = startSize - ((timer / duration) * diff);
+            target.localScale = new Vector3(size, target.localScale.y, size);
+            //wait frame
+            yield return null;
         }
-
-
-
     }
 }

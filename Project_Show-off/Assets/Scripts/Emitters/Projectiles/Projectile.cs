@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
-    private float setupTime = 0.1f;
+    private readonly float setupTime = 0.1f;
     private bool starting = true;
 
     [SerializeField] float moveSpeed = 5f;
@@ -36,11 +36,22 @@ public class Projectile : MonoBehaviour
         if (!starting) {
             onHit?.Invoke();
             StartCoroutine(DieCo());
+            //destroy obstacle?
+            if (collision.transform.CompareTag("Obstacle")) {
+                if (!collision.transform.TryGetComponent(out LandMine landMine)) {
+                    DestroyObject(collision.gameObject);
+                }
+            }
         }
     }
     IEnumerator DieCo()
     {
         yield return null;
         Destroy(gameObject);
+    }
+
+    private void DestroyObject(GameObject target)
+    {
+        Destroy(target);
     }
 }

@@ -31,7 +31,7 @@ public class CoinManager : MonoBehaviour
         }
         
         for (int i = 0; i < moneyLabels.Length; i++) {
-            moneyLabels[i] = PlayerManager.instance.playerUI[i].ammoLabel;
+            //moneyLabels[i] = PlayerManager.instance.playerUI[i].ammoLabel;
         }
     }
 
