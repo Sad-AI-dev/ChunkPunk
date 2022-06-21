@@ -53,7 +53,8 @@ public class GetHit : MonoBehaviour
     private IEnumerator StunCo(float duration)
     {
         thisPlayer.isStunned = true;
-        thisPlayer.stunned();
+        thisPlayer.stateController.stun?.Invoke();
+        Debug.Log("stunneddddddddddddddddddd");
         yield return new WaitForSeconds(duration);
         thisPlayer.isStunned = false;
     }
