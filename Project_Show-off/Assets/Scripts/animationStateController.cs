@@ -6,8 +6,8 @@ using System;
 
 public class animationStateController : MonoBehaviour
 {
-    Animator animator;
-    public UnityEvent stun;
+    [SerializeField] Animator animator;
+    [HideInInspector] public UnityEvent stun;
 
     private void Awake()
     {
@@ -20,7 +20,7 @@ public class animationStateController : MonoBehaviour
 
     private void stunned()
     {
-        animator.SetTrigger("stunned");
         Debug.Log("Stunne");
+        animator.SetTrigger("stunned");
     }
 }

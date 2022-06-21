@@ -23,7 +23,7 @@ public class CollisionFx : MonoBehaviour
                 onCollidePlayer?.Invoke();
                 StartCoroutine(SFXCo());
             }
-            else if (collision.transform.CompareTag("Wall")) {
+            else if (collision.transform.CompareTag("wall")) {
                 onCollideWall?.Invoke();
                 StartCoroutine(SFXCo());
             }
