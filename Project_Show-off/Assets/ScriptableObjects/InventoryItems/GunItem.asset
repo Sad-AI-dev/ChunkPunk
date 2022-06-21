@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96ee317de1def124ca6bb0d5d45d7404, type: 3}
+  m_Name: GunItem
+  m_EditorClassIdentifier: 
+  count: 5
+  sprite: {fileID: 21300000, guid: c3119fe6015c8bb4ea1e5198a2a0ac18, type: 3}
+  clip: {fileID: 0}
+  obstaclePrefab: {fileID: 602547853056513451, guid: a47424ec92667a647b5f20163a163c7d,
+    type: 3}
