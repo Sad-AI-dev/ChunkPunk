@@ -213,7 +213,7 @@ public class Player : MonoBehaviour
 
     public void stunned()
     {
-        stateController.stun?.Invoke();
+        //stateController.stun?.Invoke();
     }
 
     public void Died()

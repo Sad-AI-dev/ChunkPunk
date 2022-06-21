@@ -15,6 +15,7 @@ public class LandMine : MonoBehaviour
     [Header("Technical Timings")]
     [SerializeField] float startTime = 0.2f;
     bool starting = false;
+    [SerializeField] float stunDelay = 0.2f;
     [SerializeField] float destroyDelay = 1f;
     bool triggered = false;
 
@@ -67,11 +68,7 @@ public class LandMine : MonoBehaviour
     {
         if (obj.CompareTag("Player")) {
             if (obj.TryGetComponent(out Player player)) {
-                //apply knockback + stun
-                player.rb.velocity = Vector3.zero;
-                player.rb.AddRelativeForce(force * 10, ForceMode.Impulse);
-                //stun player
-                player.getHit.StunPlayer(stunDuration, invinceDuration);
+                StartCoroutine(EffectPlayerCo(player, stunDelay));
             }
         } 
         else if (obj.CompareTag("Obstacle")) {
@@ -79,5 +76,20 @@ public class LandMine : MonoBehaviour
                 StartCoroutine(ExplodeCo(obj, Random.Range(0.1f, destroyDelay)));
             }
         }
+    }
+
+    IEnumerator EffectPlayerCo(Player player, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        EffectPlayer(player);
+    }
+
+    void EffectPlayer(Player player)
+    {
+        //apply knockback + stun
+        player.rb.velocity = Vector3.zero;
+        player.rb.AddRelativeForce(force * 10, ForceMode.Impulse);
+        //stun player
+        player.getHit.StunPlayer(stunDuration, invinceDuration);
     }
 }
