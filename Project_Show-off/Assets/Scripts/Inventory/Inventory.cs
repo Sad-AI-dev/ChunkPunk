@@ -18,7 +18,9 @@ public class Inventory : MonoBehaviour
     Image targetImage;
     TMP_Text itemCount;
 
+    //external components
     [SerializeField] private AudioSource source;
+    public Emitter emitter;
 
     private void Start()
     {

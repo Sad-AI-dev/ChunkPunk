@@ -66,7 +66,7 @@ public class InputReciever : MonoBehaviour
             if (context.started)
             {
                 target.isShoting = true;
-                StartCoroutine(target.isShooting());
+                //StartCoroutine(target.isShooting());
             }
             
             else if (context.canceled)

@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
                 Debug.Log(bulletClickCap);
                 if (obj.TryGetComponent(out Projectile proj))
                 {
-                    proj.owner = this; //set owner of projectiles
+                    //proj.owner = this; //set owner of projectiles
                 }
                 bulletClickCap = timeBetweenClick;
 
