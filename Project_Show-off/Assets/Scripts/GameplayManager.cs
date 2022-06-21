@@ -164,6 +164,7 @@ public class GameplayManager : MonoBehaviour
         }
         yield return new WaitForSeconds(startTime);
         foreach (Player p in players) {
+            PlayerManager.instance.players[PlayerManager.instance.players.IndexOf(p)].stateController.Skate?.Invoke();
             p.isStunned = false;
         }
         SetGameState(State.setup);
