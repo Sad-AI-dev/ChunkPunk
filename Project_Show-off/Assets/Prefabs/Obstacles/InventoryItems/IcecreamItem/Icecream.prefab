@@ -60,8 +60,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7f77dbb5c84f746b39062883738cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setupTime: 1
-  blindTime: 1
+  setupTime: 0.1
+  blindTime: 3
   fadeinTime: 0.5
   fadeTime: 2
   onBlind:
