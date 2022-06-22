@@ -20,9 +20,9 @@ public class videoScript : MonoBehaviour
     public void StartVideo()
     {
 
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        //originalVideo.Play();
-        //StartCoroutine(ShowVideo());
+        //AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        originalVideo.Play();
+        StartCoroutine(ShowVideo());
     }
 
     private IEnumerator ShowVideo()

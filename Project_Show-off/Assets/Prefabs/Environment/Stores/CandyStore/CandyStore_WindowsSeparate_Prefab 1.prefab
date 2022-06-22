@@ -188,13 +188,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 8aa3e361bdee4fb40b67311cfeac4c2c,
         type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8aa3e361bdee4fb40b67311cfeac4c2c,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 05ca49fffa127d54896ec0d8c3a4a9fd, type: 2}
+    - target: {fileID: -6909866525963054452, guid: 8aa3e361bdee4fb40b67311cfeac4c2c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 8aa3e361bdee4fb40b67311cfeac4c2c,
         type: 3}
       propertyPath: m_Name
       value: CandyStore_WindowFixed
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8aa3e361bdee4fb40b67311cfeac4c2c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1128170767337522254, guid: 8aa3e361bdee4fb40b67311cfeac4c2c,
         type: 3}

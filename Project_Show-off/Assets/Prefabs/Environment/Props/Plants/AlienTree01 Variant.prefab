@@ -9,6 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7376168506716713032, guid: 53af98f60fa999e48acc6fd2a39f8239,
         type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376168506716713032, guid: 53af98f60fa999e48acc6fd2a39f8239,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 69ae235d30c70b947b151165af6fd6a4, type: 2}
@@ -85,7 +90,12 @@ PrefabInstance:
     - target: {fileID: 9033541754437652893, guid: 53af98f60fa999e48acc6fd2a39f8239,
         type: 3}
       propertyPath: m_Name
-      value: AlienTree01
+      value: AlienTree01 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9033541754437652893, guid: 53af98f60fa999e48acc6fd2a39f8239,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af98f60fa999e48acc6fd2a39f8239, type: 3}

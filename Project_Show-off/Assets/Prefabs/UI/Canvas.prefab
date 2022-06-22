@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 732285630}
   - component: {fileID: 732285629}
   - component: {fileID: 732285628}
+  - component: {fileID: 166481242453282318}
   m_Layer: 5
   m_Name: Blind
   m_TagString: Blind
@@ -89,6 +90,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &166481242453282318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732285626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7a68832da7bfc48a009e0c66b66986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &971407473
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +595,7 @@ GameObject:
   - component: {fileID: 1803296081}
   - component: {fileID: 1803296080}
   - component: {fileID: 1803296079}
+  - component: {fileID: 4711796729154848226}
   m_Layer: 5
   m_Name: Blind
   m_TagString: Blind
@@ -659,6 +673,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4711796729154848226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803296077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef7a68832da7bfc48a009e0c66b66986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040482634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,9 +2107,9 @@ MonoBehaviour:
   stateLabel: {fileID: 4655807419087979795}
   inventoryImage: {fileID: 236116878823894354}
   inventoryLabel: {fileID: 1286259206665590463}
-  blindGroup: {fileID: 1803296079}
   stateGroup: {fileID: 555446378029561769}
   mapGroup: {fileID: 896007736451473206}
+  fader: {fileID: 4711796729154848226}
 --- !u!1 &2889879111907759316
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,9 +2906,9 @@ MonoBehaviour:
   stateLabel: {fileID: 2778471770251085548}
   inventoryImage: {fileID: 959789580227223975}
   inventoryLabel: {fileID: 5913733456284607176}
-  blindGroup: {fileID: 732285628}
   stateGroup: {fileID: 8292974800570153678}
   mapGroup: {fileID: 8813752876366283716}
+  fader: {fileID: 166481242453282318}
 --- !u!1 &2889879112532072566
 GameObject:
   m_ObjectHideFlags: 0
