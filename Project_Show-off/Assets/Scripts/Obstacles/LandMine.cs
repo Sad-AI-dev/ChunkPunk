@@ -26,7 +26,7 @@ public class LandMine : MonoBehaviour
     private void Start()
     {
         triggered = false;
-        particleObj.Pause(false);
+        if (particleObj != null) particleObj.Pause(false);
         StartCoroutine(SetupCo());
     }
     IEnumerator SetupCo()
@@ -114,6 +114,6 @@ public class LandMine : MonoBehaviour
     private IEnumerator ParticleCo(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        particleObj.Play();
+        if (particleObj != null) particleObj.Play();
     }
 }
