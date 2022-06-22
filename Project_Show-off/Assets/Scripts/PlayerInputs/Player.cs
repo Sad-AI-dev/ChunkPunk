@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     [SerializeField] float accelerateMin;
     Vector2 turnDirection;
 
+    [Header("VFX")]
+    [SerializeField] List<GameObject> speedParticles;
+
     [Header("Technical settings")]
     [SerializeField] Emitter emitter;
     private Vector3 lookAtStarter;
@@ -58,6 +61,8 @@ public class Player : MonoBehaviour
     private bool isAccelerating;
     private bool isBraking;
 
+    private bool isFast = false;
+
     private CanvasGroup mapGroup;
 
     //external components
@@ -77,6 +82,7 @@ public class Player : MonoBehaviour
         baseLookAtPos = baseLookAt.localPosition;
         //visuals
         characterModel = transform.GetChild(0);
+        SetSpeedParticles(false);
         mapGroup = GetTargetGroup(this);
         //get external components
         rb = GetComponent<Rigidbody>();
@@ -311,6 +317,8 @@ public class Player : MonoBehaviour
         Vector2 input = GetInputVelocity();
         Vector3 velocity = (transform.right * input.x) + (transform.forward * (input.y * accelerate) ) + (externalToMove * (100 * Time.deltaTime));
         rb.velocity = new Vector3(velocity.x, rb.velocity.y , velocity.z );
+        //VFX
+        GoFastCheck();
     }
 
     Vector2 GetInputVelocity()
@@ -322,5 +330,26 @@ public class Player : MonoBehaviour
     {
         float yInput = toMove.y * (toMove.y > 0 ? maxSpeed : minSpeed);
         return yInput + forwardForce;
+    }
+
+    private void GoFastCheck()
+    {
+        if (isFast && toMove.y < 0.1f) {
+            //slow down
+            isFast = false;
+            SetSpeedParticles(false);
+        }
+        else if (!isFast && toMove.y > 0.1f) {
+            //speed up
+            isFast = true;
+            SetSpeedParticles(true);
+        }
+    }
+
+    private void SetSpeedParticles(bool state)
+    {
+        foreach (GameObject obj in speedParticles) {
+            obj.SetActive(state);
+        }
     }
 }

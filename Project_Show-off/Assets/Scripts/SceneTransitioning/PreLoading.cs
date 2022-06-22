@@ -18,7 +18,7 @@ public class PreLoading : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
 
         //Begin to load the Scene you specify
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 2);
         //Don't let the Scene activate until you allow it to
         asyncOperation.allowSceneActivation = false;
         bool isDoneThis = false;
