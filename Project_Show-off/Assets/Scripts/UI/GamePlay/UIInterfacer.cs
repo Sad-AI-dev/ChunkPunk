@@ -8,7 +8,6 @@ public class UIInterfacer : MonoBehaviour
 {
     [Header("Labels")]
     public TMP_Text scoreLabel;
-    public TMP_Text ammoLabel;
     public TMP_Text stateLabel;
 
     [Header("Inventory")]

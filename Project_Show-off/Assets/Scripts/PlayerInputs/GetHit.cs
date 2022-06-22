@@ -14,16 +14,16 @@ public class GetHit : MonoBehaviour
     [HideInInspector] public bool alreadyHit;
 
     //external components
-    Rigidbody rb;
     Player thisPlayer;
 
-    //events
-
+    //FX
+    [Header("FX")]
+    [SerializeField] private GameObject particleObj;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         thisPlayer = GetComponent<Player>();
+        particleObj.SetActive(false);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -40,7 +40,7 @@ public class GetHit : MonoBehaviour
 
     private void HitPlayer(Vector3 bulletDir)
     {
-        rb.AddForce(bulletDir * bulletForce);
+        thisPlayer.rb.AddForce(bulletDir * bulletForce);
     }
 
     public void StunPlayer(float stunDuration, float invinceDuration)
@@ -54,15 +54,11 @@ public class GetHit : MonoBehaviour
     {
         thisPlayer.isStunned = true;
         thisPlayer.stateController.stun?.Invoke();
-        Debug.Log("stunneddddddddddddddddddd");
+        particleObj.SetActive(true);
         yield return new WaitForSeconds(duration);
+        particleObj.SetActive(false);
         thisPlayer.stateController.Skate?.Invoke();
         thisPlayer.isStunned = false;
-    }
-
-    private void stunned()
-    {
-
     }
 
     private IEnumerator InvinceCo(float duration)

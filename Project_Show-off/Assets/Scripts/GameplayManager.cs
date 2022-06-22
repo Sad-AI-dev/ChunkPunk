@@ -261,7 +261,7 @@ public class GameplayManager : MonoBehaviour
 
     void UpdateScoreLabel(Player p)
     {
-        scoreLabels[PlayerManager.instance.players.IndexOf(p)].text = $"Score: {scores[p]}";
+        scoreLabels[PlayerManager.instance.players.IndexOf(p)].text = $"{scores[p]} / {winScore}";
     }
 
     void SetStateLabels(string s)
