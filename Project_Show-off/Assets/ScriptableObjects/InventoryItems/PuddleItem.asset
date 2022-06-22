@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 1
   sprite: {fileID: 21300000, guid: 85d1c70a1eac0a449995804fb861d3c6, type: 3}
+  clip: {fileID: 8300000, guid: 510b35128fe45554082b7b566308ecb7, type: 3}
   obstaclePrefab: {fileID: 6718597440043629251, guid: c71ae99c6e6e6b94d9606835db323f6b,
     type: 3}
-  owner: {fileID: 0}
   previewPrefab: {fileID: 5848279127323576233, guid: d358c259a2f7a314a918b4b22953a568,
     type: 3}
   failShowDelay: 0.5
+  groundCheckDistance: 1
   failMat: {fileID: 2100000, guid: d15e41cf508b0994babc5c03b7e204c0, type: 2}
