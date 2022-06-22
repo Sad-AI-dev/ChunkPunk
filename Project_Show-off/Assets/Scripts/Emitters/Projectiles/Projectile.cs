@@ -11,6 +11,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] float lifeTime = 5f;
     [SerializeField] UnityEvent onHit = new();
 
+    [Header("VFX")]
+    [SerializeField] private GameObject despawnObject;
+
     void Start()
     {
         starting = true;
@@ -40,6 +43,9 @@ public class Projectile : MonoBehaviour
             if (collision.transform.CompareTag("Obstacle")) {
                 if (!collision.transform.TryGetComponent(out LandMine landMine)) {
                     DestroyObject(collision.gameObject);
+                    //spawn vfx
+                    GameObject obj = Instantiate(despawnObject);
+                    obj.transform.SetPositionAndRotation(collision.transform.position, collision.transform.rotation);
                 }
             }
         }

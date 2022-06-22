@@ -21,6 +21,7 @@ public class LandMine : MonoBehaviour
 
     [Header("VFX")]
     [SerializeField] private ParticleSystem particleObj;
+    [SerializeField] private GameObject despawnObj;
 
     private void Start()
     {
@@ -64,8 +65,15 @@ public class LandMine : MonoBehaviour
 
     private IEnumerator ExplodeCo(GameObject target, float delay)
     {
+        StartCoroutine(ParticleCo(target, delay));
         yield return new WaitForSeconds(delay);
         Destroy(target);
+    }
+    private IEnumerator ParticleCo(GameObject target, float delay)
+    {
+        yield return new WaitForSeconds(delay - 0.2f);
+        GameObject particle = Instantiate(despawnObj);
+        particle.transform.SetPositionAndRotation(target.transform.position, target.transform.rotation);
     }
 
     void EffectExternalObjects(GameObject obj)

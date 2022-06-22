@@ -103,14 +103,16 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
-          m_FloatArgument: 5.7
+          m_FloatArgument: 4.7
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
   startTime: 0.2
   stunDelay: 0.2
-  destroyDelay: 6
+  destroyDelay: 5
   particleObj: {fileID: 5812352753926506538}
+  despawnObj: {fileID: 412351938773223710, guid: d94f63bc4e1d1064a90cbf973ec416d9,
+    type: 3}
 --- !u!1 &8857913788249465936
 GameObject:
   m_ObjectHideFlags: 0
