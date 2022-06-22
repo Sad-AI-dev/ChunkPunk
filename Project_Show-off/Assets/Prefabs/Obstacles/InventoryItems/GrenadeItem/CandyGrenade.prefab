@@ -128,6 +128,9 @@ MonoBehaviour:
   startTime: 0.2
   stunDelay: 0.4
   destroyDelay: 2.7
+  particleObj: {fileID: 0}
+  despawnObj: {fileID: 412351938773223710, guid: d94f63bc4e1d1064a90cbf973ec416d9,
+    type: 3}
 --- !u!1001 &3863896478498959111
 PrefabInstance:
   m_ObjectHideFlags: 0
