@@ -16,12 +16,7 @@ public class BlindTrap : MonoBehaviour
     [Header("Technical")]
     [SerializeField] GameObject visuals;
 
-    private CanvasGroup blindGroup;
-    private float timer;
-    //states
-    private bool fading;
-    bool fadingIn = true;
-    bool activated;
+    private Fader fader;
 
     bool starting;
 
@@ -38,68 +33,22 @@ public class BlindTrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!starting && !activated && other.gameObject.CompareTag("Player")) {
+        if (!starting && other.gameObject.CompareTag("Player")) {
             if (other.transform.TryGetComponent(out Player player)) {
-                blindGroup = GetTargetGroup(player);
+                fader = GetTargetFader(player);
                 GetTriggered();
             }
         }
     }
-    CanvasGroup GetTargetGroup(Player target)
+    Fader GetTargetFader(Player target)
     {
-        return PlayerManager.instance.playerUI[target.id - 1].blindGroup;
+        return PlayerManager.instance.playerUI[target.id - 1].fader;
     }
 
     //----------------------trigger trap---------------------
     void GetTriggered()
     {
-        if (blindGroup.alpha < 0.1f) {
-            activated = true;
-            onBlind?.Invoke();
-            visuals.SetActive(false);
-            StartCoroutine(StartFadeCo());
-        }
-    }
-
-    IEnumerator StartFadeCo()
-    {
-        blindGroup.alpha = 0;
-        timer = 0;
-        fading = true;
-        yield return new WaitForSeconds(fadeinTime);
-        fading = false;
-        yield return new WaitForSeconds(blindTime); //stay fully blind for duration
-        fading = true;
-    }
-
-    private void Update()
-    {
-        if(fading) {
-            timer += Time.deltaTime;
-            if (fadingIn) { FadeIn(); }
-            else { FadeOut(); }
-        }
-    }
-
-    //----------------fades--------------
-    void FadeIn()
-    {
-        blindGroup.alpha = timer / fadeinTime;
-        if (timer > fadeinTime) {
-            timer = 0;
-            blindGroup.alpha = 1;
-            fadingIn = !fadingIn;
-        }
-    }
-
-    void FadeOut()
-    {
-        blindGroup.alpha = 1 - (timer / fadeTime);
-        if (timer > fadeTime) { End(); }
-    }
-
-    void End()
-    {
+        fader.Fade(fadeinTime, blindTime, fadeTime);
         Destroy(gameObject);
     }
 }
