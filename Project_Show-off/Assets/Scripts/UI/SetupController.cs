@@ -43,7 +43,7 @@ public class SetupController : MonoBehaviour
         joinLabels[joinedPlayers].text = joinedText;
         disableObjects[joinedPlayers].SetActive(false);
         if (joinedPlayers >= 1) { //max amount of players have joined, enable start button
-            startButton.interactable = true;
+            startButton.onClick?.Invoke();
         }
     }
 }
