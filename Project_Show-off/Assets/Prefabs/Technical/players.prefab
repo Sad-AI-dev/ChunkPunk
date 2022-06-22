@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 1276873909}
   - component: {fileID: 1139128607013990923}
   - component: {fileID: 6373914544737065706}
+  - component: {fileID: 1061036802}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -622,7 +623,7 @@ MonoBehaviour:
   maxAimHeight: 2
   minAimHeight: -1
   leadEffectStrength: 6
-  leadEffectSpeed: 50
+  leadEffectSpeed: 40
   UTurnSpeed: 1
   UTurnAngle: 180
   accelerateMax: 1.8
@@ -639,6 +640,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   rb: {fileID: 0}
   getHit: {fileID: 0}
+  stateController: {fileID: 0}
 --- !u!114 &634214845817016372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,21 +676,6 @@ MonoBehaviour:
   yKnockback: 2
   invicibilityTime: 0
   alreadyHit: 0
-  onGetHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &1276873909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -899,6 +886,25 @@ MonoBehaviour:
   onCollidePlayer:
     m_PersistentCalls:
       m_Calls: []
+  onCollideWall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1061036802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220088474158358888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097c98cbc8023224fa0d7c6e80d90bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 8363076541507339390}
+  stun:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7220088474960675923
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,6 +922,7 @@ GameObject:
   - component: {fileID: 530896207}
   - component: {fileID: 2453820369253943776}
   - component: {fileID: 3533165571807388469}
+  - component: {fileID: 898493708}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Player
@@ -965,7 +972,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7220088474960675923}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -999,7 +1006,7 @@ MonoBehaviour:
   maxAimHeight: 2
   minAimHeight: -1
   leadEffectStrength: 6
-  leadEffectSpeed: 50
+  leadEffectSpeed: 40
   UTurnSpeed: 1
   UTurnAngle: 180
   accelerateMax: 1.8
@@ -1016,6 +1023,7 @@ MonoBehaviour:
   inventory: {fileID: 0}
   rb: {fileID: 0}
   getHit: {fileID: 0}
+  stateController: {fileID: 0}
 --- !u!114 &4085440302596347992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,21 +1059,6 @@ MonoBehaviour:
   yKnockback: 2
   invicibilityTime: 0
   alreadyHit: 0
-  onGetHit:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!82 &530896207
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1274,6 +1267,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collideDelay: 1
   onCollidePlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  onCollideWall:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &898493708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7220088474960675923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097c98cbc8023224fa0d7c6e80d90bf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 4733834793351972548}
+  stun:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &7478950207099081206
@@ -2032,6 +2044,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1672951651756506152}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &8363076541507339390 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7149492342727899222, guid: 621958329ec480644acc37768fb37024,
+    type: 3}
+  m_PrefabInstance: {fileID: 1672951651756506152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9006432629065792917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2101,6 +2119,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61162a0d98c89224285ef7fc8b72e2b0, type: 3}
+--- !u!95 &4733834793351972548 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4417102610710215505, guid: 61162a0d98c89224285ef7fc8b72e2b0,
+    type: 3}
+  m_PrefabInstance: {fileID: 9006432629065792917}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5060723083492279574 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4235083593201318019, guid: 61162a0d98c89224285ef7fc8b72e2b0,
