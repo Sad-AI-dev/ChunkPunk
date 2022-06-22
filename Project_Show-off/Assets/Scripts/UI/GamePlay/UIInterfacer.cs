@@ -15,7 +15,9 @@ public class UIInterfacer : MonoBehaviour
     public TMP_Text inventoryLabel;
 
     [Header("Groups")]
-    public CanvasGroup blindGroup;
     public CanvasGroup stateGroup;
     public CanvasGroup mapGroup;
+
+    [Header("Fader")]
+    public Fader fader;
 }
