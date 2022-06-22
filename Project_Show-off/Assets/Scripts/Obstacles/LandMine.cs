@@ -19,9 +19,13 @@ public class LandMine : MonoBehaviour
     [SerializeField] float destroyDelay = 1f;
     bool triggered = false;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem particleObj;
+
     private void Start()
     {
         triggered = false;
+        particleObj.Pause(false);
         StartCoroutine(SetupCo());
     }
     IEnumerator SetupCo()
@@ -91,5 +95,17 @@ public class LandMine : MonoBehaviour
         player.rb.AddRelativeForce(force * 10, ForceMode.Impulse);
         //stun player
         player.getHit.StunPlayer(stunDuration, invinceDuration);
+    }
+
+    //----------------Util------------------
+    public void ActivateParticleDelayed(float delay)
+    {
+        StartCoroutine(ParticleCo(delay));
+    }
+
+    private IEnumerator ParticleCo(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        particleObj.Play();
     }
 }

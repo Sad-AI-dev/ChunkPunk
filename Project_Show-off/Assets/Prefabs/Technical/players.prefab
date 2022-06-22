@@ -809,6 +809,7 @@ MonoBehaviour:
   stunTime: 4
   yKnockback: 2
   invicibilityTime: 0
+  faceChanger: {fileID: 0}
   alreadyHit: 0
   particleObj: {fileID: 1954335326288319312}
 --- !u!82 &1276873909
@@ -1180,6 +1181,7 @@ MonoBehaviour:
   stunTime: 4
   yKnockback: 2
   invicibilityTime: 0
+  faceChanger: {fileID: 0}
   alreadyHit: 0
   particleObj: {fileID: 7712459296493400990}
 --- !u!82 &530896207
@@ -2163,6 +2165,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Speed effect 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2525817567351264876, guid: 51cb1a18f38f1bf4487ea128dce334d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2525817567351264879, guid: 51cb1a18f38f1bf4487ea128dce334d2,
         type: 3}
       propertyPath: m_RootOrder
@@ -2411,6 +2418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Speed effect 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2525817567351264876, guid: 51cb1a18f38f1bf4487ea128dce334d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2525817567351264879, guid: 51cb1a18f38f1bf4487ea128dce334d2,
         type: 3}
