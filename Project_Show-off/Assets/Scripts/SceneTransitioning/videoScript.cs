@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class videoScript : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class videoScript : MonoBehaviour
 
     public void StartVideo()
     {
+
+        //AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         originalVideo.Play();
         StartCoroutine(ShowVideo());
     }

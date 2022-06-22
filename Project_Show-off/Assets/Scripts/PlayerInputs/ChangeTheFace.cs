@@ -11,9 +11,9 @@ public class ChangeTheFace : MonoBehaviour
     [SerializeField] Material Normal;
     [SerializeField] Material Stunned;
     MeshRenderer thisOne;
-    public UnityEvent DyingFace;
-    public UnityEvent NormalFace;
-    public UnityEvent StunnedFace;
+    [HideInInspector] public UnityEvent DyingFace;
+    [HideInInspector] public UnityEvent NormalFace;
+    [HideInInspector] public UnityEvent StunnedFace;
     private void Awake()
     {
         if (DyingFace == null)
