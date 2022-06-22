@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class Emitter : MonoBehaviour
 {
     [SerializeField] private float shootWait;
-    [SerializeField] List<GameObject> emitPrefab;
+    public List<GameObject> emitPrefab;
     [SerializeField] List<Transform> emitLocations;
     [SerializeField] public Transform lookAt;
     public Player player;

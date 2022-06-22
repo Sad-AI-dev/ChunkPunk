@@ -4,20 +4,24 @@ using UnityEngine.Events;
 
 public class Projectile : MonoBehaviour
 {
+    private float setupTime = 0.1f;
+    private bool starting = true;
+
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float lifeTime = 5f;
     [SerializeField] UnityEvent onHit = new();
 
-    [HideInInspector] public Player owner;
-
     void Start()
     {
+        starting = true;
         StartCoroutine(LifeTimeCo());
     }
     //-----------------lifetime----------------
     IEnumerator LifeTimeCo()
     {
-        yield return new WaitForSeconds(lifeTime);
+        yield return new WaitForSeconds(setupTime);
+        starting = false;
+        yield return new WaitForSeconds(lifeTime - setupTime);
         StartCoroutine(DieCo());
     }
 
@@ -29,7 +33,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform != owner.transform) {
+        if (!starting) {
             onHit?.Invoke();
             StartCoroutine(DieCo());
         }

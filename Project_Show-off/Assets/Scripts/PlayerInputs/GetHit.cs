@@ -54,8 +54,11 @@ public class GetHit : MonoBehaviour
     {
         thisPlayer.isStunned = true;
         thisPlayer.stateController.stun?.Invoke();
+        thisPlayer.faceChanger.StunnedFace?.Invoke();
         Debug.Log("stunneddddddddddddddddddd");
         yield return new WaitForSeconds(duration);
+        thisPlayer.stateController.Skate?.Invoke();
+        thisPlayer.faceChanger.NormalFace?.Invoke();
         thisPlayer.isStunned = false;
     }
 

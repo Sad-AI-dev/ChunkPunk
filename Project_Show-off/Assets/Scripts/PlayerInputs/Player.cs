@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] float accelerateIncrease;
     [SerializeField] float timeToSpeedUp;
     [SerializeField] float timeBetweenClick;
+    [SerializeField] public ChangeTheFace faceChanger;
     float bulletClickCap;
     //result vectors
     Vector2 toMove;
@@ -163,7 +164,7 @@ public class Player : MonoBehaviour
                 Debug.Log(bulletClickCap);
                 if (obj.TryGetComponent(out Projectile proj))
                 {
-                    proj.owner = this; //set owner of projectiles
+                    //proj.owner = this; //set owner of projectiles
                 }
                 bulletClickCap = timeBetweenClick;
 
