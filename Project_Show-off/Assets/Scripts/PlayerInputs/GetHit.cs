@@ -10,6 +10,7 @@ public class GetHit : MonoBehaviour
     [SerializeField] private int stunTime;
     [SerializeField] private float yKnockback;
     [SerializeField] private float invicibilityTime;
+    [SerializeField] private ChangeTheFace faceChanger;
     //state
     [HideInInspector] public bool alreadyHit;
 
@@ -55,7 +56,9 @@ public class GetHit : MonoBehaviour
         thisPlayer.isStunned = true;
         thisPlayer.stateController.stun?.Invoke();
         particleObj.SetActive(true);
+        faceChanger.StunnedFace?.Invoke();
         yield return new WaitForSeconds(duration);
+        faceChanger.NormalFace?.Invoke();
         particleObj.SetActive(false);
         thisPlayer.stateController.Skate?.Invoke();
         thisPlayer.isStunned = false;
