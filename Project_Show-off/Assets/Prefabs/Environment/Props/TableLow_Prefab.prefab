@@ -96,6 +96,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: e8ad49e1cb2ca8248b8364fb530938d8,
         type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e8ad49e1cb2ca8248b8364fb530938d8,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9d0835a70159a84f91708e28d6db0d4, type: 2}
@@ -103,6 +108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Unity HD Render Pipeline (Metallic Standard)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e8ad49e1cb2ca8248b8364fb530938d8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8ad49e1cb2ca8248b8364fb530938d8, type: 3}
