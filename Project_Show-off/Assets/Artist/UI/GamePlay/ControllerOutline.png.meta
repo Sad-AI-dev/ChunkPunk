@@ -119,12 +119,12 @@ TextureImporter:
       name: ControllerOutline_0
       rect:
         serializedVersion: 2
-        x: 457
+        x: 171
         y: 61
-        width: 1142
-        height: 813
+        width: 1528
+        height: 823
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
