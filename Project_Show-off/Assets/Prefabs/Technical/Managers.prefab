@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeState: 0
-  winScore: 3
+  winScore: 7
   startTime: 3
   setupTime: 15
   countdownTime: 3

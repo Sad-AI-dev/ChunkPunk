@@ -10,6 +10,7 @@ public class InputReciever : MonoBehaviour
     [SerializeField] bool linkOnStart = true;
     [HideInInspector] public int id = 0;
     Player target;
+    private bool linked;
 
     //--------------------------------linking-------------------------------------
     private void Start()
@@ -20,18 +21,20 @@ public class InputReciever : MonoBehaviour
 
     IEnumerator LinkCo()
     {
-        target = null;
+        linked = false;
         yield return null; //wait a frame
         if (PlayerManager.instance) {
             target = PlayerManager.instance.GetUnlinkedPlayer();
+            linked = true;
         }
+        else { target = null; }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         StartCoroutine(LinkCo());
     }
-    
+
     //--------------------unlink---------------
     public void Unlink()
     {
@@ -42,19 +45,19 @@ public class InputReciever : MonoBehaviour
     //---------------------------inputs--------------------------------------------
     public void Move(InputAction.CallbackContext context)
     {
-        if (target) { target.SetMoveDir(context.ReadValue<Vector2>()); }
+        if (linked) { target.SetMoveDir(context.ReadValue<Vector2>()); }
     }
 
     public void UTurn(InputAction.CallbackContext context)
     {
-        if (target) { 
+        if (linked) { 
             if (context.started) target.UTurn();
         }
     }
 
     public void Looking(InputAction.CallbackContext context)
     {
-        if (target) {
+        if (linked) {
             if (context.canceled) { target.Look(Vector2.zero); }
             else { target.Look(context.ReadValue<Vector2>()); }
         }
@@ -62,7 +65,7 @@ public class InputReciever : MonoBehaviour
 
     public void UseMap(InputAction.CallbackContext context)
     {
-        if (target) {
+        if (linked) {
             if (context.started) { target.ShowMap(); }
             else if (context.canceled) { target.HideMap(); }
         }
@@ -70,7 +73,7 @@ public class InputReciever : MonoBehaviour
 
     public void Aim(InputAction.CallbackContext context)
     {
-        if (target) {
+        if (linked) {
             if (context.started) {
                 target.Aim(true);
             }
@@ -82,7 +85,7 @@ public class InputReciever : MonoBehaviour
     
     public void Accelerate(InputAction.CallbackContext context)
     {
-        if (target) {
+        if (linked) {
             if (context.started) {
                target.Accelerate(true);
             }
@@ -94,7 +97,7 @@ public class InputReciever : MonoBehaviour
     
     public void Deccelerate(InputAction.CallbackContext context)
     {
-        if (target) {
+        if (linked) {
             if (context.started) {
                 target.Decelerate(true);
             }
@@ -106,7 +109,7 @@ public class InputReciever : MonoBehaviour
 
     public void InventoryItem(InputAction.CallbackContext context)
     {
-        if (target) {
+        if (linked) {
             if (context.started) {
                 target.inventory.SelectItem();
             }

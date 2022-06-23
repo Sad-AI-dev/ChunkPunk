@@ -14,6 +14,9 @@ public class PlayerManager : MonoBehaviour
         else {
             instance = this;
         }
+
+        //reset linked players
+        linkedPlayerCount = 0;
     }
     public static PlayerManager instance;
 

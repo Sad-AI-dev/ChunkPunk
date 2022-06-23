@@ -815,6 +815,9 @@ MonoBehaviour:
   faceChanger: {fileID: 0}
   alreadyHit: 0
   particleObj: {fileID: 1954335326288319312}
+  onGetStunned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &1276873909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1188,6 +1191,9 @@ MonoBehaviour:
   faceChanger: {fileID: 0}
   alreadyHit: 0
   particleObj: {fileID: 7712459296493400990}
+  onGetStunned:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &530896207
 AudioSource:
   m_ObjectHideFlags: 0

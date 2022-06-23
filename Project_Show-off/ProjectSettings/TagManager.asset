@@ -13,6 +13,7 @@ TagManager:
   - Obstacle
   - Map
   - wall
+  - TEST
   layers:
   - Default
   - TransparentFX
