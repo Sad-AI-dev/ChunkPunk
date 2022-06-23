@@ -636,8 +636,6 @@ GameObject:
   - component: {fileID: 358857674}
   - component: {fileID: 358857673}
   - component: {fileID: 358857672}
-  - component: {fileID: 358857675}
-  - component: {fileID: 358857676}
   m_Layer: 5
   m_Name: StartGame
   m_TagString: Untagged
@@ -711,38 +709,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1508627117}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 974593583}
-        m_TargetAssemblyTypeName: videoScript, Assembly-CSharp
-        m_MethodName: StartVideo
-        m_Mode: 1
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadRelativeScene
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 974593585}
-        m_TargetAssemblyTypeName: PreLoading, Assembly-CSharp
-        m_MethodName: LoadNextSceneInBackground
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -785,32 +759,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358857670}
   m_CullTransparentMesh: 1
---- !u!114 &358857675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358857670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d8af1cd5397fb2448e32c564f63d639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &358857676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 358857670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0318ee6db7a0514e8a5238f4d79ba3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  video: {fileID: 0}
-  skipped: 0
 --- !u!1 &813179379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,9 +1001,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 974593582}
-  - component: {fileID: 974593581}
-  - component: {fileID: 974593585}
-  - component: {fileID: 974593584}
   - component: {fileID: 974593583}
   m_Layer: 0
   m_Name: LoadingGame
@@ -1064,39 +1009,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!328 &974593581
-VideoPlayer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974593580}
-  m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: ad6f4f6c41039204ebfbd9b13487814f, type: 3}
-  m_TargetCameraAlpha: 1
-  m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 344644501}
-  m_TargetTexture: {fileID: 8400000, guid: 1c4645f26c0b0e64bb71fe485caed5e1, type: 2}
-  m_TimeReference: 0
-  m_TargetMaterialRenderer: {fileID: 0}
-  m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
-  m_AspectRatio: 2
-  m_DataSource: 0
-  m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
-  m_TargetAudioSources: []
-  m_DirectAudioVolumes: []
-  m_Url: 
-  m_EnabledAudioTracks: 
-  m_DirectAudioMutes: 
-  m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
-  m_Looping: 0
-  m_WaitForFirstFrame: 1
-  m_FrameReadyEventEnabled: 0
-  m_VideoShaders: []
 --- !u!4 &974593582
 Transform:
   m_ObjectHideFlags: 0
@@ -1121,38 +1033,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 974593580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f689a969b42404b4883c25c6c31f0d62, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d8af1cd5397fb2448e32c564f63d639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VideoDone: 0
-  originalVideo: {fileID: 974593581}
---- !u!114 &974593584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974593580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f0e8450308d477469c2ccb5602ec609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetLoader: {fileID: 974593585}
---- !u!114 &974593585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974593580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0318ee6db7a0514e8a5238f4d79ba3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  video: {fileID: 974593583}
-  skipped: 0
 --- !u!1 &1036746831
 GameObject:
   m_ObjectHideFlags: 0

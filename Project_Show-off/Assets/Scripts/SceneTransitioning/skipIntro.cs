@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class skipIntro : MonoBehaviour
 {
-    [SerializeField] PreLoading targetLoader;
+    [SerializeField] waitForVideo targetLoader;
 
     private void Awake()
     {
