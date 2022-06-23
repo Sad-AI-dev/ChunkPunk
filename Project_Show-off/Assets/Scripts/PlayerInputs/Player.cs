@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     float bulletClickCap;
     //result vectors
     Vector2 toMove;
+    Vector2 inputToMove;
     [HideInInspector] public Vector3 externalToMove = Vector3.zero;
 
     [Header("Camera Rotation settings")]
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour
         //initialize values
         accelerate = 1;
         emitter.player = this;
+        inputToMove = Vector3.zero;
         //lookats
         lookAtStarter = LookAt.localPosition;
         baseLookAtPos = baseLookAt.localPosition;
@@ -167,7 +169,7 @@ public class Player : MonoBehaviour
             List<GameObject> objs = emitter.Emit();
             foreach (GameObject obj in objs)
             {
-                Debug.Log(bulletClickCap);
+                //Debug.Log(bulletClickCap);
                 if (obj.TryGetComponent(out Projectile proj))
                 {
                     //proj.owner = this; //set owner of projectiles
@@ -227,36 +229,27 @@ public class Player : MonoBehaviour
     {
         this.transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
     }
-    public IEnumerator Accelerate(bool isAccelerating)
+
+    //-----------------acceleration---------------------------
+    public void Accelerate(bool isAccelerating)
     {
-        if (isAccelerating && accelerate < accelerateMax)
-        {
-            accelerate += 1;
-            yield return new WaitForSeconds(1);
-            //Debug.Log("speed up");
-        }
-        else if (!isAccelerating && accelerate > accelerateMin)
-            accelerate -= 1;
-        yield return new WaitForSeconds(1);
+        inputToMove.y = isAccelerating ? 1 :0;
     }
-    public IEnumerator Decelerate(bool isDecelerating)
+    public void Decelerate(bool isDecelerating)
     {
-        if (isDecelerating && accelerate > accelerateMin)
-        {
-            accelerate -= 0.1f;
-            yield return new WaitForSeconds(1);
-        }
-        else if (!isDecelerating && accelerate < accelerateMin)
-            accelerate += 0.2f;
-        yield return new WaitForSeconds(1);
+        inputToMove.y = isDecelerating ? -1 : 0;
     }
 
-
+    private void UpdateToMove()
+    {
+        SetMoveDir(inputToMove);
+    }
 
     private void FixedUpdate()
     {
         if (!isStunned)
         {
+            UpdateToMove();
             Rotate();
             Move();
             //Debug.Log(accelerate);

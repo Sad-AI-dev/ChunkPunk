@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Fader : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class Fader : MonoBehaviour
     private float blindTime;
     private float fadeTime;
 
+    //events
+    [SerializeField] private UnityEvent onBlind;
+
     private void Start()
     {
         group = GetComponent<CanvasGroup>();
@@ -32,6 +36,7 @@ public class Fader : MonoBehaviour
             //update states
             activated = true;
             //start fade
+            onBlind?.Invoke();
             StartCoroutine(StartFadeCo());
         }
     }
