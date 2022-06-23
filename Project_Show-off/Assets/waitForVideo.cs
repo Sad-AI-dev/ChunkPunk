@@ -28,7 +28,7 @@ public class waitForVideo : MonoBehaviour
         bool isDoneThis = false;
         while (!asyncOperation.isDone)
         {
-            Debug.Log(currentTime);
+            //Debug.Log(currentTime);
             // Check if the load has finished
             if (asyncOperation.progress >= 0.9f)
             {
