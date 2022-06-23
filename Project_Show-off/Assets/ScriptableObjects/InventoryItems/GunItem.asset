@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: 5
   sprite: {fileID: 21300000, guid: c3119fe6015c8bb4ea1e5198a2a0ac18, type: 3}
-  clip: {fileID: 8300000, guid: f5f4838228de20f44a35d5dc0ac81406, type: 3}
+  clip: {fileID: 8300000, guid: 408e3101caea7c64f98881d981a89024, type: 3}
   obstaclePrefab: {fileID: 602547853056513451, guid: a47424ec92667a647b5f20163a163c7d,
     type: 3}

@@ -103,13 +103,10 @@ public class InputReciever : MonoBehaviour
     {
         if (target)
         {
-            if (context.started)
-            {
-                Debug.Log("Acelerating");
-                target.Accelerate(true);
+            if (context.started) {
+               target.Accelerate(true);
             }
-            else if (context.canceled)
-            {
+            else if (context.canceled) {
                 target.Accelerate(false);
             }
         }
@@ -119,13 +116,10 @@ public class InputReciever : MonoBehaviour
     {
         if (target)
         {
-            if (context.started)
-            {
-                Debug.Log("Decelerating");
+            if (context.started) {
                 target.Decelerate(true);
             }
-            else if (context.canceled)
-            {
+            else if (context.canceled) {
                 target.Decelerate(false);
             }
         }

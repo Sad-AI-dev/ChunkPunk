@@ -106,10 +106,6 @@ MonoBehaviour:
     m_ActionId: 6f53d90e-ae8b-4865-88bb-f822d3057916
     m_ActionName: Player/Look[/DualShock4GamepadHID/rightStick,/DualShock4GamepadHID1/rightStick,/DualSenseGamepadHID/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ded5293f-3107-4973-bbd7-59925b57fb4f
-    m_ActionName: Player/Fire[/DualShock4GamepadHID/rightTrigger,/DualShock4GamepadHID1/rightTrigger,/DualSenseGamepadHID/rightTrigger,/Mouse/leftButton]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2722814710032209075}
         m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
@@ -133,7 +129,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2722814710032209075}
         m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
-        m_MethodName: Aim
+        m_MethodName: Accelerate
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -143,14 +139,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 0082a9e9-9d1b-4185-b8ec-b0fc316a7639
-    m_ActionName: Player/Aim[/DualSenseGamepadHID/leftTrigger]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 8e28df12-1c41-4920-9138-7334e5829a89
     m_ActionName: Player/Accelerate[/DualSenseGamepadHID/rightShoulder]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2722814710032209075}
+        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
+        m_MethodName: Deccelerate
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7c536b7f-727e-499f-a98a-6966b62ffe41
     m_ActionName: Player/Decelerate[/DualSenseGamepadHID/leftShoulder]
   - m_PersistentCalls:
