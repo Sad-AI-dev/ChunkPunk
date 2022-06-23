@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: ce2db296fce6d8340aeba7d894162503,
+  m_LightingDataAsset: {fileID: 112000000, guid: 991663ea8cbbfac4280331405df54e49,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 6edcb6fe04d0d364f83f9140b6887a7e,
     type: 2}
@@ -11687,6 +11687,31 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3029732190232054825, guid: 291c5711ddb764c47b7c797f83d68514,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -235.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029732190232054825, guid: 291c5711ddb764c47b7c797f83d68514,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029732190232054825, guid: 291c5711ddb764c47b7c797f83d68514,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9167563
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029732190232054825, guid: 291c5711ddb764c47b7c797f83d68514,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.39944705
+      objectReference: {fileID: 0}
+    - target: {fileID: 3029732190232054825, guid: 291c5711ddb764c47b7c797f83d68514,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 47.087
+      objectReference: {fileID: 0}
     - target: {fileID: 3133644846974928396, guid: 291c5711ddb764c47b7c797f83d68514,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -11826,6 +11851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933804548438271101, guid: 291c5711ddb764c47b7c797f83d68514,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.26
       objectReference: {fileID: 0}
     - target: {fileID: 7111390814251676079, guid: 291c5711ddb764c47b7c797f83d68514,
         type: 3}
@@ -23382,7 +23412,7 @@ PrefabInstance:
     - target: {fileID: 7304055349548302235, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
       propertyPath: m_CastShadows
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7304055349548302235, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
@@ -23397,7 +23427,7 @@ PrefabInstance:
     - target: {fileID: 7374727379827207036, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 127
+      value: 126
       objectReference: {fileID: 0}
     - target: {fileID: 7671860047295012763, guid: 0bfb8d337511c3244b1049caac510bff,
         type: 3}
@@ -30459,7 +30489,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
+  m_ScaleInLightmap: 0.2
   m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
@@ -33670,7 +33700,7 @@ MonoBehaviour:
   m_VolumetricShadowDimmer: 0.5
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
-    m_Override: 0
+    m_Override: 1
     m_UseOverride: 1
     m_Level: 0
   m_RayTracedContactShadow: 0
@@ -34307,7 +34337,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 2
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
