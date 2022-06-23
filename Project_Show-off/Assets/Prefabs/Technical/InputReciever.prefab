@@ -109,26 +109,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2722814710032209075}
         m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
-        m_MethodName: SouthButton
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 36ef55ef-3c18-4236-99f2-68dd3e883333
-    m_ActionName: Player/ButtonTest[/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth,/DualSenseGamepadHID/buttonSouth,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: f274628f-60a7-4071-a389-433b7e910527
-    m_ActionName: Player/Test[/Keyboard/a]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2722814710032209075}
-        m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
         m_MethodName: Accelerate
         m_Mode: 0
         m_Arguments:
@@ -161,7 +141,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2722814710032209075}
         m_TargetAssemblyTypeName: InputReciever, Assembly-CSharp
-        m_MethodName: RightBumper
+        m_MethodName: InventoryItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -173,22 +153,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a09285ec-5e7e-4a59-b9d1-b8b47101f4e0
     m_ActionName: Player/RightBumper[/DualShock4GamepadHID/rightShoulder]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2722814710032209077}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 24e1b18b-fe56-4e44-8da9-04843444532d
-    m_ActionName: Player/Skip[/DualSenseGamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth,/DualSenseGamepadHID/start,/XInputControllerWindows/start,/DualSenseGamepadHID/buttonWest,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2722814710032209075}

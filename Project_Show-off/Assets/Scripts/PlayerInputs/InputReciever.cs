@@ -47,7 +47,9 @@ public class InputReciever : MonoBehaviour
 
     public void UTurn(InputAction.CallbackContext context)
     {
-        if (target) { target.UTurn(); }
+        if (target) { 
+            if (context.started) target.UTurn();
+        }
     }
 
     public void Looking(InputAction.CallbackContext context)
@@ -57,28 +59,6 @@ public class InputReciever : MonoBehaviour
             else { target.Look(context.ReadValue<Vector2>()); }
         }
     }
-    
-    public void SouthButton(InputAction.CallbackContext context)
-    {
-        
-        if (target)
-        {
-            if (context.started)
-            {
-                target.isShoting = true;
-                //StartCoroutine(target.isShooting());
-            }
-            
-            else if (context.canceled)
-            {
-                target.isShoting = false;
-
-            }
-            
-        }
-        
-    }
-
 
     public void UseMap(InputAction.CallbackContext context)
     {
@@ -87,6 +67,7 @@ public class InputReciever : MonoBehaviour
             else if (context.canceled) { target.HideMap(); }
         }
     }
+
     public void Aim(InputAction.CallbackContext context)
     {
         if (target) {
@@ -101,8 +82,7 @@ public class InputReciever : MonoBehaviour
     
     public void Accelerate(InputAction.CallbackContext context)
     {
-        if (target)
-        {
+        if (target) {
             if (context.started) {
                target.Accelerate(true);
             }
@@ -114,8 +94,7 @@ public class InputReciever : MonoBehaviour
     
     public void Deccelerate(InputAction.CallbackContext context)
     {
-        if (target)
-        {
+        if (target) {
             if (context.started) {
                 target.Decelerate(true);
             }
@@ -125,7 +104,7 @@ public class InputReciever : MonoBehaviour
         }
     }
 
-    public void RightBumper(InputAction.CallbackContext context)
+    public void InventoryItem(InputAction.CallbackContext context)
     {
         if (target) {
             if (context.started) {
