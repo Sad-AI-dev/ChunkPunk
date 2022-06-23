@@ -84,7 +84,7 @@ public class LandMine : MonoBehaviour
             }
         } 
         else if (obj.CompareTag("Obstacle")) {
-            if (obj != gameObject) {
+            if (!ReferenceEquals(obj, gameObject)) {
                 StartCoroutine(ExplodeCo(obj, Random.Range(0.1f, destroyDelay)));
             }
         }
