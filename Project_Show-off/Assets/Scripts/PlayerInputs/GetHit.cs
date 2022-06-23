@@ -20,6 +20,7 @@ public class GetHit : MonoBehaviour
     //FX
     [Header("FX")]
     [SerializeField] private GameObject particleObj;
+    [SerializeField] private UnityEvent onGetStunned;
 
     private void Awake()
     {
@@ -47,6 +48,7 @@ public class GetHit : MonoBehaviour
     public void StunPlayer(float stunDuration, float invinceDuration)
     {
         alreadyHit = true;
+        onGetStunned?.Invoke();
         StartCoroutine(StunCo(stunDuration));
         StartCoroutine(InvinceCo(invinceDuration));
     }

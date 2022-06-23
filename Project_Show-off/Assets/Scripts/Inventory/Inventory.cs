@@ -82,10 +82,7 @@ public class Inventory : MonoBehaviour
     //-----------Sound------------
     void PlaySound()
     {
-        if (source.clip != heldItem.clip) {
-            source.clip = heldItem.clip;
-        }
-        source.Play();
+        source.PlayOneShot(heldItem.clip);
     }
 
     //---------UI------------
