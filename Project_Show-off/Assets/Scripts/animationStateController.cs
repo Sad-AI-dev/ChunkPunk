@@ -11,6 +11,13 @@ public class animationStateController : MonoBehaviour
     [HideInInspector] public UnityEvent Idle;
     [HideInInspector] public UnityEvent Skate;
 
+    enum animState
+    {
+        idle,
+        skate,
+        stun
+    }
+    animState state;
 
     private void Awake()
     {
@@ -26,21 +33,33 @@ public class animationStateController : MonoBehaviour
         stun.AddListener(stunned);
         Idle.AddListener(Idling);
         Skate.AddListener(Skating);
+        //start in idle
+        state = animState.idle;
+        animator.SetTrigger("Idle");
     }
 
 
     private void stunned()
     {
-        animator.SetTrigger("stunned");
+        if (state != animState.stun) {
+            animator.SetTrigger("stunned");
+            state = animState.stun;
+        }
     }
 
     private void Idling()
     {
-        animator.SetTrigger("Idle");
+        if (state != animState.idle) {
+            animator.SetTrigger("Idle");
+            state = animState.idle;
+        }
     }
 
     private void Skating()
     {
-        animator.SetTrigger("Skating");
+        if (state != animState.skate) {
+            animator.SetTrigger("Skating");
+            state = animState.skate;
+        }
     }
 }

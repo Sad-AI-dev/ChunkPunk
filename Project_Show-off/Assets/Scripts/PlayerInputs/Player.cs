@@ -220,11 +220,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void stunned()
-    {
-        //stateController.stun?.Invoke();
-    }
-
     public void Died()
     {
         this.transform.position = checkPointManager.instance.allPlayerCheckPoints[id].position;
