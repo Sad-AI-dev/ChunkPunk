@@ -5,10 +5,8 @@
 Chunkpunk is a party game where 2 players duke it out to be the fastest.  
 Players can use traps, obstacles and gadgets to try and be the first to reach the goal. First to 7 wins!
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PeNr8g5Eq2M?si=18rzk0DDNTUEr40f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-![gameplay image 1](ReadMeImages/Gameplay1.png?raw=true)
-![gameplay image 2](ReadMeImages/Gameplay2.png?raw=true)
+[![gameplay image 1](ReadMeImages/Gameplay1.png?raw=true)](https://youtu.be/PeNr8g5Eq2M?si=IxBs7eBk_EQqL6t3)  
+*Click for gameplay video*
 
 The game takes place in a beautiful mall environment, with several unique points of interest.
 
