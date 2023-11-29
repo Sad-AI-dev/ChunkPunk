@@ -5,7 +5,8 @@
 Chunkpunk is a party game where 2 players duke it out to be the fastest.  
 Players can use traps, obstacles and gadgets to try and be the first to reach the goal. First to 7 wins!
 
-<img src="https://github.com/Sad-AI-dev/ChunkPunk/tree/main/ReadMeImages/Gameplay1.png?raw=true" width="500px" />
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PeNr8g5Eq2M?si=18rzk0DDNTUEr40f" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ![gameplay image 1](ReadMeImages/Gameplay1.png?raw=true)
 ![gameplay image 2](ReadMeImages/Gameplay2.png?raw=true)
 
